@@ -6,57 +6,1640 @@
     <title>LiUP - Liga de Startups</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="images/logo-icon.png">
+    <style>
+        :root {
+            /* Cores principais */
+            --primary: #f56325;
+            --primary-dark: #d4531d;
+            --primary-light: #f78a5a;
+            --primary-extra-light: #fef0e9;
+            
+            /* Cores secundárias */
+            --secondary: #2a4365;
+            --secondary-dark: #1e3a8a;
+            --secondary-light: #3b82f6;
+            
+            /* Cores neutras */
+            --dark: #1a1a1a;
+            --gray-dark: #333333;
+            --gray: #666666;
+            --gray-light: #999999;
+            --gray-extra-light: #f5f5f5;
+            --white: #ffffff;
+            
+            /* Sombras */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+            --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.25);
+            
+            /* Bordas */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-full: 50%;
+            
+            /* Espaçamentos */
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+            --space-xxl: 48px;
+        }
+
+        /* Reset e Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        /* Tipografia */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: var(--space-md);
+            color: var(--gray-dark);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-xxl);
+        }
+
+        .section-subtitle {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--space-sm);
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .section-subtitle::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: var(--space-md);
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 6px rgba(245, 99, 37, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(245, 99, 37, 0.3);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary i {
+            margin-left: var(--space-xs);
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover i {
+            transform: translateX(3px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border-color: var(--white);
+            position: relative;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-white {
+            background-color: var(--white);
+            color: var(--primary);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-white:hover {
+            background-color: var(--gray-extra-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Floating Navigation */
+        .floating-nav {
+            position: fixed;
+            bottom: var(--space-lg);
+            right: var(--space-lg);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            transition: all 0.3s ease;
+        }
+
+        .floating-nav.hidden {
+            transform: translateX(150%);
+        }
+
+        .nav-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-full);
+            background-color: var(--primary);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .nav-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .nav-btn:hover::after {
+            transform: translateX(100%);
+        }
+
+        .nav-tooltip {
+            position: absolute;
+            right: 70px;
+            background-color: var(--dark);
+            color: var(--white);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-btn:hover .nav-tooltip {
+            opacity: 1;
+            right: 65px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: var(--space-xl) 0;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 800;
+        }
+
+        .hero-title span {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.3);
+            z-index: -1;
+            border-radius: 4px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-xl);
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: var(--space-xl);
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--white);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        .hero-scroll:hover {
+            opacity: 1;
+            transform: translateX(-50%) translateY(5px);
+        }
+
+        .hero-scroll span {
+            font-size: 0.8rem;
+            margin-bottom: var(--space-xs);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-scroll i {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* About Section */
+        .about-section {
+            padding: var(--space-xxl) 0;
+            background-color: var(--white);
+            position: relative;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-xxl);
+            align-items: center;
+        }
+
+        .about-text {
+            order: 2;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+            margin: var(--space-xl) 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            background-color: var(--primary-extra-light);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid rgba(245, 99, 37, 0.1);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-sm);
+            background-color: var(--white);
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: var(--space-xs);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+            font-weight: 500;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.5s ease;
+            order: 1;
+        }
+
+        .about-image:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-badge {
+            position: absolute;
+            top: var(--space-md);
+            left: var(--space-md);
+            background-color: var(--primary);
+            color: var(--white);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-sm);
+            z-index: 2;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(245, 99, 37, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(245, 99, 37, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(245, 99, 37, 0);
+            }
+        }
+
+        /* Areas Section */
+        .areas-section {
+            padding: var(--space-xxl) 0;
+            background-color: var(--gray-extra-light);
+            position: relative;
+        }
+
+        .areas-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNDUsIDk5LCAzNywgMC4wNSkiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiLz48L3N2Zz4=');
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .area-card {
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            padding: var(--space-xl);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .area-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(245, 99, 37, 0.1) 0%, rgba(245, 99, 37, 0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .area-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .area-card:hover::before {
+            opacity: 1;
+        }
+
+        .area-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-extra-light);
+            color: var(--primary);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-md);
+            font-size: 1.75rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 6px rgba(245, 99, 37, 0.1);
+        }
+
+        .area-card:hover .area-icon {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: rotate(15deg) scale(1.1);
+            box-shadow: 0 6px 12px rgba(245, 99, 37, 0.2);
+        }
+
+        .area-card h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: var(--space-sm);
+            position: relative;
+            display: inline-block;
+        }
+
+        .area-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .area-card:hover h3::after {
+            width: 60px;
+        }
+
+        .area-card p {
+            margin-bottom: var(--space-lg);
+            flex-grow: 1;
+            color: var(--gray-dark);
+        }
+
+        .btn-area-details {
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: auto;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .btn-area-details:hover {
+            background-color: var(--primary-extra-light);
+        }
+
+        .btn-area-details::after {
+            content: '→';
+            margin-left: var(--space-xs);
+            transition: transform 0.3s ease;
+        }
+
+        .btn-area-details:hover::after {
+            transform: translateX(3px);
+        }
+
+        /* Events Section */
+        .events-section {
+            padding: var(--space-xxl) 0;
+            background-color: var(--white);
+            position: relative;
+        }
+
+        .events-slider {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        .event-card {
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(245, 99, 37, 0.1), rgba(245, 99, 37, 0.3));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .event-card:hover::before {
+            opacity: 1;
+        }
+
+        .event-image {
+            height: 180px;
+            background-color: var(--gray-light);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .event-card:hover .event-image {
+            transform: scale(1.05);
+        }
+
+        .event-content {
+            padding: var(--space-lg);
+            position: relative;
+            z-index: 2;
+            background-color: var(--white);
+        }
+
+        .event-date {
+            display: inline-block;
+            background-color: var(--primary-extra-light);
+            color: var(--primary);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+        }
+
+        .event-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-sm);
+            color: var(--dark);
+        }
+
+        .event-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--space-xs);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .event-meta i {
+            margin-right: var(--space-xs);
+            color: var(--primary);
+        }
+
+        .section-footer {
+            text-align: center;
+        }
+
+        /* Join Section */
+        .join-section {
+            padding: var(--space-xxl) 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .join-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-full);
+        }
+
+        .join-section::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-full);
+        }
+
+        .join-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .join-content h2 {
+            font-size: 2rem;
+            margin-bottom: var(--space-md);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .join-content p {
+            max-width: 600px;
+            margin: 0 auto var(--space-xl);
+            font-size: 1rem;
+            opacity: 0.9;
+            color: var(--white);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: var(--space-xxl) 0;
+            background-color: var(--gray-extra-light);
+            position: relative;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-xxl);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xl);
+        }
+
+        .info-item {
+            display: flex;
+            gap: var(--space-md);
+            align-items: flex-start;
+            transition: all 0.3s ease;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .info-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-extra-light);
+            color: var(--primary);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 6px rgba(245, 99, 37, 0.1);
+        }
+
+        .info-item:hover .info-icon {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: rotate(15deg) scale(1.1);
+            box-shadow: 0 6px 12px rgba(245, 99, 37, 0.2);
+        }
+
+        .info-text h3 {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-xs);
+            color: var(--dark);
+        }
+
+        .info-text p {
+            color: var(--gray-dark);
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background-color: var(--primary-extra-light);
+            color: var(--primary);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0..25, 1);
+            font-size: 1.1rem;
+            box-shadow: 0 4px 6px rgba(245, 99, 37, 0.1);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 6px 12px rgba(245, 99, 37, 0.2);
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: var(--space-xl);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .contact-form:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: var(--space-md);
+            position: relative;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: var(--space-md);
+            border: 1px solid var(--gray-light);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            background-color: var(--gray-extra-light);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-extra-light);
+            background-color: var(--white);
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        .premium-footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: var(--space-xxl) 0 0;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xxl);
+        }
+
+        .footer-col h3 {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-lg);
+            position: relative;
+            padding-bottom: var(--space-sm);
+            color: var(--white);
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-logo {
+            height: 40px;
+            margin-bottom: var(--space-md);
+            transition: all 0.3s ease;
+        }
+
+        .footer-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .footer-col p {
+            color: var(--gray-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-col ul li {
+            margin-bottom: var(--space-sm);
+            transition: all 0.3s ease;
+        }
+
+        .footer-col ul li:hover {
+            transform: translateX(5px);
+        }
+
+        .footer-col ul a {
+            color: var(--gray-light);
+            transition: color 0.3s ease;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul a:hover {
+            color: var(--primary);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+
+        .footer-social a {
+            color: var(--gray-light);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-dark);
+            padding: var(--space-md) 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: var(--gray-light);
+            font-size: 0.8rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-sm);
+        }
+
+        .footer-links a {
+            color: var(--gray-light);
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: var(--space-md);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            width: 100%;
+            max-width: 800px;
+            margin: var(--space-xl) auto;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            animation: modalFadeIn 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            font-size: 1.5rem;
+            color: var(--gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            background-color: rgba(255, 255, 255, 0.8);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-full);
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+            background-color: var(--primary-extra-light);
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            padding: var(--space-xl) var(--space-xl) var(--space-md);
+            background-color: var(--primary);
+            color: var(--white);
+            position: relative;
+        }
+
+        .modal-header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: var(--white);
+            border-radius: 50% 50% 0 0 / 20px;
+        }
+
+        .modal-header h2 {
+            color: var(--white);
+            margin-bottom: var(--space-sm);
+            font-size: 1.5rem;
+        }
+
+        .modal-body {
+            padding: var(--space-xl);
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+
+        .member-card {
+            text-align: center;
+            background-color: var(--gray-extra-light);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            background-color: var(--white);
+        }
+
+        .member-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: var(--radius-full);
+            object-fit: cover;
+            margin: 0 auto var(--space-md);
+            border: 3px solid var(--primary-extra-light);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-card:hover .member-photo {
+            border-color: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(245, 99, 37, 0.2);
+        }
+
+        .member-name {
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+            color: var(--dark);
+            font-size: 1rem;
+        }
+
+        .member-role {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: var(--space-sm);
+            font-size: 0.9rem;
+        }
+
+        .member-bio {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: var(--space-md);
+        }
+
+        .member-contact {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+        }
+
+        .member-contact a {
+            color: var(--gray);
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-full);
+            background-color: var(--white);
+        }
+
+        .member-contact a:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Modal do Mascote - Estilo Especial */
+        .mascote-modal-content {
+            max-width: 700px;
+        }
+
+        .mascote-presentation {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+
+        .mascote-image {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            border-radius: var(--radius-full);
+            box-shadow: var(--shadow-md);
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .mascote-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+
+        .mascote-detail-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--primary-extra-light);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .mascote-detail-item:hover {
+            transform: translateY(-5px);
+            background-color: var(--primary);
+            color: var(--white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .mascote-detail-item i {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-xs);
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .mascote-detail-item:hover i {
+            color: var(--white);
+            transform: scale(1.2);
+        }
+
+        .mascote-detail-item span {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .mascote-info {
+            background-color: var(--gray-extra-light);
+            padding: var(--space-xl);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .mascote-info p {
+            margin-bottom: var(--space-md);
+            font-size: 0.95rem;
+        }
+
+        .lio-highlight {
+            color: #ffd700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .lio-highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: rgba(255, 215, 0, 0.3);
+            border-radius: 2px;
+        }
+
+        .btn-mascote-modal {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-lg);
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-size: 0.95rem;
+            box-shadow: 0 4px 6px rgba(245, 99, 37, 0.2);
+        }
+
+        .btn-mascote-modal:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(245, 99, 37, 0.3);
+        }
+
+        .btn-mascote-modal i {
+            color: #ffd700;
+            animation: pulse 2s infinite;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background-color: var(--primary);
+            z-index: 1000;
+            transition: width 0.1s ease;
+            box-shadow: 0 2px 4px rgba(245, 99, 37, 0.3);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: var(--space-lg);
+            left: var(--space-lg);
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 999;
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            background-color: var(--primary-dark);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Efeitos de hover genéricos */
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Responsividade */
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .about-text {
+                order: initial;
+            }
+            
+            .about-image {
+                order: initial;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .mascote-presentation {
+                flex-direction: row;
+            }
+
+            .mascote-details {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) {
+            .mascote-details {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .modal-header h2 {
+                font-size: 1.3rem;
+            }
+            
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .floating-nav {
+                bottom: var(--space-md);
+                right: var(--space-md);
+            }
+
+            .nav-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-header {
+                margin-bottom: var(--space-xl);
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+            }
+            
+            .mascote-details {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+    </style>
 </head>
 <body>
-    <!-- Header Premium -->
-    <header class="premium-header">
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">
-                    <img src="logoliup.png" alt="LiUP Logo">
-                </a>
-                
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="index.html" class="active">Home</a></li>
-                        <li><a href="about.html">Nossa História</a></li>
-                        <li><a href="#areas">Áreas</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                        <li class="lio-nav-item">
-                            <a href="#" class="lio-nav-link" id="openLioModal">
-                                <span>Conheça Lio</span>
-                                <i class="fas fa-paw"></i>
-                            </a>
-                        </li>
-                        </li>
-                    </ul>
-                </nav>
-                
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </header>
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator"></div>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Floating Navigation -->
+    <div class="floating-nav">
+        <a href="#about" class="nav-btn" title="Sobre">
+            <i class="fas fa-info-circle"></i>
+            <span class="nav-tooltip">Sobre nós</span>
+        </a>
+        <a href="#areas" class="nav-btn" title="Áreas">
+            <i class="fas fa-sitemap"></i>
+            <span class="nav-tooltip">Nossas Áreas</span>
+        </a>
+        <a href="#contact" class="nav-btn" title="Contato">
+            <i class="fas fa-envelope"></i>
+            <span class="nav-tooltip">Contato</span>
+        </a>
+        <a href="#" class="nav-btn" id="openLioModal" title="Mascote">
+            <i class="fas fa-paw"></i>
+            <span class="nav-tooltip">Conheça Lio</span>
+        </a>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">Transformando ideias em <span>startups</span> de sucesso</h1>
-                <p class="hero-subtitle">A liga que te apoia em sua jornada empreendedora</p>
+                <p class="hero-subtitle" style="color:#f5f5f5">A LiUP é a liga que conecta talentos, impulsiona inovações e apoia empreendedores em sua jornada desde a concepção até o mercado.</p>
                 <div class="hero-buttons">
                     <a href="#about" class="btn btn-primary">
                         <span>Conheça a LiUP</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="events.html" class="btn btn-outline">Próximos Eventos</a>
+                    <a href="about.html" class="btn btn-outline">Nossa História</a>
                 </div>
-                
-
+            </div>
         </div>
         <div class="hero-scroll">
             <span>Scroll Down</span>
@@ -74,27 +1657,27 @@
             
             <div class="about-content">
                 <div class="about-text">
-                    <p>A LiUP (Liga de Startups) foi fundada em 2025 com o objetivo de fomentar o ecossistema empreendedor dentro do campus da FT e da FCA da Unicamp. Somos a ponte entre o mundo acadêmico e o mercado de startups.</p>
+                    <p>A LiUP (Liga de Startups) foi fundada em 2025 com o objetivo de fomentar o ecossistema empreendedor dentro do campus da FT e da FCA da Unicamp. Somos a ponte entre o mundo acadêmico e o mercado de startups, oferecendo capacitação, networking e recursos para transformar ideias em negócios reais.</p>
                     
                     <div class="about-stats">
                         <div class="stat-item">
-                            <span class="stat-number">X+</span>
-                            <span class="stat-label">Membros</span>
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Membros Ativos</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number">X+</span>
-                            <span class="stat-label">Projetos</span>
+                            <span class="stat-number">20+</span>
+                            <span class="stat-label">Projetos em Andamento</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number">X+</span>
-                            <span class="stat-label">Eventos</span>
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Eventos Anuais</span>
                         </div>
                     </div>
                     
-                    <a href="about.html" class="btn btn-primary">Nossa História</a>
+                    <a href="about.html" class="btn btn-primary">Nossa História Completa</a>
                 </div>
                 
-                <div class="about-image">
+                <div class="about-image hover-scale">
                     <img src="ligainteira.jpg" alt="Time LiUP">
                     <div class="image-badge">
                         <span>Desde 2025</span>
@@ -104,57 +1687,57 @@
         </div>
     </section>
 
-<!-- Areas Section -->
-<section id="areas" class="areas-section">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-subtitle">Nossas Áreas</span>
-            <h2 class="section-title">Conheça nossa estrutura</h2>
+    <!-- Areas Section -->
+    <section id="areas" class="areas-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Nossas Áreas</span>
+                <h2 class="section-title">Conheça nossa estrutura</h2>
+            </div>
+            
+            <div class="areas-grid">
+                <!-- Área 1 -->
+                <div class="area-card" data-area="capacitacao">
+                    <div class="area-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Capacitação e Parceria</h3>
+                    <p>Desenvolvimento de competências técnicas e comportamentais dos membros, além de estabelecer parcerias estratégicas com empresas e instituições.</p>
+                    <button class="btn-area-details">Ver equipe</button>
+                </div>
+                
+                <!-- Área 2 -->
+                <div class="area-card" data-area="aceleracao">
+                    <div class="area-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Aceleração</h3>
+                    <p>Programas de mentoria, recursos e conexões para impulsionar projetos e ideias empreendedoras desde a concepção até o mercado.</p>
+                    <button class="btn-area-details">Ver equipe</button>
+                </div>
+                
+                <!-- Área 3 -->
+                <div class="area-card" data-area="modelos">
+                    <div class="area-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Modelos Internos</h3>
+                    <p>Estruturação e organização interna da liga, garantindo processos eficientes, governança transparente e melhoria contínua.</p>
+                    <button class="btn-area-details">Ver equipe</button>
+                </div>
+                
+                <!-- Área 4 -->
+                <div class="area-card" data-area="administracao">
+                    <div class="area-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Administração</h3>
+                    <p>Gestão estratégica e operacional da LiUP, alinhamento com a missão e valores, e coordenação entre todas as áreas da liga.</p>
+                    <button class="btn-area-details">Ver equipe</button>
+                </div>
+            </div>
         </div>
-        
-        <div class="areas-grid">
-            <!-- Área 1 -->
-            <div class="area-card" data-area="capacitacao">
-                <div class="area-icon">
-                    <i class="fas fa-handshake"></i>
-                </div>
-                <h3>Capacitação e Parceria</h3>
-                <p>Desenvolvimento de competências e estabelecimento de parcerias estratégicas</p>
-                <button class="btn-area-details">Ver equipe</button>
-            </div>
-            
-            <!-- Área 2 -->
-            <div class="area-card" data-area="aceleracao">
-                <div class="area-icon">
-                    <i class="fas fa-rocket"></i>
-                </div>
-                <h3>Aceleração</h3>
-                <p>Impulsionamento de projetos e ideias empreendedoras</p>
-                <button class="btn-area-details">Ver equipe</button>
-            </div>
-            
-            <!-- Área 3 -->
-            <div class="area-card" data-area="modelos">
-                <div class="area-icon">
-                    <i class="fas fa-cogs"></i>
-                </div>
-                <h3>Modelos Internos</h3>
-                <p>Estruturação e organização interna da liga</p>
-                <button class="btn-area-details">Ver equipe</button>
-            </div>
-            
-            <!-- Área 4 -->
-            <div class="area-card" data-area="presidencia">
-                <div class="area-icon">
-                    <i class="fas fa-crown"></i>
-                </div>
-                <h3>Presidência</h3>
-                <p>Liderança estratégica e representação institucional</p>
-                <button class="btn-area-details">Ver equipe</button>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- Events Section -->
     <section class="events-section">
@@ -165,7 +1748,62 @@
             </div>
             
             <div class="events-slider">
-                <!-- Eventos serão carregados via JavaScript -->
+                <!-- Evento 1 -->
+                <div class="event-card hover-lift">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                    <div class="event-content">
+                        <span class="event-date">15/05/2025</span>
+                        <h3>Palestra sobre dar vida a sua StartUp</h3>
+                        <div class="event-meta">
+                            <i class="far fa-clock"></i>
+                            <span>14:00 - 17:00</span>
+                        </div>
+                        <div class="event-meta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Unicamp - Sala PA01</span>
+                        </div>
+                        <p>Aprenda como criar uma cultura organizacional forte para tornar seu ambiente mais acolhedor e aumentar a satisfação dos colaboradores.</p>
+                        <a href="#" class="btn btn-primary">Mais Informações</a>
+                    </div>
+                </div>
+                
+                <!-- Evento 2 -->
+                <div class="event-card hover-lift">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                    <div class="event-content">
+                        <span class="event-date">09/06/2025</span>
+                        <h3>Simulação de empreendedorismo</h3>
+                        <div class="event-meta">
+                            <i class="far fa-clock"></i>
+                            <span>19:00 - 21:30</span>
+                        </div>
+                        <div class="event-meta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Online</span>
+                        </div>
+                        <p>Conversa com empreendedores de sucesso que compartilharão suas experiências, seguida de uma dinâmica prática de simulação de startup.</p>
+                        <a href="#" class="btn btn-primary">Mais Informações</a>
+                    </div>
+                </div>
+                
+                <!-- Evento 3 -->
+                <div class="event-card hover-lift">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                    <div class="event-content">
+                        <span class="event-date">05/12/2025</span>
+                        <h3>Evento com empresas que iniciaram como startup</h3>
+                        <div class="event-meta">
+                            <i class="far fa-clock"></i>
+                            <span>09:00 - 12:00</span>
+                        </div>
+                        <div class="event-meta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Pátio da FCA</span>
+                        </div>
+                        <p>Converse com funcionários pioneiros e fundadores de empresas que começaram como startups e hoje são referência em seus mercados.</p>
+                        <a href="#" class="btn btn-primary">Mais Informações</a>
+                    </div>
+                </div>
             </div>
             
             <div class="section-footer">
@@ -179,7 +1817,7 @@
         <div class="container">
             <div class="join-content">
                 <h2>Quer mandar alguma ideia pra LiUP?</h2>
-                <p>Estamos sempre buscando novas ideias talentosas, envie agora mesmo a sua!</p>
+                <p>Estamos sempre em busca de novas ideias e talentos. Seja para colaborar, participar ou apenas compartilhar sua visão, adoraríamos ouvir você!</p>
                 <a href="#contact" class="btn btn-white">Entre em contato</a>
             </div>
         </div>
@@ -195,7 +1833,7 @@
             
             <div class="contact-content">
                 <div class="contact-info">
-                    <div class="info-item">
+                    <div class="info-item hover-lift">
                         <div class="info-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
@@ -205,7 +1843,7 @@
                         </div>
                     </div>
                     
-                    <div class="info-item">
+                    <div class="info-item hover-lift">
                         <div class="info-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
@@ -221,7 +1859,7 @@
                     </div>
                 </div>
                 
-                <div class="contact-form">
+                <div class="contact-form hover-lift">
                     <form id="contactForm" action="https://formsubmit.co/nagatofx7@gmail.com" method="POST">
                         <div class="form-group">
                             <input type="text" name="name" placeholder="Seu nome" required>
@@ -230,7 +1868,7 @@
                             <input type="email" name="email" placeholder="Seu email" required>
                         </div>
                         <div class="form-group">
-                            <textarea type="text" name="mensagem" placeholder="Sua mensagem"  required></textarea>
+                            <textarea name="mensagem" placeholder="Sua mensagem" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar mensagem</button>
                     </form>
@@ -244,8 +1882,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col">
-                    <img src="logoliup.png" alt="LiUP Logo" class="footer-logo">
-                    <p>Liga de Startups. Conectando talentos, impulsionando inovações.</p>
+                    <img src="logoliup.png" alt="LiUP Logo" class="footer-logo hover-scale">
+                    <p>Liga de Startups da Unicamp. Conectando talentos, impulsionando inovações e transformando ideias em negócios de sucesso desde 2025.</p>
                 </div>
                 
                 <div class="footer-col">
@@ -262,11 +1900,10 @@
                 <div class="footer-col">
                     <h3>Áreas</h3>
                     <ul>
-                        <li><a href="#" data-area="presidencia">Presidência</a></li>
-                        <li><a href="#" data-area="marketing">Marketing</a></li>
-                        <li><a href="#" data-area="eventos">Eventos</a></li>
-                        <li><a href="#" data-area="people">People</a></li>
-                        <li><a href="#" data-area="captacao">Captação</a></li>
+                        <li><a href="#" data-area="capacitacao">Capacitação e Parceria</a></li>
+                        <li><a href="#" data-area="aceleracao">Aceleração</a></li>
+                        <li><a href="#" data-area="modelos">Modelos Internos</a></li>
+                        <li><a href="#" data-area="administracao">Administração</a></li>
                     </ul>
                 </div>
                 
@@ -276,7 +1913,7 @@
                         <a href="https://www.instagram.com/liup.unicamp/" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.linkedin.com/company/liup/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i></a>
                     </div>
-                    <p>Siga-nos para ficar por dentro</p>
+                    <p>Siga-nos para ficar por dentro das novidades e oportunidades.</p>
                 </div>
             </div>
             
@@ -315,7 +1952,7 @@
             </div>
             <div class="modal-body">
                 <div class="mascote-presentation">
-                    <img src="Lio.png" alt="Mascote Lio" class="mascote-image">
+                    <img src="https://cdn.pixabay.com/photo/2016/04/01/09/04/amusing-1300046_960_720.png" alt="Mascote Lio" class="mascote-image">
                     <div class="mascote-details">
                         <div class="mascote-detail-item">
                             <i class="fas fa-lightbulb"></i>
@@ -332,8 +1969,8 @@
                     </div>
                 </div>
                 <div class="mascote-info">
-                    <p>O Lio é um leão tecnológico que simboliza a coragem para empreender e a força da nossa comunidade. Ele foi criado em 2025 pelos membros da LiUP e desde então é nosso símbolo de inovação.</p>
-                    <p><strong>Curiosidade:</strong> O nome Lio vem da junção de "Li" (de LiUP) com "Leão", representando força e liderança, características essenciais para empreendedores.</p>
+                    <p>O Lio é um leão tecnológico que simboliza a coragem para empreender e a força da nossa comunidade. Ele foi criado em 2025 pelos membros da LiUP e desde então é nosso símbolo de inovação e resiliência.</p>
+                    <p><strong>Curiosidade:</strong> O nome Lio vem da junção de "Li" (de LiUP) com "Leão", representando força, liderança e trabalho em equipe - características essenciais para empreendedores de sucesso.</p>
                     <div class="mascote-social">
                         <a href="lio.html" class="btn btn-primary btn-mascote-modal">
                             <span>Saiba mais sobre Lio</span>
@@ -345,6 +1982,400 @@
         </div>
     </div>
 
-    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Floating Navigation
+            const floatingNav = document.querySelector('.floating-nav');
+            let lastScrollPosition = 0;
+            
+            // Scroll Indicator
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            
+            // Back to Top Button
+            const backToTopBtn = document.querySelector('.back-to-top');
+            
+            // Hide floating nav on scroll down, show on scroll up
+            function handleScroll() {
+                const currentScrollPosition = window.pageYOffset;
+                
+                if (currentScrollPosition > lastScrollPosition && currentScrollPosition > 100) {
+                    // Scrolling down
+                    floatingNav.classList.add('hidden');
+                } else {
+                    // Scrolling up
+                    floatingNav.classList.remove('hidden');
+                }
+                
+                lastScrollPosition = currentScrollPosition;
+                
+                // Update scroll indicator
+                updateScrollIndicator();
+            }
+            
+            // Update scroll indicator
+            function updateScrollIndicator() {
+                const scrollTop = document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight;
+                const clientHeight = document.documentElement.clientHeight;
+                const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+                scrollIndicator.style.width = scrollPercentage + '%';
+                
+                // Show/hide back to top button
+                if (scrollTop > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            }
+            
+            window.addEventListener('scroll', handleScroll);
+            
+            // Smooth Scroll for Anchor Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Dados das áreas e membros
+            const areasData = {
+                capacitacao: {
+                    name: "Capacitação e Parceria",
+                    description: "Responsável pelo desenvolvimento de competências dos membros e pelo estabelecimento de parcerias estratégicas que fortaleçam o ecossistema de startups da LiUP.",
+                    members: [
+                        {
+                            name: "Hyago",
+                            role: "Membro",
+                            photo: "captaçãoparceria/Hyago.jpg",
+                            bio: "Responsável por estabelecer conexões estratégicas e desenvolver programas de capacitação para os membros.",
+                            contacts: {
+                                instagram: "hyago",
+                                linkedin: "Hyago",
+                                email: ""
+                            }
+                        },
+                        {
+                            name: "Yoon Song Jang",
+                            role: "Membro",
+                            photo: "captaçãoparceria/Yoon.jpg",
+                            bio: "Atua na identificação de oportunidades de parcerias e no desenvolvimento de competências técnicas.",
+                            contacts: {
+                                instagram: "YoonSong",
+                                linkedin: "YoonSang",
+                                email: ""
+                            }
+                        },
+                        {
+                            name: "Sofia (Dory)",
+                            role: "Membro",
+                            photo: "captaçãoparceria/Sofia.jpg",
+                            bio: "Envolvida na criação de conteúdos para capacitação e na gestão das parcerias estabelecidas.",
+                            contacts: {
+                                instagram: "sofiadory",
+                                linkedin: "sofiadory",
+                                email: ""
+                            }
+                        },
+                        {
+                            name: "Eduardo Paziani",
+                            role: "Membro",
+                            photo: "captaçãoparceria/eduardo.jpg",
+                            bio: "Focado no desenvolvimento de programas de mentoria e no relacionamento com parceiros.",
+                            contacts: {
+                                instagram: "paziani",
+                                linkedin: "pazianeslasla",
+                                email: ""
+                            }
+                        }
+                    ]
+                },
+                aceleracao: {
+                    name: "Aceleração",
+                    description: "Área dedicada a impulsionar projetos e ideias empreendedoras, proporcionando mentoria, recursos e conexões para o desenvolvimento de startups.",
+                    members: [
+                        {
+                            name: "Arthur",
+                            role: "Membro",
+                            photo: "aceleracao/Arthur.jpg",
+                            bio: "Atua no acompanhamento de projetos e na conexão com mentores e investidores.",
+                            contacts: {
+                                instagram: "arthur",
+                                linkedin: "arthur",
+                                email: ""
+                            }
+                        },
+                        {
+                            name: "João Guilherme",
+                            role: "Membro",
+                            photo: "aceleracao/Joãogui.jpg",
+                            bio: "Responsável pela organização de programas de aceleração e eventos de pitch.",
+                            contacts: {
+                                instagram: "john_guilherme",
+                                linkedin: "johnxxxxx",
+                                email: ""
+                            }
+                        }
+                    ]
+                },
+                modelos: {
+                    name: "Modelos Internos",
+                    description: "Responsável pela estruturação e organização interna da liga, garantindo processos eficientes e uma governança transparente.",
+                    members: [
+                        {
+                            name: "Marcelo Santos",
+                            role: "Membro",
+                            photo: "modelosinternos/Marcelo.jpg",
+                            bio: "Atua na documentação de processos e na estruturação dos modelos de gestão da liga.",
+                            contacts: {
+                                linkedin: "marcelo-dos-santos-da-boa-morte-5985a3262/",
+                                instagram: "marcelo_grr",
+                                email: ""
+                            }
+                        },
+                        {
+                            name: "Enzo Bergamachi",
+                            role: "Membro",
+                            photo: "modelosinternos/Enzo.jpg",
+                            bio: "Responsável pela implementação de melhorias nos processos internos.",
+                            contacts: {
+                                instagram: "enzo",
+                                linkedin: "addadadd",
+                                email: ""
+                            }
+                        },
+                        {
+                            name: "Lucas Gabriel",
+                            role: "Membro",
+                            photo: "modelosinternos/Lucas_Gabriel.jpg",
+                            bio: "Envolvido na criação de métricas e indicadores para avaliação interna.",
+                            contacts: {
+                                instagram: "LucasGabriel",
+                                linkedin: "Lucasslaoq",
+                                email: ""
+                            }
+                        },
+                        {
+                            name: "Leo Basset",
+                            role: "Membro",
+                            photo: "modelosinternos/Leo_Basset.jpg",
+                            bio: "Focado na otimização dos fluxos de trabalho e comunicação interna.",
+                            contacts: {
+                                instagram: "LeoBasset",
+                                linkedin: "Basset",
+                                email: ""
+                            }
+                        }
+                    ]
+                },
+                administracao: {
+                    name: "Administração",
+                    description: "Responsável pela gestão estratégica e operacional da LiUP, garantindo o alinhamento com a missão e valores da liga e a coordenação entre todas as áreas.",
+                    members: [
+                        {
+                            name: "Rafael",
+                            role: "Presidente",
+                            photo: "administracao/rafa.jpg",
+                            bio: "Lidera a estratégia geral da liga, representação institucional e tomada de decisões importantes.",
+                            contacts: {
+                                instagram: "rafael",
+                                linkedin: "rafael",
+                                email: ""
+                            }
+                        },
+                        {
+                            name: "Julia Fernandes",
+                            role: "Vice-Presidente",
+                            photo: "administracao/julia.jpg",
+                            bio: "Apoia a presidência na gestão estratégica e coordena a execução das atividades entre as áreas.",
+                            contacts: {
+                                instagram: "julia",
+                                linkedin: "julia",
+                                email: ""
+                            }
+                        },
+                        {
+                            name: "Ana Julia Gotto",
+                            role: "PMO",
+                            photo: "administracao/Júlia.jpg",
+                            bio: "Responsável pela gestão de projetos, metodologias e acompanhamento de métricas da liga.",
+                            contacts: {
+                                instagram: "anajulia",
+                                linkedin: "anajulia",
+                                email: ""
+                            }
+                        }
+                    ]
+                }
+            };
+
+            // Modal de Áreas
+            const areaModal = document.getElementById('areaModal');
+            const modalAreaName = document.getElementById('modalAreaName');
+            const modalAreaDescription = document.getElementById('modalAreaDescription');
+            const modalMembersGrid = document.getElementById('modalMembersGrid');
+            const closeModal = document.querySelectorAll('.close-modal');
+            
+            // Função para abrir o modal
+            function openAreaModal(areaId) {
+                const areaData = areasData[areaId];
+                
+                if (!areaData) return;
+                
+                modalAreaName.textContent = areaData.name;
+                modalAreaDescription.textContent = areaData.description;
+                
+                // Limpar membros anteriores
+                modalMembersGrid.innerHTML = '';
+                
+                // Adicionar novos membros
+                areaData.members.forEach(member => {
+                    const memberCard = document.createElement('div');
+                    memberCard.className = 'member-card';
+                    
+                    let contactsHTML = '';
+                    if (member.contacts.email) {
+                        contactsHTML += `<a href="mailto:${member.contacts.email}" title="Email"><i class="fas fa-envelope"></i></a>`;
+                    }
+                    if (member.contacts.linkedin) {
+                        contactsHTML += `<a href="https://linkedin.com/in/${member.contacts.linkedin}" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>`;
+                    }
+                    if (member.contacts.instagram) {
+                        contactsHTML += `<a href="https://instagram.com/${member.contacts.instagram}" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>`;
+                    }
+                    
+                    memberCard.innerHTML = `
+                        <img src="${member.photo}" alt="${member.name}" class="member-photo">
+                        <h4 class="member-name">${member.name}</h4>
+                        <p class="member-role">${member.role}</p>
+                        <p class="member-bio">${member.bio}</p>
+                        <div class="member-contact">
+                            ${contactsHTML}
+                        </div>
+                    `;
+                    modalMembersGrid.appendChild(memberCard);
+                });
+                
+                // Mostrar o modal
+                areaModal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Função para fechar o modal
+            function closeAreaModal() {
+                areaModal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Event listeners para abrir modal
+            document.querySelectorAll('.btn-area-details, .footer-col ul a[data-area]').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const areaId = this.getAttribute('data-area') || this.closest('.area-card').getAttribute('data-area');
+                    openAreaModal(areaId);
+                });
+            });
+            
+            // Modal do Mascote
+            const mascoteModal = document.getElementById('mascoteModal');
+            const openLioModal = document.getElementById('openLioModal');
+            
+            if (openLioModal && mascoteModal) {
+                openLioModal.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    mascoteModal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+
+            // Event listener para fechar modais
+            closeModal.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    modal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+            
+            // Fechar quando clicar fora do conteúdo
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        this.classList.remove('show');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+            
+            // Fechar com ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.modal.show').forEach(modal => {
+                        modal.classList.remove('show');
+                        document.body.style.overflow = 'auto';
+                    });
+                }
+            });
+
+            // Formulário de contato
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Simular envio
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Enviado!';
+                        
+                        // Resetar após 2 segundos
+                        setTimeout(() => {
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.disabled = false;
+                            this.reset();
+                        }, 2000);
+                    }, 1500);
+                });
+            }
+
+            // Animações ao scroll
+            function initScrollAnimations() {
+                const animateElements = document.querySelectorAll('.about-content, .area-card, .event-card, .info-item');
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate');
+                        }
+                    });
+                }, {
+                    threshold: 0.1
+                });
+                
+                animateElements.forEach(el => {
+                    observer.observe(el);
+                });
+            }
+            
+            initScrollAnimations();
+
+            console.log('Site LiUP carregado com sucesso!');
+        });
+    </script>
 </body>
 </html>

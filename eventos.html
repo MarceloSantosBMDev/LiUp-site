@@ -1,0 +1,2044 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos - LiUP</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Cores principais */
+            --primary: #f56325;
+            --primary-dark: #d4531d;
+            --primary-light: #f78a5a;
+            --primary-extra-light: #fef0e9;
+            
+            /* Cores secundárias */
+            --secondary: #2a4365;
+            --secondary-dark: #1e3a8a;
+            --secondary-light: #3b82f6;
+            
+            /* Cores neutras */
+            --dark: #1a1a1a;
+            --gray-dark: #333333;
+            --gray: #666666;
+            --gray-light: #999999;
+            --gray-extra-light: #f5f5f5;
+            --white: #ffffff;
+            
+            /* Sombras */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+            --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.25);
+            
+            /* Bordas */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-full: 50%;
+            
+            /* Espaçamentos */
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+            --space-xxl: 48px;
+        }
+
+        /* Reset e Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        /* Tipografia */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: var(--space-md);
+            color: var(--gray-dark);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-xxl);
+        }
+
+        .section-subtitle {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--space-sm);
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .section-subtitle::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: var(--space-md);
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 6px rgba(245, 99, 37, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(245, 99, 37, 0.3);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary i {
+            margin-left: var(--space-xs);
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover i {
+            transform: translateX(3px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border-color: var(--white);
+            position: relative;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-white {
+            background-color: var(--white);
+            color: var(--primary);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-white:hover {
+            background-color: var(--gray-extra-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Hero Section */
+        .page-hero {
+            position: relative;
+            height: 60vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%), url('https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            color: var(--white);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+            z-index: 1;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-xl) 0;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-hero-title {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 800;
+        }
+
+        .page-hero-title span {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-hero-title span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.3);
+            z-index: -1;
+            border-radius: 4px;
+        }
+
+        .page-hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-xl);
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        /* Floating Navigation */
+        .floating-nav {
+            position: fixed;
+            bottom: var(--space-lg);
+            right: var(--space-lg);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            transition: all 0.3s ease;
+        }
+
+        .floating-nav.hidden {
+            transform: translateX(150%);
+        }
+
+        .nav-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-full);
+            background-color: var(--primary);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .nav-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .nav-btn:hover::after {
+            transform: translateX(100%);
+        }
+
+        .nav-tooltip {
+            position: absolute;
+            right: 70px;
+            background-color: var(--dark);
+            color: var(--white);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-btn:hover .nav-tooltip {
+            opacity: 1;
+            right: 65px;
+        }
+
+        /* Botão Voltar para Home */
+        .home-btn {
+            position: fixed;
+            bottom: var(--space-lg);
+            left: var(--space-lg);
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-full);
+            background-color: var(--secondary);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 999;
+        }
+
+        .home-btn:hover {
+            background-color: var(--secondary-dark);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .home-btn .nav-tooltip {
+            left: 70px;
+            right: auto;
+        }
+
+        .home-btn:hover .nav-tooltip {
+            left: 65px;
+        }
+
+        /* Event Categories */
+        .categories-section {
+            padding: var(--space-xl) 0;
+            background-color: var(--white);
+            position: relative;
+        }
+
+        .categories-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xl);
+        }
+
+        .category-tab {
+            padding: var(--space-sm) var(--space-lg);
+            background-color: var(--gray-extra-light);
+            color: var(--gray-dark);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 0.9rem;
+        }
+
+        .category-tab:hover {
+            background-color: var(--primary-extra-light);
+            color: var(--primary);
+        }
+
+        .category-tab.active {
+            background-color: var(--primary);
+            color: var(--white);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Events Grid */
+        .events-section {
+            padding: var(--space-xl) 0 var(--space-xxl);
+            background-color: var(--gray-extra-light);
+            position: relative;
+        }
+
+        .events-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNDUsIDk5LCAzNywgMC4wNSkiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiLz48L3N2Zz4=');
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .event-card {
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(245, 99, 37, 0.1), rgba(245, 99, 37, 0.3));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .event-card:hover::before {
+            opacity: 1;
+        }
+
+        .event-image {
+            height: 180px;
+            background-color: var(--gray-light);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .event-card:hover .event-image {
+            transform: scale(1.05);
+        }
+
+        .event-badge {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            background-color: var(--primary);
+            color: var(--white);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .event-content {
+            padding: var(--space-lg);
+            position: relative;
+            z-index: 2;
+            background-color: var(--white);
+        }
+
+        .event-date {
+            display: inline-block;
+            background-color: var(--primary-extra-light);
+            color: var(--primary);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+        }
+
+        .event-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-sm);
+            color: var(--dark);
+        }
+
+        .event-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--space-xs);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .event-meta i {
+            margin-right: var(--space-xs);
+            color: var(--primary);
+        }
+
+        .event-excerpt {
+            margin-bottom: var(--space-md);
+            color: var(--gray-dark);
+            font-size: 0.95rem;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-xl);
+        }
+
+        .page-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-sm);
+            background-color: var(--gray-extra-light);
+            color: var(--gray-dark);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .page-link:hover, .page-link.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .page-link.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* Join Section */
+        .join-section {
+            padding: var(--space-xxl) 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .join-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-full);
+        }
+
+        .join-section::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-full);
+        }
+
+        .join-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .join-content h2 {
+            font-size: 2rem;
+            margin-bottom: var(--space-md);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .join-content p {
+            max-width: 600px;
+            margin: 0 auto var(--space-xl);
+            font-size: 1rem;
+            opacity: 0.9;
+            color: var(--white);
+        }
+
+        /* Footer */
+        .premium-footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: var(--space-xxl) 0 0;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xxl);
+        }
+
+        .footer-col h3 {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-lg);
+            position: relative;
+            padding-bottom: var(--space-sm);
+            color: var(--white);
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-logo {
+            height: 40px;
+            margin-bottom: var(--space-md);
+            transition: all 0.3s ease;
+        }
+
+        .footer-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .footer-col p {
+            color: var(--gray-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-col ul li {
+            margin-bottom: var(--space-sm);
+            transition: all 0.3s ease;
+        }
+
+        .footer-col ul li:hover {
+            transform: translateX(5px);
+        }
+
+        .footer-col ul a {
+            color: var(--gray-light);
+            transition: color 0.3s ease;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul a:hover {
+            color: var(--primary);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+
+        .footer-social a {
+            color: var(--gray-light);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-dark);
+            padding: var(--space-md) 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: var(--gray-light);
+            font-size: 0.8rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-sm);
+        }
+
+        .footer-links a {
+            color: var(--gray-light);
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: var(--space-md);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            width: 100%;
+            max-width: 800px;
+            margin: var(--space-xl) auto;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            animation: modalFadeIn 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            font-size: 1.5rem;
+            color: var(--gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            background-color: rgba(255, 255, 255, 0.8);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-full);
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+            background-color: var(--primary-extra-light);
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            padding: var(--space-xl) var(--space-xl) var(--space-md);
+            background-color: var(--primary);
+            color: var(--white);
+            position: relative;
+        }
+
+        .modal-header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: var(--white);
+            border-radius: 50% 50% 0 0 / 20px;
+        }
+
+        .modal-header h2 {
+            color: var(--white);
+            margin-bottom: var(--space-sm);
+            font-size: 1.5rem;
+        }
+
+        .modal-body {
+            padding: var(--space-xl);
+        }
+
+        .event-modal-image {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .event-modal-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            color: var(--gray-dark);
+            font-size: 0.95rem;
+        }
+
+        .meta-item i {
+            color: var(--primary);
+            margin-right: var(--space-xs);
+            font-size: 1.1rem;
+        }
+
+        .event-modal-content p {
+            margin-bottom: var(--space-md);
+            color: var(--gray-dark);
+            line-height: 1.7;
+        }
+
+        .event-modal-actions {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
+            flex-wrap: wrap;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background-color: var(--primary);
+            z-index: 1000;
+            transition: width 0.1s ease;
+            box-shadow: 0 2px 4px rgba(245, 99, 37, 0.3);
+        }
+
+        /* Responsividade */
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .page-hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .page-hero-subtitle {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .page-hero {
+                height: 50vh;
+                min-height: 400px;
+            }
+            
+            .page-hero-title {
+                font-size: 2.2rem;
+            }
+
+            .floating-nav, .home-btn {
+                bottom: var(--space-md);
+                right: var(--space-md);
+                left: var(--space-md);
+            }
+
+            .floating-nav {
+                flex-direction: row;
+                justify-content: flex-end;
+            }
+
+            .home-btn {
+                right: auto;
+            }
+
+            .nav-btn, .home-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-header {
+                margin-bottom: var(--space-xl);
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .page-hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .page-hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+            }
+            
+            .event-modal-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator"></div>
+
+    <!-- Botão Voltar para Home -->
+    <a href="index.html" class="home-btn">
+        <i class="fas fa-home"></i>
+        <span class="nav-tooltip">Voltar para Home</span>
+    </a>
+
+    <!-- Floating Navigation -->
+    <div class="floating-nav">
+        <a href="#upcoming" class="nav-btn" title="Próximos Eventos">
+            <i class="fas fa-calendar-alt"></i>
+            <span class="nav-tooltip">Próximos Eventos</span>
+        </a>
+        <a href="#past" class="nav-btn" title="Eventos Passados">
+            <i class="fas fa-history"></i>
+            <span class="nav-tooltip">Eventos Passados</span>
+        </a>
+        <a href="#processes" class="nav-btn" title="Processos Seletivos">
+            <i class="fas fa-user-plus"></i>
+            <span class="nav-tooltip">Processos Seletivos</span>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h1 class="page-hero-title">Nossos <span>Eventos</span></h1>
+                <p class="page-hero-subtitle" style="color:#f5f5f5">Descubra oportunidades de aprendizado, networking e crescimento com a programação diversificada da LiUP. De palestras a processos seletivos, temos algo para todos os perfis.</p>
+                <div class="hero-buttons" style="justify-content: center; margin-top: var(--space-xl);">
+                    <a href="#upcoming" class="btn btn-primary">
+                        <span>Confira a agenda</span>
+                        <i class="fas fa-arrow-down"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="categories-section">
+        <div class="container">
+            <div class="categories-tabs">
+                <button class="category-tab active" data-category="all">Todos</button>
+                <button class="category-tab" data-category="palestras">Palestras</button>
+                <button class="category-tab" data-category="workshops">Workshops</button>
+                <button class="category-tab" data-category="processos">Processos Seletivos</button>
+                <button class="category-tab" data-category="networking">Networking</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="upcoming" class="events-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Próximos eventos</span>
+                <h2 class="section-title">Agenda de Eventos</h2>
+            </div>
+            
+            <div class="events-grid">
+                <!-- Evento 1 -->
+                <div class="event-card" data-category="palestras" data-event="palestra-startup">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                        <span class="event-badge">Presencial</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-date">15/05/2025</span>
+                        <h3>Palestra: Como dar vida à sua Startup</h3>
+                        <div class="event-meta">
+                            <i class="far fa-clock"></i>
+                            <span>14:00 - 17:00</span>
+                        </div>
+                        <div class="event-meta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Unicamp - Sala PA01</span>
+                        </div>
+                        <p class="event-excerpt">Aprenda com empreendedores experientes como transformar sua ideia em um negócio real e sustentável.</p>
+                        <button class="btn btn-primary btn-event-details" style="width: 100%;">Mais informações</button>
+                    </div>
+                </div>
+                
+                <!-- Evento 2 -->
+                <div class="event-card" data-category="processos" data-event="processo-mentores">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                        <span class="event-badge">Online</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-date">09/06/2025</span>
+                        <h3>Processo Seletivo: Mentores LiUP</h3>
+                        <div class="event-meta">
+                            <i class="far fa-clock"></i>
+                            <span>Inscrições até 30/05</span>
+                        </div>
+                        <div class="event-meta">
+                            <i class="fas fa-user-tie"></i>
+                            <span>Para profissionais experientes</span>
+                        </div>
+                        <p class="event-excerpt">Venha fazer parte do nosso time de mentores e ajude a guiar as próximas gerações de empreendedores.</p>
+                        <button class="btn btn-primary btn-event-details" style="width: 100%;">Mais informações</button>
+                    </div>
+                </div>
+                
+                <!-- Evento 3 -->
+                <div class="event-card" data-category="workshops" data-event="workshop-pitch">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                        <span class="event-badge">Presencial</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-date">22/06/2025</span>
+                        <h3>Workshop: A Arte do Pitch</h3>
+                        <div class="event-meta">
+                            <i class="far fa-clock"></i>
+                            <span>09:00 - 12:00</span>
+                        </div>
+                        <div class="event-meta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Espaço LiUP - FCA</span>
+                        </div>
+                        <p class="event-excerpt">Domine técnicas para apresentar sua ideia de negócio de forma clara, convincente e memorável.</p>
+                        <button class="btn btn-primary btn-event-details" style="width: 100%;">Mais informações</button>
+                    </div>
+                </div>
+                
+                <!-- Evento 4 -->
+                <div class="event-card" data-category="networking" data-event="cafe-startups">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                        <span class="event-badge">Presencial</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-date">05/07/2025</span>
+                        <h3>Café com Startups</h3>
+                        <div class="event-meta">
+                            <i class="far fa-clock"></i>
+                            <span>19:00 - 21:30</span>
+                        </div>
+                        <div class="event-meta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Espaço LiUP - FCA</span>
+                        </div>
+                        <p class="event-excerpt">Um ambiente descontraído para conversar com fundadores de startups e expandir sua rede de contatos.</p>
+                        <button class="btn btn-primary btn-event-details" style="width: 100%;">Mais informações</button>
+                    </div>
+                </div>
+                
+                <!-- Evento 5 -->
+                <div class="event-card" data-category="processos" data-event="processo-membros">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                        <span class="event-badge">Online</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-date">15/08/2025</span>
+                        <h3>Processo Seletivo: Novos Membros</h3>
+                        <div class="event-meta">
+                            <i class="far fa-clock"></i>
+                            <span>Inscrições até 05/08</span>
+                        </div>
+                        <div class="event-meta">
+                            <i class="fas fa-user-graduate"></i>
+                            <span>Para alunos da Unicamp</span>
+                        </div>
+                        <p class="event-excerpt">Venha fazer parte da LiUP e desenvolva suas habilidades em um ambiente de inovação e empreendedorismo.</p>
+                        <button class="btn btn-primary btn-event-details" style="width: 100%;">Mais informações</button>
+                    </div>
+                </div>
+                
+                <!-- Evento 6 -->
+                <div class="event-card" data-category="palestras" data-event="palestra-investimento">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                        <span class="event-badge">Híbrido</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-date">10/09/2025</span>
+                        <h3>Palestra: Captação de Investimentos</h3>
+                        <div class="event-meta">
+                            <i class="far fa-clock"></i>
+                            <span>16:00 - 18:30</span>
+                        </div>
+                        <div class="event-meta">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Auditório FT / Online</span>
+                        </div>
+                        <p class="event-excerpt">Aprenda com investidores quais são os caminhos para captar recursos e escalar seu negócio.</p>
+                        <button class="btn btn-primary btn-event-details" style="width: 100%;">Mais informações</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <a href="#" class="page-link disabled"><i class="fas fa-chevron-left"></i></a>
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Past Events Section -->
+    <section id="past" class="events-section" style="background-color: var(--white);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Eventos passados</span>
+                <h2 class="section-title">Nossa História em Eventos</h2>
+            </div>
+            
+            <div class="events-grid">
+                <!-- Evento Passado 1 -->
+                <div class="event-card" data-category="palestras" data-event="palestra-design">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                        <span class="event-badge">Realizado</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-date">12/03/2025</span>
+                        <h3>Design Thinking na Prática</h3>
+                        <div class="event-meta">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Evento realizado</span>
+                        </div>
+                        <p class="event-excerpt">Workshop prático sobre como aplicar Design Thinking no desenvolvimento de produtos e serviços inovadores.</p>
+                        <button class="btn btn-primary btn-event-details" style="width: 100%;">Ver fotos e materiais</button>
+                    </div>
+                </div>
+                
+                <!-- Evento Passado 2 -->
+                <div class="event-card" data-category="workshops" data-event="workshop-financas">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                        <span class="event-badge">Realizado</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-date">28/02/2025</span>
+                        <h3>Finanças para Startups</h3>
+                        <div class="event-meta">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Evento realizado</span>
+                        </div>
+                        <p class="event-excerpt">Aprenda a gerenciar as finanças do seu negócio desde o início, com dicas práticas de especialistas.</p>
+                        <button class="btn btn-primary btn-event-details" style="width: 100%;">Ver fotos e materiais</button>
+                    </div>
+                </div>
+                
+                <!-- Evento Passado 3 -->
+                <div class="event-card" data-category="networking" data-event="demo-day">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                        <span class="event-badge">Realizado</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-date">15/01/2025</span>
+                        <h3>Demo Day LiUP</h3>
+                        <div class="event-meta">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Evento realizado</span>
+                        </div>
+                        <p class="event-excerpt">Startups da LiUP apresentaram seus projetos para investidores e convidados em um dia repleto de inovação.</p>
+                        <button class="btn btn-primary btn-event-details" style="width: 100%;">Ver fotos e materiais</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processes Section -->
+    <section id="processes" class="events-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Oportunidades</span>
+                <h2 class="section-title">Processos Seletivos</h2>
+            </div>
+            
+            <div class="events-grid">
+                <!-- Processo 1 -->
+                <div class="event-card" data-category="processos" data-event="processo-mentores">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                        <span class="event-badge">Inscrições abertas</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-date">09/06/2025</span>
+                        <h3>Mentores LiUP</h3>
+                        <div class="event-meta">
+                            <i class="far fa-clock"></i>
+                            <span>Inscrições até 30/05</span>
+                        </div>
+                        <div class="event-meta">
+                            <i class="fas fa-user-tie"></i>
+                            <span>Para profissionais experientes</span>
+                        </div>
+                        <p class="event-excerpt">Venha compartilhar seu conhecimento e experiência guiando os futuros empreendedores da LiUP.</p>
+                        <button class="btn btn-primary btn-event-details" style="width: 100%;">Mais informações</button>
+                    </div>
+                </div>
+                
+                <!-- Processo 2 -->
+                <div class="event-card" data-category="processos" data-event="processo-membros">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                        <span class="event-badge">Em breve</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-date">15/08/2025</span>
+                        <h3>Novos Membros</h3>
+                        <div class="event-meta">
+                            <i class="far fa-clock"></i>
+                            <span>Inscrições a partir de 01/08</span>
+                        </div>
+                        <div class="event-meta">
+                            <i class="fas fa-user-graduate"></i>
+                            <span>Para alunos da Unicamp</span>
+                        </div>
+                        <p class="event-excerpt">Venha fazer parte da LiUP e desenvolva suas habilidades em um ambiente de inovação e empreendedorismo.</p>
+                        <button class="btn btn-primary btn-event-details" style="width: 100%;">Mais informações</button>
+                    </div>
+                </div>
+                
+                <!-- Processo 3 -->
+                <div class="event-card" data-category="processos" data-event="processo-estagio">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
+                        <span class="event-badge">Encerrado</span>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-date">10/03/2025</span>
+                        <h3>Estágio em Startups</h3>
+                        <div class="event-meta">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Processo encerrado</span>
+                        </div>
+                        <div class="event-meta">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Vagas em startups parceiras</span>
+                        </div>
+                        <p class="event-excerpt">Oportunidade de estágio em startups inovadoras para alunos da Unicamp.</p>
+                        <button class="btn btn-primary btn-event-details" style="width: 100%;">Ver resultados</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Section -->
+    <section class="join-section">
+        <div class="container">
+            <div class="join-content">
+                <h2>Quer propor um evento ou parceria?</h2>
+                <p>Temos sempre as portas abertas para novas ideias e colaborações que possam enriquecer nosso ecossistema empreendedor.</p>
+                <a href="index.html#contact" class="btn btn-white">Entre em contato</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="premium-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <img src="logoliup.png" alt="LiUP Logo" class="footer-logo">
+                    <p>Liga de Startups da Unicamp. Conectando talentos, impulsionando inovações e transformando ideias em negócios de sucesso desde 2025.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">Nossa História</a></li>
+                        <li><a href="events.html">Eventos</a></li>
+                        <li><a href="#processes">Processos Seletivos</a></li>
+                        <li><a href="index.html#contact">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Eventos</h3>
+                    <ul>
+                        <li><a href="#upcoming">Próximos Eventos</a></li>
+                        <li><a href="#past">Eventos Passados</a></li>
+                        <li><a href="#processes">Processos Seletivos</a></li>
+                        <li><a href="#">Galeria de Fotos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Redes Sociais</h3>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/liup.unicamp/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/liup/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <p>Siga-nos para ficar por dentro das novidades e oportunidades.</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LiUP - Liga de Startups da Unicamp. Todos os direitos reservados.</p>
+                <div class="footer-links">
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Event Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalEventTitle">Palestra: Como dar vida à sua Startup</h2>
+                <p id="modalEventSubtitle">15 de Maio de 2025 | 14:00 - 17:00 | Unicamp - Sala PA01</p>
+            </div>
+            <div class="modal-body">
+                <div class="event-modal-image" id="modalEventImage" style="background-image: url('https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                
+                <div class="event-modal-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>15/05/2025 - 14:00 às 17:00</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Unicamp - Sala PA01</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-users"></i>
+                        <span>100 vagas disponíveis</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-tag"></i>
+                        <span>Palestra</span>
+                    </div>
+                </div>
+                
+                <div class="event-modal-content">
+                    <h3>Sobre o Evento</h3>
+                    <p>Nesta palestra exclusiva, empreendedores experientes compartilharão suas jornadas e insights sobre como transformar uma ideia em um negócio real e sustentável. Você aprenderá:</p>
+                    
+                    <ul style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                        <li style="margin-bottom: var(--space-sm);">Como validar sua ideia de negócio no mercado</li>
+                        <li style="margin-bottom: var(--space-sm);">Estratégias para construir um MVP (Produto Mínimo Viável)</li>
+                        <li style="margin-bottom: var(--space-sm);">Os primeiros passos para estruturar sua startup</li>
+                        <li style="margin-bottom: var(--space-sm);">Erros comuns a serem evitados no início da jornada</li>
+                        <li style="margin-bottom: var(--space-sm);">Como montar uma equipe coesa e alinhada com seu propósito</li>
+                    </ul>
+                    
+                    <h3>Palestrantes Confirmados</h3>
+                    <p><strong>Mariana Oliveira</strong> - Fundadora da EcoTech, startup de soluções sustentáveis que nasceu na LiUP e hoje atende clientes em todo o Brasil.</p>
+                    <p><strong>Carlos Mendes</strong> - Investidor anjo e mentor de startups, com experiência em mais de 20 investimentos em early stage.</p>
+                    
+                    <h3>Público-Alvo</h3>
+                    <p>Estudantes e profissionais que desejam empreender ou que estão nos estágios iniciais de suas startups. Não é necessário ter um negócio formalizado para participar.</p>
+                    
+                    <div class="event-modal-actions">
+                        <a href="#" class="btn btn-primary" style="flex-grow: 1;">
+                            <i class="fas fa-ticket-alt"></i> Inscreva-se
+                        </a>
+                        <a href="#" class="btn btn-white" style="flex-grow: 1;">
+                            <i class="fas fa-share-alt"></i> Compartilhar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Floating Navigation
+            const floatingNav = document.querySelector('.floating-nav');
+            let lastScrollPosition = 0;
+            
+            // Scroll Indicator
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            
+            // Hide floating nav on scroll down, show on scroll up
+            function handleScroll() {
+                const currentScrollPosition = window.pageYOffset;
+                
+                if (currentScrollPosition > lastScrollPosition && currentScrollPosition > 100) {
+                    // Scrolling down
+                    floatingNav.classList.add('hidden');
+                } else {
+                    // Scrolling up
+                    floatingNav.classList.remove('hidden');
+                }
+                
+                lastScrollPosition = currentScrollPosition;
+                
+                // Update scroll indicator
+                updateScrollIndicator();
+            }
+            
+            // Update scroll indicator
+            function updateScrollIndicator() {
+                const scrollTop = document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight;
+                const clientHeight = document.documentElement.clientHeight;
+                const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+                scrollIndicator.style.width = scrollPercentage + '%';
+            }
+            
+            window.addEventListener('scroll', handleScroll);
+            
+            // Smooth Scroll for Anchor Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Dados dos Eventos
+            const eventsData = {
+                'palestra-startup': {
+                    title: 'Palestra: Como dar vida à sua Startup',
+                    subtitle: '15 de Maio de 2025 | 14:00 - 17:00 | Unicamp - Sala PA01',
+                    image: 'https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                    content: `
+                        <h3>Sobre o Evento</h3>
+                        <p>Nesta palestra exclusiva, empreendedores experientes compartilharão suas jornadas e insights sobre como transformar uma ideia em um negócio real e sustentável. Você aprenderá:</p>
+                        
+                        <ul style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                            <li style="margin-bottom: var(--space-sm);">Como validar sua ideia de negócio no mercado</li>
+                            <li style="margin-bottom: var(--space-sm);">Estratégias para construir um MVP (Produto Mínimo Viável)</li>
+                            <li style="margin-bottom: var(--space-sm);">Os primeiros passos para estruturar sua startup</li>
+                            <li style="margin-bottom: var(--space-sm);">Erros comuns a serem evitados no início da jornada</li>
+                            <li style="margin-bottom: var(--space-sm);">Como montar uma equipe coesa e alinhada com seu propósito</li>
+                        </ul>
+                        
+                        <h3>Palestrantes Confirmados</h3>
+                        <p><strong>Mariana Oliveira</strong> - Fundadora da EcoTech, startup de soluções sustentáveis que nasceu na LiUP e hoje atende clientes em todo o Brasil.</p>
+                        <p><strong>Carlos Mendes</strong> - Investidor anjo e mentor de startups, com experiência em mais de 20 investimentos em early stage.</p>
+                        
+                        <h3>Público-Alvo</h3>
+                        <p>Estudantes e profissionais que desejam empreender ou que estão nos estágios iniciais de suas startups. Não é necessário ter um negócio formalizado para participar.</p>
+                        
+                        <div class="event-modal-actions">
+                            <a href="#" class="btn btn-primary" style="flex-grow: 1;">
+                                <i class="fas fa-ticket-alt"></i> Inscreva-se
+                            </a>
+                            <a href="#" class="btn btn-white" style="flex-grow: 1;">
+                                <i class="fas fa-share-alt"></i> Compartilhar
+                            </a>
+                        </div>
+                    `
+                },
+                'processo-mentores': {
+                    title: 'Processo Seletivo: Mentores LiUP',
+                    subtitle: 'Inscrições até 30/05/2025 | Para profissionais experientes',
+                    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                    content: `
+                        <h3>Sobre o Processo</h3>
+                        <p>A LiUP está buscando mentores experientes para guiar nossos membros em suas jornadas empreendedoras. Como mentor, você terá a oportunidade de:</p>
+                        
+                        <ul style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                            <li style="margin-bottom: var(--space-sm);">Compartilhar seu conhecimento e experiência com jovens empreendedores</li>
+                            <li style="margin-bottom: var(--space-sm);">Acompanhar o desenvolvimento de projetos inovadores desde o início</li>
+                            <li style="margin-bottom: var(--space-sm);">Expandir sua rede de contatos no ecossistema de inovação</li>
+                            <li style="margin-bottom: var(--space-sm);">Contribuir para a formação da próxima geração de empreendedores</li>
+                        </ul>
+                        
+                        <h3>Requisitos</h3>
+                        <p><strong>Experiência:</strong> Mínimo de 3 anos em posições relevantes no mercado (empreendedorismo, gestão, tecnologia, investimentos, etc.)</p>
+                        <p><strong>Disponibilidade:</strong> Pelo menos 4 horas mensais para mentorias (presenciais ou online)</p>
+                        <p><strong>Comprometimento:</strong> Período mínimo de 6 meses como mentor</p>
+                        
+                        <h3>Etapas do Processo</h3>
+                        <ol style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                            <li style="margin-bottom: var(--space-sm);">Inscrição online (até 30/05)</li>
+                            <li style="margin-bottom: var(--space-sm);">Análise de currículo e experiência</li>
+                            <li style="margin-bottom: var(--space-sm);">Entrevista com a equipe LiUP</li>
+                            <li style="margin-bottom: var(--space-sm);">Divulgação dos resultados (10/06)</li>
+                            <li style="margin-bottom: var(--space-sm);">Oficina de integração para novos mentores (15/06)</li>
+                        </ol>
+                        
+                        <div class="event-modal-actions">
+                            <a href="#" class="btn btn-primary" style="flex-grow: 1;">
+                                <i class="fas fa-file-alt"></i> Inscreva-se
+                            </a>
+                            <a href="#" class="btn btn-white" style="flex-grow: 1;">
+                                <i class="fas fa-download"></i> Baixar Edital
+                            </a>
+                        </div>
+                    `
+                },
+                'workshop-pitch': {
+                    title: 'Workshop: A Arte do Pitch',
+                    subtitle: '22 de Junho de 2025 | 09:00 - 12:00 | Espaço LiUP - FCA',
+                    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                    content: `
+                        <h3>Sobre o Workshop</h3>
+                        <p>Um pitch eficaz pode ser a diferença entre conseguir investimento, fechar uma parceria ou perder uma oportunidade. Neste workshop prático, você aprenderá técnicas para apresentar sua ideia de negócio de forma clara, convincente e memorável.</p>
+                        
+                        <h3>O que você vai aprender</h3>
+                        <ul style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                            <li style="margin-bottom: var(--space-sm);">Estrutura de um pitch perfeito</li>
+                            <li style="margin-bottom: var(--space-sm);">Como adaptar seu pitch para diferentes públicos</li>
+                            <li style="margin-bottom: var(--space-sm);">Técnicas de storytelling aplicadas a negócios</li>
+                            <li style="margin-bottom: var(--space-sm);">Linguagem corporal e presença de palco</li>
+                            <li style="margin-bottom: var(--space-sm);">Como lidar com perguntas difíceis</li>
+                        </ul>
+                        
+                        <h3>Metodologia</h3>
+                        <p>O workshop será dividido em três partes:</p>
+                        <ol style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                            <li style="margin-bottom: var(--space-sm);"><strong>Teórica:</strong> Fundamentos de um bom pitch</li>
+                            <li style="margin-bottom: var(--space-sm);"><strong>Prática:</strong> Exercícios individuais e em grupo</li>
+                            <li style="margin-bottom: var(--space-sm);"><strong>Simulação:</strong> Pitchs reais com feedback dos instrutores</li>
+                        </ol>
+                        
+                        <p><strong>Traga seu notebook ou material para anotações!</strong></p>
+                        
+                        <h3>Facilitadores</h3>
+                        <p><strong>Ana Beatriz Costa</strong> - Especialista em comunicação empresarial, com experiência em treinamento de startups para competições nacionais e internacionais.</p>
+                        <p><strong>Rodrigo Martins</strong> - Fundador de duas startups, vencedor de vários prêmios de pitch e atualmente investidor anjo.</p>
+                        
+                        <div class="event-modal-actions">
+                            <a href="#" class="btn btn-primary" style="flex-grow: 1;">
+                                <i class="fas fa-ticket-alt"></i> Inscreva-se
+                            </a>
+                            <a href="#" class="btn btn-white" style="flex-grow: 1;">
+                                <i class="fas fa-share-alt"></i> Compartilhar
+                            </a>
+                        </div>
+                    `
+                },
+                'cafe-startups': {
+                    title: 'Café com Startups',
+                    subtitle: '05 de Julho de 2025 | 19:00 - 21:30 | Espaço LiUP - FCA',
+                    image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                    content: `
+                        <h3>Sobre o Evento</h3>
+                        <p>Um ambiente descontraído para conversar com fundadores de startups e expandir sua rede de contatos. Traga suas ideias, dúvidas e curiosidades para trocar experiências com quem já está no mercado.</p>
+                        
+                        <h3>Startups Confirmadas</h3>
+                        <ul style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                            <li style="margin-bottom: var(--space-sm);"><strong>EcoTech</strong> - Soluções sustentáveis para empresas</li>
+                            <li style="margin-bottom: var(--space-sm);"><strong>HealthIn</strong> - Tecnologia aplicada à saúde</li>
+                            <li style="margin-bottom: var(--space-sm);"><strong>EduNext</strong> - Plataforma de educação inovadora</li>
+                            <li style="margin-bottom: var(--space-sm);"><strong>FintechUP</strong> - Soluções financeiras para pequenos negócios</li>
+                        </ul>
+                        
+                        <h3>Programação</h3>
+                        <ul style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                            <li style="margin-bottom: var(--space-sm);"><strong>19:00 - 19:30</strong> Credenciamento e café de boas-vindas</li>
+                            <li style="margin-bottom: var(--space-sm);"><strong>19:30 - 20:00</strong> Pitchs rápidos das startups participantes</li>
+                            <li style="margin-bottom: var(--space-sm);"><strong>20:00 - 21:30</strong> Rodadas de conversa por temas</li>
+                        </ul>
+                        
+                        <h3>Como Funciona</h3>
+                        <p>Após os pitchs iniciais, os participantes poderão circular entre as mesas temáticas para conversar diretamente com os fundadores sobre:</p>
+                        <ul style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                            <li style="margin-bottom: var(--space-sm);">Validação de ideias e MVP</li>
+                            <li style="margin-bottom: var(--space-sm);">Captação de investimento</li>
+                            <li style="margin-bottom: var(--space-sm);">Gestão de equipe e cultura</li>
+                            <li style="margin-bottom: var(--space-sm);">Desafios do empreendedorismo</li>
+                        </ul>
+                        
+                        <div class="event-modal-actions">
+                            <a href="#" class="btn btn-primary" style="flex-grow: 1;">
+                                <i class="fas fa-ticket-alt"></i> Inscreva-se
+                            </a>
+                            <a href="#" class="btn btn-white" style="flex-grow: 1;">
+                                <i class="fas fa-share-alt"></i> Compartilhar
+                            </a>
+                        </div>
+                    `
+                },
+                'processo-membros': {
+                    title: 'Processo Seletivo: Novos Membros',
+                    subtitle: 'Inscrições de 01/08 a 05/08/2025 | Para alunos da Unicamp',
+                    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                    content: `
+                        <h3>Sobre o Processo</h3>
+                        <p>A LiUP está buscando novos membros para compor suas equipes multidisciplinares. Como membro da LiUP, você terá a oportunidade de:</p>
+                        
+                        <ul style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                            <li style="margin-bottom: var(--space-sm);">Desenvolver habilidades práticas em empreendedorismo e inovação</li>
+                            <li style="margin-bottom: var(--space-sm);">Participar de projetos reais com startups e empresas parceiras</li>
+                            <li style="margin-bottom: var(--space-sm);">Acessar uma rede de contatos valiosa no ecossistema de inovação</li>
+                            <li style="margin-bottom: var(--space-sm);">Participar de eventos exclusivos e capacitações</li>
+                            <li style="margin-bottom: var(--space-sm);">Contribuir para o desenvolvimento do ecossistema empreendedor da Unicamp</li>
+                        </ul>
+                        
+                        <h3>Áreas de Atuação</h3>
+                        <p>Estamos com vagas abertas para as seguintes áreas:</p>
+                        <ul style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                            <li style="margin-bottom: var(--space-sm);">Projetos (acompanhamento de startups)</li>
+                            <li style="margin-bottom: var(--space-sm);">Eventos (organização e logística)</li>
+                            <li style="margin-bottom: var(--space-sm);">Marketing e Comunicação</li>
+                            <li style="margin-bottom: var(--space-sm);">Parcerias e Negócios</li>
+                            <li style="margin-bottom: var(--space-sm);">Tecnologia e Inovação</li>
+                        </ul>
+                        
+                        <h3>Etapas do Processo</h3>
+                        <ol style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                            <li style="margin-bottom: var(--space-sm);">Inscrição online (01/08 a 05/08)</li>
+                            <li style="margin-bottom: var(--space-sm);">Análise de perfil e motivação</li>
+                            <li style="margin-bottom: var(--space-sm);">Dinâmica em grupo (12/08)</li>
+                            <li style="margin-bottom: var(--space-sm);">Entrevistas individuais (14-16/08)</li>
+                            <li style="margin-bottom: var(--space-sm);">Divulgação dos resultados (18/08)</li>
+                            <li style="margin-bottom: var(--space-sm);">Integração dos novos membros (22/08)</li>
+                        </ol>
+                        
+                        <div class="event-modal-actions">
+                            <a href="#" class="btn btn-white" style="flex-grow: 1;">
+                                <i class="fas fa-bell"></i> Avise-me quando abrir
+                            </a>
+                            <a href="#" class="btn btn-white" style="flex-grow: 1;">
+                                <i class="fas fa-download"></i> Baixar Edital
+                            </a>
+                        </div>
+                    `
+                },
+                'palestra-investimento': {
+                    title: 'Palestra: Captação de Investimentos',
+                    subtitle: '10 de Setembro de 2025 | 16:00 - 18:30 | Auditório FT / Online',
+                    image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                    content: `
+                        <h3>Sobre o Evento</h3>
+                        <p>Entenda os diferentes tipos de investimento disponíveis para startups e como se preparar para captar recursos. Investidores e empreendedores que já passaram por esse processo compartilharão suas experiências e dicas práticas.</p>
+                        
+                        <h3>Tópicos Abordados</h3>
+                        <ul style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                            <li style="margin-bottom: var(--space-sm);">Diferença entre investimento anjo, venture capital e outros modelos</li>
+                            <li style="margin-bottom: var(--space-sm);">Como avaliar sua startup e definir uma valuation realista</li>
+                            <li style="margin-bottom: var(--space-sm);">Preparação de documentos e materiais para investidores</li>
+                            <li style="margin-bottom: var(--space-sm);">Negociação de termos e condições de investimento</li>
+                            <li style="margin-bottom: var(--space-sm);">Case de sucesso: Da captação inicial ao scale-up</li>
+                        </ul>
+                        
+                        <h3>Palestrantes Confirmados</h3>
+                        <p><strong>Fernanda Torres</strong> - Sócia da VC InovAction, fundo de venture capital focado em early stage.</p>
+                        <p><strong>Gustavo Rocha</strong> - Fundador da DeliveryNow, startup que captou R$ 15 milhões em 2024.</p>
+                        <p><strong>Ricardo Lopes</strong> - Investidor anjo com mais de 10 investimentos em startups de tecnologia.</p>
+                        
+                        <h3>Para quem é este evento?</h3>
+                        <p>Empreendedores que:</p>
+                        <ul style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                            <li style="margin-bottom: var(--space-sm);">Estão buscando investimento para suas startups</li>
+                            <li style="margin-bottom: var(--space-sm);">Querem entender como se preparar para futuras rodadas</li>
+                            <li style="margin-bottom: var(--space-sm);">Desejam conhecer melhor o ecossistema de investimentos</li>
+                            <li style="margin-bottom: var(--space-sm);">Pretendem se conectar com investidores</li>
+                        </ul>
+                        
+                        <div class="event-modal-actions">
+                            <a href="#" class="btn btn-white" style="flex-grow: 1;">
+                                <i class="fas fa-bell"></i> Avise-me quando abrir
+                            </a>
+                            <a href="#" class="btn btn-white" style="flex-grow: 1;">
+                                <i class="fas fa-share-alt"></i> Compartilhar
+                            </a>
+                        </div>
+                    `
+                },
+                'palestra-design': {
+                    title: 'Design Thinking na Prática',
+                    subtitle: '12 de Março de 2025 | Evento Realizado',
+                    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                    content: `
+                        <h3>Sobre o Evento</h3>
+                        <p>Workshop prático sobre como aplicar Design Thinking no desenvolvimento de produtos e serviços inovadores. Os participantes trabalharam em equipe para resolver desafios reais utilizando a metodologia.</p>
+                        
+                        <h3>O que foi abordado</h3>
+                        <ul style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                            <li style="margin-bottom: var(--space-sm);">Fundamentos do Design Thinking</li>
+                            <li style="margin-bottom: var(--space-sm);">Fases da metodologia: empatia, definição, ideação, prototipação e teste</li>
+                            <li style="margin-bottom: var(--space-sm);">Ferramentas práticas para cada etapa</li>
+                            <li style="margin-bottom: var(--space-sm);">Aplicação em casos reais</li>
+                        </ul>
+                        
+                        <h3>Facilitadores</h3>
+                        <p><strong>Laura Mendes</strong> - Designer de Experiência com 8 anos de experiência em empresas como Google e IDEO.</p>
+                        <p><strong>Pedro Henrique</strong> - Fundador da UXNow, consultoria especializada em Design Thinking.</p>
+                        
+                        <h3>Materiais e Fotos</h3>
+                        <p>Confira os materiais compartilhados durante o evento e fotos da dinâmica:</p>
+                        
+                        <div class="event-modal-actions">
+                            <a href="#" class="btn btn-primary" style="flex-grow: 1;">
+                                <i class="fas fa-images"></i> Ver Fotos
+                            </a>
+                            <a href="#" class="btn btn-white" style="flex-grow: 1;">
+                                <i class="fas fa-file-pdf"></i> Baixar Materiais
+                            </a>
+                        </div>
+                    `
+                },
+                'workshop-financas': {
+                    title: 'Workshop: Finanças para Startups',
+                    subtitle: '28 de Fevereiro de 2025 | Evento Realizado',
+                    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                    content: `
+                        <h3>Sobre o Evento</h3>
+                        <p>Workshop prático sobre gestão financeira para startups em estágio inicial. Os participantes aprenderam a estruturar suas finanças desde o início, evitando erros comuns e garantindo sustentabilidade.</p>
+                        
+                        <h3>Conteúdo Abordado</h3>
+                        <ul style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                            <li style="margin-bottom: var(--space-sm);">Diferença entre fluxo de caixa e resultado</li>
+                            <li style="margin-bottom: var(--space-sm);">Como precificar produtos e serviços</li>
+                            <li style="margin-bottom: var(--space-sm);">Controle de custos e despesas</li>
+                            <li style="margin-bottom: var(--space-sm);">Projeções financeiras básicas</li>
+                            <li style="margin-bottom: var(--space-sm);">Indicadores-chave para acompanhar</li>
+                        </ul>
+                        
+                        <h3>Facilitadores</h3>
+                        <p><strong>Carlos Eduardo</strong> - Sócio-fundador da FinanStart, consultoria especializada em finanças para startups.</p>
+                        <p><strong>Amanda Silva</strong> - CFO da PagTech, fintech que cresceu 300% no último ano.</p>
+                        
+                        <h3>Materiais e Fotos</h3>
+                        <p>Confira os materiais compartilhados durante o evento e fotos da dinâmica:</p>
+                        
+                        <div class="event-modal-actions">
+                            <a href="#" class="btn btn-primary" style="flex-grow: 1;">
+                                <i class="fas fa-images"></i> Ver Fotos
+                            </a>
+                            <a href="#" class="btn btn-white" style="flex-grow: 1;">
+                                <i class="fas fa-file-pdf"></i> Baixar Materiais
+                            </a>
+                        </div>
+                    `
+                },
+                'demo-day': {
+                    title: 'Demo Day LiUP',
+                    subtitle: '15 de Janeiro de 2025 | Evento Realizado',
+                    image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                    content: `
+                        <h3>Sobre o Evento</h3>
+                        <p>O primeiro Demo Day da LiUP reuniu 8 startups incubadas para apresentarem seus projetos para investidores, mentores e convidados. Um dia repleto de inovação, networking e oportunidades.</p>
+                        
+                        <h3>Startups Participantes</h3>
+                        <ul style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                            <li style="margin-bottom: var(--space-sm);"><strong>EcoTech</strong> - Soluções sustentáveis para empresas</li>
+                            <li style="margin-bottom: var(--space-sm);"><strong>HealthIn</strong> - Tecnologia aplicada à saúde</li>
+                            <li style="margin-bottom: var(--space-sm);"><strong>EduNext</strong> - Plataforma de educação inovadora</li>
+                            <li style="margin-bottom: var(--space-sm);"><strong>FintechUP</strong> - Soluções financeiras para pequenos negócios</li>
+                            <li style="margin-bottom: var(--space-sm);"><strong>AgriTech Solutions</strong> - Tecnologia para agricultura</li>
+                            <li style="margin-bottom: var(--space-sm);"><strong>RetailNow</strong> - Soluções para varejo</li>
+                        </ul>
+                        
+                        <h3>Resultados</h3>
+                        <ul style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                            <li style="margin-bottom: var(--space-sm);">3 startups receberam propostas de investimento</li>
+                            <li style="margin-bottom: var(--space-sm);">5 parcerias comerciais iniciadas</li>
+                            <li style="margin-bottom: var(--space-sm);">Mais de 50 investidores e profissionais do ecossistema presentes</li>
+                        </ul>
+                        
+                        <h3>Materiais e Fotos</h3>
+                        <p>Confira os materiais compartilhados durante o evento e fotos da dinâmica:</p>
+                        
+                        <div class="event-modal-actions">
+                            <a href="#" class="btn btn-primary" style="flex-grow: 1;">
+                                <i class="fas fa-images"></i> Ver Fotos
+                            </a>
+                            <a href="#" class="btn btn-white" style="flex-grow: 1;">
+                                <i class="fas fa-file-pdf"></i> Baixar Pitchs
+                            </a>
+                        </div>
+                    `
+                },
+                'processo-estagio': {
+                    title: 'Processo Seletivo: Estágio em Startups',
+                    subtitle: '10 de Março de 2025 | Processo Encerrado',
+                    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                    content: `
+                        <h3>Sobre o Processo</h3>
+                        <p>A LiUP em parceria com startups do ecossistema ofereceu oportunidades de estágio para alunos da Unicamp. As vagas abrangeram diversas áreas como desenvolvimento, marketing, vendas e operações.</p>
+                        
+                        <h3>Startups Participantes</h3>
+                        <ul style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                            <li style="margin-bottom: var(--space-sm);"><strong>TechSolutions</strong> - 2 vagas para desenvolvimento</li>
+                            <li style="margin-bottom: var(--space-sm);"><strong>GreenMind</strong> - 1 vaga para marketing</li>
+                            <li style="margin-bottom: var(--space-sm);"><strong>DataInsights</strong> - 1 vaga para análise de dados</li>
+                            <li style="margin-bottom: var(--space-sm);"><strong>HealthUp</strong> - 2 vagas para negócios</li>
+                        </ul>
+                        
+                        <h3>Resultados</h3>
+                        <ul style="margin-bottom: var(--space-md); color: var(--gray-dark);">
+                            <li style="margin-bottom: var(--space-sm);">Total de 12 vagas oferecidas</li>
+                            <li style="margin-bottom: var(--space-sm);">Mais de 80 inscritos</li>
+                            <li style="margin-bottom: var(--space-sm);">6 alunos da LiUP selecionados</li>
+                        </ul>
+                        
+                        <h3>Próximas Oportunidades</h3>
+                        <p>Novas vagas serão abertas no segundo semestre de 2025. Cadastre-se para ser avisado:</p>
+                        
+                        <div class="event-modal-actions">
+                            <a href="#" class="btn btn-primary" style="flex-grow: 1;">
+                                <i class="fas fa-bell"></i> Avise-me
+                            </a>
+                            <a href="#" class="btn btn-white" style="flex-grow: 1;">
+                                <i class="fas fa-file-pdf"></i> Ver Resultados
+                            </a>
+                        </div>
+                    `
+                }
+            };
+
+            // Modal de Eventos
+            const eventModal = document.getElementById('eventModal');
+            const modalEventTitle = document.getElementById('modalEventTitle');
+            const modalEventSubtitle = document.getElementById('modalEventSubtitle');
+            const modalEventImage = document.getElementById('modalEventImage');
+            const modalEventContent = document.querySelector('.event-modal-content');
+            const closeModal = document.querySelectorAll('.close-modal');
+            
+            // Função para abrir o modal
+            function openEventModal(eventId) {
+                const eventData = eventsData[eventId];
+                
+                if (!eventData) return;
+                
+                modalEventTitle.textContent = eventData.title;
+                modalEventSubtitle.textContent = eventData.subtitle;
+                modalEventImage.style.backgroundImage = `url('${eventData.image}')`;
+                modalEventContent.innerHTML = eventData.content;
+                
+                // Mostrar o modal
+                eventModal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Event listeners para abrir modal
+            document.querySelectorAll('.btn-event-details').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const eventId = this.closest('.event-card').getAttribute('data-event');
+                    openEventModal(eventId);
+                });
+            });
+
+            // Filtro de categorias
+            const categoryTabs = document.querySelectorAll('.category-tab');
+            const eventCards = document.querySelectorAll('.event-card');
+            
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Ativar tab clicada
+                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    // Filtrar eventos
+                    eventCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Event listener para fechar modais
+            closeModal.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    modal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+            
+            // Fechar quando clicar fora do conteúdo
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        this.classList.remove('show');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+            
+            // Fechar com ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.modal.show').forEach(modal => {
+                        modal.classList.remove('show');
+                        document.body.style.overflow = 'auto';
+                    });
+                }
+            });
+
+            // Animações ao scroll
+            function initScrollAnimations() {
+                const animateElements = document.querySelectorAll('.event-card');
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate');
+                        }
+                    });
+                }, {
+                    threshold: 0.1
+                });
+                
+                animateElements.forEach(el => {
+                    observer.observe(el);
+                });
+            }
+            
+            initScrollAnimations();
+
+            console.log('Página de Eventos carregada com sucesso!');
+        });
+    </script>
+</body>
+</html>
