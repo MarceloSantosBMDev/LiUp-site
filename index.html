@@ -798,6 +798,113 @@
             text-align: center;
         }
 
+        /* Event Modal Styles */
+        .event-meta-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            margin-top: var(--space-sm);
+        }
+
+        .event-image-modal {
+            height: 300px;
+            width: 100%;
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-xl);
+            background-size: cover;
+            background-position: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .event-description {
+            margin-bottom: var(--space-xl);
+        }
+
+        .event-description h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: var(--space-md);
+            position: relative;
+            padding-bottom: var(--space-xs);
+        }
+
+        .event-description h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .event-description ul {
+            margin-bottom: var(--space-lg);
+            padding-left: var(--space-md);
+        }
+
+        .event-description ul li {
+            margin-bottom: var(--space-sm);
+            position: relative;
+            padding-left: var(--space-md);
+            color: var(--gray-dark);
+        }
+
+        .event-description ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        .speaker-card {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            background-color: var(--primary-extra-light);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            transition: all 0.3s ease;
+        }
+
+        .speaker-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .speaker-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-full);
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
+        .speaker-info h4 {
+            font-size: 1rem;
+            margin-bottom: var(--space-xs);
+            color: var(--dark);
+        }
+
+        .speaker-info p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-bottom: 0;
+        }
+
+        .event-cta {
+            text-align: center;
+            margin-top: var(--space-xl);
+        }
+
         /* Join Section */
         .join-section {
             padding: var(--space-xxl) 0;
@@ -1223,6 +1330,9 @@
             border-radius: var(--radius-md);
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .member-card:hover {
@@ -1263,9 +1373,12 @@
         }
 
         .member-bio {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--gray);
             margin-bottom: var(--space-md);
+            flex-grow: 1;
+            line-height: 1.5;
+            min-height: 80px;
         }
 
         .member-contact {
@@ -1293,133 +1406,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        /* Modal do Mascote - Estilo Especial */
-        .mascote-modal-content {
-            max-width: 700px;
-        }
-
-        .mascote-presentation {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: var(--space-xl);
-            margin-bottom: var(--space-xl);
-        }
-
-        .mascote-image {
-            width: 200px;
-            height: 200px;
-            object-fit: contain;
-            border-radius: var(--radius-full);
-            box-shadow: var(--shadow-md);
-            flex-shrink: 0;
-            transition: all 0.3s ease;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .mascote-details {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-md);
-            margin-top: var(--space-md);
-        }
-
-        .mascote-detail-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: var(--primary-extra-light);
-            padding: var(--space-md);
-            border-radius: var(--radius-md);
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .mascote-detail-item:hover {
-            transform: translateY(-5px);
-            background-color: var(--primary);
-            color: var(--white);
-            box-shadow: var(--shadow-md);
-        }
-
-        .mascote-detail-item i {
-            font-size: 1.5rem;
-            margin-bottom: var(--space-xs);
-            color: var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        .mascote-detail-item:hover i {
-            color: var(--white);
-            transform: scale(1.2);
-        }
-
-        .mascote-detail-item span {
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .mascote-info {
-            background-color: var(--gray-extra-light);
-            padding: var(--space-xl);
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .mascote-info p {
-            margin-bottom: var(--space-md);
-            font-size: 0.95rem;
-        }
-
-        .lio-highlight {
-            color: #ffd700;
-            position: relative;
-            display: inline-block;
-        }
-
-        .lio-highlight::after {
-            content: '';
-            position: absolute;
-            bottom: 2px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: rgba(255, 215, 0, 0.3);
-            border-radius: 2px;
-        }
-
-        .btn-mascote-modal {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-sm);
-            padding: var(--space-sm) var(--space-lg);
-            background-color: var(--primary);
-            color: var(--white);
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            font-size: 0.95rem;
-            box-shadow: 0 4px 6px rgba(245, 99, 37, 0.2);
-        }
-
-        .btn-mascote-modal:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(245, 99, 37, 0.3);
-        }
-
-        .btn-mascote-modal i {
-            color: #ffd700;
-            animation: pulse 2s infinite;
-        }
+ 
 
         /* Scroll Indicator */
         .scroll-indicator {
@@ -1524,11 +1511,23 @@
             .mascote-details {
                 grid-template-columns: repeat(3, 1fr);
             }
+            
+            .members-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .member-bio {
+                min-height: 100px;
+            }
         }
 
         @media (min-width: 992px) {
             .mascote-details {
                 grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .members-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             }
         }
 
@@ -1567,6 +1566,10 @@
                 height: 45px;
                 font-size: 0.9rem;
             }
+            
+            .member-bio {
+                min-height: auto;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1594,7 +1597,6 @@
                 grid-template-columns: 1fr;
             }
         }
-        
     </style>
 </head>
 <body>
@@ -1619,10 +1621,6 @@
         <a href="#contact" class="nav-btn" title="Contato">
             <i class="fas fa-envelope"></i>
             <span class="nav-tooltip">Contato</span>
-        </a>
-        <a href="#" class="nav-btn" id="openLioModal" title="Mascote">
-            <i class="fas fa-paw"></i>
-            <span class="nav-tooltip">Conheça Lio</span>
         </a>
     </div>
 
@@ -1661,16 +1659,16 @@
                     
                     <div class="about-stats">
                         <div class="stat-item">
-                            <span class="stat-number">50+</span>
+                            <span class="stat-number">10+</span>
                             <span class="stat-label">Membros Ativos</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number">20+</span>
+                            <span class="stat-number">5+</span>
                             <span class="stat-label">Projetos em Andamento</span>
                         </div>
                         <div class="stat-item">
                             <span class="stat-number">10+</span>
-                            <span class="stat-label">Eventos Anuais</span>
+                            <span class="stat-label">Participações em Eventos</span>
                         </div>
                     </div>
                     
@@ -1749,7 +1747,7 @@
             
             <div class="events-slider">
                 <!-- Evento 1 -->
-                <div class="event-card hover-lift">
+                <div class="event-card hover-lift" data-event="palestra-cultura">
                     <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
                     <div class="event-content">
                         <span class="event-date">15/05/2025</span>
@@ -1763,12 +1761,12 @@
                             <span>Unicamp - Sala PA01</span>
                         </div>
                         <p>Aprenda como criar uma cultura organizacional forte para tornar seu ambiente mais acolhedor e aumentar a satisfação dos colaboradores.</p>
-                        <a href="#" class="btn btn-primary">Mais Informações</a>
+                        <button class="btn btn-primary btn-event-details">Mais Informações</button>
                     </div>
                 </div>
                 
                 <!-- Evento 2 -->
-                <div class="event-card hover-lift">
+                <div class="event-card hover-lift" data-event="simulacao-empreendedorismo">
                     <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
                     <div class="event-content">
                         <span class="event-date">09/06/2025</span>
@@ -1782,12 +1780,12 @@
                             <span>Online</span>
                         </div>
                         <p>Conversa com empreendedores de sucesso que compartilharão suas experiências, seguida de uma dinâmica prática de simulação de startup.</p>
-                        <a href="#" class="btn btn-primary">Mais Informações</a>
+                        <button class="btn btn-primary btn-event-details">Mais Informações</button>
                     </div>
                 </div>
                 
                 <!-- Evento 3 -->
-                <div class="event-card hover-lift">
+                <div class="event-card hover-lift" data-event="empresas-startup">
                     <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
                     <div class="event-content">
                         <span class="event-date">05/12/2025</span>
@@ -1801,13 +1799,9 @@
                             <span>Pátio da FCA</span>
                         </div>
                         <p>Converse com funcionários pioneiros e fundadores de empresas que começaram como startups e hoje são referência em seus mercados.</p>
-                        <a href="#" class="btn btn-primary">Mais Informações</a>
+                        <button class="btn btn-primary btn-event-details">Mais Informações</button>
                     </div>
                 </div>
-            </div>
-            
-            <div class="section-footer">
-                <a href="events.html" class="btn btn-primary">Ver todos os eventos</a>
             </div>
         </div>
     </section>
@@ -1919,10 +1913,6 @@
             
             <div class="footer-bottom">
                 <p>&copy; 2025 LiUP - Liga de Startups da Unicamp. Todos os direitos reservados.</p>
-                <div class="footer-links">
-                    <a href="#">Política de Privacidade</a>
-                    <a href="#">Termos de Uso</a>
-                </div>
             </div>
         </div>
     </footer>
@@ -1938,6 +1928,47 @@
             <div class="modal-body">
                 <h3>Nossa Equipe</h3>
                 <div class="members-grid" id="modalMembersGrid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalEventTitle"></h2>
+                <div class="event-meta-container">
+                    <div class="event-meta">
+                        <i class="far fa-calendar-alt"></i>
+                        <span id="modalEventDate"></span>
+                    </div>
+                    <div class="event-meta">
+                        <i class="far fa-clock"></i>
+                        <span id="modalEventTime"></span>
+                    </div>
+                    <div class="event-meta">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="modalEventLocation"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="event-image-modal" id="modalEventImage"></div>
+                <div class="event-description">
+                    <h3>Sobre o Evento</h3>
+                    <p id="modalEventDescription"></p>
+                    
+                    <h3>Programação</h3>
+                    <ul id="modalEventSchedule"></ul>
+                    
+                    <h3>Palestrantes</h3>
+                    <div class="speakers-grid" id="modalEventSpeakers"></div>
+                    
+                    <div class="event-cta">
+                        <a href="#" class="btn btn-primary" id="modalEventRegister">Inscreva-se</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -2058,7 +2089,7 @@
                             name: "Hyago",
                             role: "Membro",
                             photo: "captaçãoparceria/Hyago.jpg",
-                            bio: "Responsável por estabelecer conexões estratégicas e desenvolver programas de capacitação para os membros.",
+                            bio: "Responsável por estabelecer conexões estratégicas e desenvolver programas de capacitação para os membros. Hyago tem experiência em networking e desenvolvimento de competências técnicas e comportamentais.",
                             contacts: {
                                 instagram: "hyago",
                                 linkedin: "Hyago",
@@ -2069,7 +2100,7 @@
                             name: "Yoon Song Jang",
                             role: "Membro",
                             photo: "captaçãoparceria/Yoon.jpg",
-                            bio: "Atua na identificação de oportunidades de parcerias e no desenvolvimento de competências técnicas.",
+                            bio: "Atua na identificação de oportunidades de parcerias e no desenvolvimento de competências técnicas. Yoon possui ampla experiência em relações institucionais e captação de recursos.",
                             contacts: {
                                 instagram: "YoonSong",
                                 linkedin: "YoonSang",
@@ -2080,7 +2111,7 @@
                             name: "Sofia (Dory)",
                             role: "Membro",
                             photo: "captaçãoparceria/Sofia.jpg",
-                            bio: "Envolvida na criação de conteúdos para capacitação e na gestão das parcerias estabelecidas.",
+                            bio: "Envolvida na criação de conteúdos para capacitação e na gestão das parcerias estabelecidas. Sofia tem background em comunicação e gestão de projetos educacionais.",
                             contacts: {
                                 instagram: "sofiadory",
                                 linkedin: "sofiadory",
@@ -2091,7 +2122,7 @@
                             name: "Eduardo Paziani",
                             role: "Membro",
                             photo: "captaçãoparceria/eduardo.jpg",
-                            bio: "Focado no desenvolvimento de programas de mentoria e no relacionamento com parceiros.",
+                            bio: "Focado no desenvolvimento de programas de mentoria e no relacionamento com parceiros. Eduardo traz experiência em mentorias e programas de aceleração para startups.",
                             contacts: {
                                 instagram: "paziani",
                                 linkedin: "pazianeslasla",
@@ -2108,7 +2139,7 @@
                             name: "Arthur",
                             role: "Membro",
                             photo: "aceleracao/Arthur.jpg",
-                            bio: "Atua no acompanhamento de projetos e na conexão com mentores e investidores.",
+                            bio: "Atua no acompanhamento de projetos e na conexão com mentores e investidores. Arthur possui experiência em análise de modelos de negócio e pitch de startups.",
                             contacts: {
                                 instagram: "arthur",
                                 linkedin: "arthur",
@@ -2119,7 +2150,7 @@
                             name: "João Guilherme",
                             role: "Membro",
                             photo: "aceleracao/Joãogui.jpg",
-                            bio: "Responsável pela organização de programas de aceleração e eventos de pitch.",
+                            bio: "Responsável pela organização de programas de aceleração e eventos de pitch. João tem formação em empreendedorismo e já participou de várias competições de startups.",
                             contacts: {
                                 instagram: "john_guilherme",
                                 linkedin: "johnxxxxx",
@@ -2136,7 +2167,7 @@
                             name: "Marcelo Santos",
                             role: "Membro",
                             photo: "modelosinternos/Marcelo.jpg",
-                            bio: "Atua na documentação de processos e na estruturação dos modelos de gestão da liga.",
+                            bio: "Atua na documentação de processos e na estruturação dos modelos de gestão da liga. Marcelo tem experiência em gestão de processos e melhoria contínua.",
                             contacts: {
                                 linkedin: "marcelo-dos-santos-da-boa-morte-5985a3262/",
                                 instagram: "marcelo_grr",
@@ -2147,7 +2178,7 @@
                             name: "Enzo Bergamachi",
                             role: "Membro",
                             photo: "modelosinternos/Enzo.jpg",
-                            bio: "Responsável pela implementação de melhorias nos processos internos.",
+                            bio: "Responsável pela implementação de melhorias nos processos internos. Enzo traz conhecimento em metodologias ágeis e gestão de projetos.",
                             contacts: {
                                 instagram: "enzo",
                                 linkedin: "addadadd",
@@ -2158,7 +2189,7 @@
                             name: "Lucas Gabriel",
                             role: "Membro",
                             photo: "modelosinternos/Lucas_Gabriel.jpg",
-                            bio: "Envolvido na criação de métricas e indicadores para avaliação interna.",
+                            bio: "Envolvido na criação de métricas e indicadores para avaliação interna. Lucas possui formação em análise de dados e gestão de performance.",
                             contacts: {
                                 instagram: "LucasGabriel",
                                 linkedin: "Lucasslaoq",
@@ -2169,7 +2200,7 @@
                             name: "Leo Basset",
                             role: "Membro",
                             photo: "modelosinternos/Leo_Basset.jpg",
-                            bio: "Focado na otimização dos fluxos de trabalho e comunicação interna.",
+                            bio: "Focado na otimização dos fluxos de trabalho e comunicação interna. Leo tem experiência em gestão de equipes e comunicação organizacional.",
                             contacts: {
                                 instagram: "LeoBasset",
                                 linkedin: "Basset",
@@ -2183,13 +2214,13 @@
                     description: "Responsável pela gestão estratégica e operacional da LiUP, garantindo o alinhamento com a missão e valores da liga e a coordenação entre todas as áreas.",
                     members: [
                         {
-                            name: "Rafael",
+                            name: "Rafael Henrique",
                             role: "Presidente",
                             photo: "administracao/rafa.jpg",
-                            bio: "Lidera a estratégia geral da liga, representação institucional e tomada de decisões importantes.",
+                            bio: "Presidente-fundador da LiUp, Rafael é estudante de Sistemas de Informação, apaixonado por empreendedorismo, geração de impacto e interações sociais. Sonhou numa LiUp acolhedora, inovadora e que alcançasse com velocidade alta patamares cada vez maiores na Unicamp e no mundo, o que se mostra realidade desde as bases da organização até agora.",
                             contacts: {
-                                instagram: "rafael",
-                                linkedin: "rafael",
+                                instagram: "rafa.planks",
+                                linkedin: "rafaelhenri",
                                 email: ""
                             }
                         },
@@ -2197,10 +2228,10 @@
                             name: "Julia Fernandes",
                             role: "Vice-Presidente",
                             photo: "administracao/julia.jpg",
-                            bio: "Apoia a presidência na gestão estratégica e coordena a execução das atividades entre as áreas.",
+                            bio: "Cursando Sistemas de Informação, possui grande paixão por empreendedorismo e tecnologia, sempre fascinado por inovação. Fluente em inglês, deseja conhecer vários lugares e pessoas diferentes para enriquecer seu conhecimento e sua visão de mundo. Por fim, ama lidar com pessoas, é extrovertido, e deseja levar isso para seu caminho profissional.",
                             contacts: {
-                                instagram: "julia",
-                                linkedin: "julia",
+                                instagram: "who.is_juuh",
+                                linkedin: "julia-fernandes-9b5453262",
                                 email: ""
                             }
                         },
@@ -2208,7 +2239,7 @@
                             name: "Ana Julia Gotto",
                             role: "PMO",
                             photo: "administracao/Júlia.jpg",
-                            bio: "Responsável pela gestão de projetos, metodologias e acompanhamento de métricas da liga.",
+                            bio: "Responsável pela gestão de projetos, metodologias e acompanhamento de métricas da liga. Ana Julia tem certificação em gestão de projetos e experiência em implementação de metodologias ágeis, garantindo que todos os projetos da LiUP sejam entregues com excelência.",
                             contacts: {
                                 instagram: "anajulia",
                                 linkedin: "anajulia",
@@ -2219,14 +2250,138 @@
                 }
             };
 
+            // Dados dos eventos
+            const eventsData = {
+                "palestra-cultura": {
+                    title: "Palestra sobre dar vida a sua StartUp",
+                    date: "15/05/2025",
+                    time: "14:00 - 17:00",
+                    location: "Unicamp - Sala PA01",
+                    image: "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    description: "Nesta palestra exclusiva, especialistas em cultura organizacional irão compartilhar insights valiosos sobre como criar um ambiente de trabalho que inspire inovação, colaboração e crescimento. Você aprenderá estratégias práticas para desenvolver uma cultura forte que atraia e retenha talentos, promova a satisfação dos colaboradores e impulsione o sucesso da sua startup.",
+                    schedule: [
+                        "14:00 - 14:30: Credenciamento e café de boas-vindas",
+                        "14:30 - 15:15: Palestra 'Cultura como Diferencial Competitivo' com especialista em RH",
+                        "15:15 - 16:00: Painel com fundadores de startups de sucesso",
+                        "16:00 - 16:45: Workshop prático de construção de cultura",
+                        "16:45 - 17:00: Networking e encerramento"
+                    ],
+                    speakers: [
+                        {
+                            name: "Ana Beatriz Silva",
+                            role: "Especialista em Cultura Organizacional",
+                            photo: "https://randomuser.me/api/portraits/women/44.jpg",
+                            bio: "Consultora com 10 anos de experiência em transformação cultural em startups"
+                        },
+                        {
+                            name: "Carlos Mendonça",
+                            role: "Fundador da TechInova",
+                            photo: "https://randomuser.me/api/portraits/men/32.jpg",
+                            bio: "Empreendedor serial, criou 3 startups com culturas premiadas"
+                        },
+                        {
+                            name: "Mariana Lopes",
+                            role: "Head de Pessoas na StartYouUp",
+                            photo: "https://randomuser.me/api/portraits/women/68.jpg",
+                            bio: "Responsável pela construção da cultura em uma das startups que mais cresce no país"
+                        }
+                    ],
+                    registrationLink: "#"
+                },
+                "simulacao-empreendedorismo": {
+                    title: "Simulação de empreendedorismo",
+                    date: "09/06/2025",
+                    time: "19:00 - 21:30",
+                    location: "Online",
+                    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    description: "Um evento interativo onde você poderá vivenciar os desafios e oportunidades de empreender. Através de uma simulação realista, você irá tomar decisões estratégicas, enfrentar crises e aproveitar oportunidades - tudo em um ambiente seguro e com mentoria de especialistas. Ideal para quem quer testar suas habilidades empreendedoras antes de começar seu próprio negócio.",
+                    schedule: [
+                        "19:00 - 19:30: Introdução ao jogo de simulação",
+                        "19:30 - 20:30: Rodadas de simulação (4 períodos trimestrais)",
+                        "20:30 - 21:00: Análise dos resultados e lições aprendidas",
+                        "21:00 - 21:30: Networking virtual e encerramento"
+                    ],
+                    speakers: [
+                        {
+                            name: "Rodrigo Fernandes",
+                            role: "Facilitador da Simulação",
+                            photo: "https://randomuser.me/api/portraits/men/75.jpg",
+                            bio: "Especialista em jogos de negócios com 15 anos de experiência"
+                        },
+                        {
+                            name: "Patrícia Oliveira",
+                            role: "Mentora de Startups",
+                            photo: "https://randomuser.me/api/portraits/women/63.jpg",
+                            bio: "Já ajudou mais de 50 startups a validarem seus modelos de negócio"
+                        }
+                    ],
+                    registrationLink: "#"
+                },
+                "empresas-startup": {
+                    title: "Evento com empresas que iniciaram como startup",
+                    date: "05/12/2025",
+                    time: "09:00 - 12:00",
+                    location: "Pátio da FCA",
+                    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                    description: "Um encontro inspirador com fundadores e funcionários pioneiros de empresas que começaram como pequenas startups e hoje são referência em seus mercados. Eles compartilharão histórias reais dos desafios superados, erros cometidos e lições aprendidas na jornada do empreendedorismo. Uma oportunidade única para entender como grandes empresas começaram pequenas e quais estratégias foram decisivas para seu crescimento.",
+                    schedule: [
+                        "09:00 - 09:30: Credenciamento e café da manhã",
+                        "09:30 - 10:15: Painel 'Da Garage ao Sucesso' com fundadores",
+                        "10:15 - 11:00: Rodada de cases reais",
+                        "11:00 - 11:45: Networking com os palestrantes",
+                        "11:45 - 12:00: Encerramento e sorteio de brindes"
+                    ],
+                    speakers: [
+                        {
+                            name: "Fernando Costa",
+                            role: "CEO da LogTech",
+                            photo: "https://randomuser.me/api/portraits/men/22.jpg",
+                            bio: "Transformou sua startup de logística em empresa com 500 funcionários"
+                        },
+                        {
+                            name: "Juliana Martins",
+                            role: "Co-fundadora da EduDigital",
+                            photo: "https://randomuser.me/api/portraits/women/33.jpg",
+                            bio: "Sua startup de edtech foi adquirida por um grande grupo educacional"
+                        },
+                        {
+                            name: "Lucas Ribeiro",
+                            role: "Primeiro funcionário da FinTechNow",
+                            photo: "https://randomuser.me/api/portraits/men/45.jpg",
+                            bio: "Viveu toda a jornada de crescimento da startup que hoje vale US$1bi"
+                        },
+                        {
+                            name: "Camila Souza",
+                            role: "Fundadora da HealthInnov",
+                            photo: "https://randomuser.me/api/portraits/women/51.jpg",
+                            bio: "Transformou sua tese de doutorado em startup de saúde premiada"
+                        }
+                    ],
+                    registrationLink: "#"
+                }
+            };
+
             // Modal de Áreas
             const areaModal = document.getElementById('areaModal');
             const modalAreaName = document.getElementById('modalAreaName');
             const modalAreaDescription = document.getElementById('modalAreaDescription');
             const modalMembersGrid = document.getElementById('modalMembersGrid');
+            
+            // Modal de Eventos
+            const eventModal = document.getElementById('eventModal');
+            const modalEventTitle = document.getElementById('modalEventTitle');
+            const modalEventDate = document.getElementById('modalEventDate');
+            const modalEventTime = document.getElementById('modalEventTime');
+            const modalEventLocation = document.getElementById('modalEventLocation');
+            const modalEventImage = document.getElementById('modalEventImage');
+            const modalEventDescription = document.getElementById('modalEventDescription');
+            const modalEventSchedule = document.getElementById('modalEventSchedule');
+            const modalEventSpeakers = document.getElementById('modalEventSpeakers');
+            const modalEventRegister = document.getElementById('modalEventRegister');
+            
             const closeModal = document.querySelectorAll('.close-modal');
             
-            // Função para abrir o modal
+            // Função para abrir o modal de área
             function openAreaModal(areaId) {
                 const areaData = areasData[areaId];
                 
@@ -2271,18 +2426,76 @@
                 document.body.style.overflow = 'hidden';
             }
             
-            // Função para fechar o modal
-            function closeAreaModal() {
-                areaModal.classList.remove('show');
+            // Função para abrir o modal de evento
+            function openEventModal(eventId) {
+                const eventData = eventsData[eventId];
+                
+                if (!eventData) return;
+                
+                // Preencher os dados do evento
+                modalEventTitle.textContent = eventData.title;
+                modalEventDate.textContent = eventData.date;
+                modalEventTime.textContent = eventData.time;
+                modalEventLocation.textContent = eventData.location;
+                modalEventImage.style.backgroundImage = `url('${eventData.image}')`;
+                modalEventDescription.textContent = eventData.description;
+                modalEventRegister.href = eventData.registrationLink;
+                
+                // Limpar programação anterior
+                modalEventSchedule.innerHTML = '';
+                
+                // Adicionar nova programação
+                eventData.schedule.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item;
+                    modalEventSchedule.appendChild(li);
+                });
+                
+                // Limpar palestrantes anteriores
+                modalEventSpeakers.innerHTML = '';
+                
+                // Adicionar novos palestrantes
+                eventData.speakers.forEach(speaker => {
+                    const speakerCard = document.createElement('div');
+                    speakerCard.className = 'speaker-card';
+                    speakerCard.innerHTML = `
+                        <img src="${speaker.photo}" alt="${speaker.name}" class="speaker-photo">
+                        <div class="speaker-info">
+                            <h4>${speaker.name}</h4>
+                            <p>${speaker.role}</p>
+                            <p><small>${speaker.bio}</small></p>
+                        </div>
+                    `;
+                    modalEventSpeakers.appendChild(speakerCard);
+                });
+                
+                // Mostrar o modal
+                eventModal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Função para fechar modais
+            function closeModals() {
+                document.querySelectorAll('.modal.show').forEach(modal => {
+                    modal.classList.remove('show');
+                });
                 document.body.style.overflow = 'auto';
             }
             
-            // Event listeners para abrir modal
+            // Event listeners para abrir modais
             document.querySelectorAll('.btn-area-details, .footer-col ul a[data-area]').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.preventDefault();
                     const areaId = this.getAttribute('data-area') || this.closest('.area-card').getAttribute('data-area');
                     openAreaModal(areaId);
+                });
+            });
+            
+            document.querySelectorAll('.btn-event-details').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const eventId = this.closest('.event-card').getAttribute('data-event');
+                    openEventModal(eventId);
                 });
             });
             
@@ -2300,19 +2513,14 @@
 
             // Event listener para fechar modais
             closeModal.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const modal = this.closest('.modal');
-                    modal.classList.remove('show');
-                    document.body.style.overflow = 'auto';
-                });
+                btn.addEventListener('click', closeModals);
             });
             
             // Fechar quando clicar fora do conteúdo
             document.querySelectorAll('.modal').forEach(modal => {
                 modal.addEventListener('click', function(e) {
                     if (e.target === modal) {
-                        this.classList.remove('show');
-                        document.body.style.overflow = 'auto';
+                        closeModals();
                     }
                 });
             });
@@ -2320,10 +2528,7 @@
             // Fechar com ESC
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
-                    document.querySelectorAll('.modal.show').forEach(modal => {
-                        modal.classList.remove('show');
-                        document.body.style.overflow = 'auto';
-                    });
+                    closeModals();
                 }
             });
 
