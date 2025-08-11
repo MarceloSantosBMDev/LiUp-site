@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StartLab - Evento de Empreendedorismo</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* MANTER EXATAMENTE A MESMA PALETA DE CORES DA LIUP */
+        :root {
+            /* Cores principais */
+            --primary: #f56325;
+            --primary-dark: #d4531d;
+            --primary-light: #f78a5a;
+            --primary-extra-light: #fef0e9;
+            
+            /* Cores secundárias */
+            --secondary: #2a4365;
+            --secondary-dark: #1e3a8a;
+            --secondary-light: #3b82f6;
+            
+            /* Cores neutras */
+            --dark: #1a1a1a;
+            --gray-dark: #333333;
+            --gray: #666666;
+            --gray-light: #999999;
+            --gray-extra-light: #f5f5f5;
+            --white: #ffffff;
+            
+            /* Sombras */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+            --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.25);
+            
+            /* Bordas */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-full: 50%;
+            
+            /* Espaçamentos */
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+            --space-xxl: 48px;
+        }
+
+        /* MANTER TODOS OS ESTILOS BASE DA LIUP */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        /* Tipografia (mesmo estilo da LiUP) */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: var(--space-md);
+            color: var(--gray-dark);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-xxl);
+        }
+
+        .section-subtitle {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: var(--space-sm);
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .section-subtitle::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .section-title {
+            position: relative;
+            padding-bottom: var(--space-md);
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        /* Botões (mesmo estilo da LiUP) */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 6px rgba(245, 99, 37, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(245, 99, 37, 0.3);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary i {
+            margin-left: var(--space-xs);
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover i {
+            transform: translateX(3px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border-color: var(--white);
+            position: relative;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-white {
+            background-color: var(--white);
+            color: var(--primary);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-white:hover {
+            background-color: var(--gray-extra-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Hero Section - Estilo mais parecido com a segunda página */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%), url('images/time.png') no-repeat center center;
+            background-size: cover;
+            color: var(--white);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--space-xl) 0;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 800;
+        }
+
+        .hero-title span {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.3);
+            z-index: -1;
+            border-radius: 4px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-xl);
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: var(--space-xl);
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--white);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        .hero-scroll:hover {
+            opacity: 1;
+            transform: translateX(-50%) translateY(5px);
+        }
+
+        .hero-scroll span {
+            font-size: 0.8rem;
+            margin-bottom: var(--space-xs);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-scroll i {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* About Section - Estilo mais parecido com a segunda página */
+        .about-section {
+            padding: var(--space-xxl) 0;
+            background-color: var(--white);
+            position: relative;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-xxl);
+            align-items: center;
+        }
+
+        .about-text {
+            order: 2;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.5s ease;
+            order: 1;
+        }
+
+        .about-image:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-badge {
+            position: absolute;
+            top: var(--space-md);
+            left: var(--space-md);
+            background-color: var(--primary);
+            color: var(--white);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-sm);
+            z-index: 2;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(245, 99, 37, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(245, 99, 37, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(245, 99, 37, 0);
+            }
+        }
+
+        /* Schedule Section - Estilo mais parecido com a segunda página */
+        .schedule-section {
+            padding: var(--space-xxl) 0;
+            background-color: var(--gray-extra-light);
+            position: relative;
+        }
+
+        .schedule-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNDUsIDk5LCAzNywgMC4wNSkiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiLz48L3N2Zz4=');
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .schedule-card {
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            padding: var(--space-xl);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .schedule-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(245, 99, 37, 0.1) 0%, rgba(245, 99, 37, 0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .schedule-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .schedule-card:hover::before {
+            opacity: 1;
+        }
+
+        .schedule-date {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--space-md);
+            position: relative;
+            display: inline-block;
+        }
+
+        .schedule-date::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .schedule-card:hover .schedule-date::after {
+            width: 60px;
+        }
+
+        .schedule-sessions {
+            margin-top: var(--space-lg);
+        }
+
+        .session-item {
+            display: flex;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-md);
+            border-bottom: 1px dashed var(--gray-light);
+        }
+
+        .session-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .session-time {
+            font-weight: 600;
+            color: var(--primary);
+            flex-shrink: 0;
+            width: 80px;
+        }
+
+        .session-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-xs);
+            color: var(--dark);
+        }
+
+        .session-content p {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+        }
+
+        .session-location {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-top: var(--space-xs);
+        }
+
+        .session-location i {
+            color: var(--primary);
+        }
+
+        /* Sponsorship Section - Estilo mais parecido com a segunda página */
+        .sponsorship-section {
+            padding: var(--space-xxl) 0;
+            background-color: var(--white);
+            position: relative;
+        }
+
+        .sponsorship-tabs {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+        }
+
+        .sponsorship-tab {
+            padding: var(--space-sm) var(--space-lg);
+            background-color: var(--gray-extra-light);
+            color: var(--gray-dark);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .sponsorship-tab.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .sponsorship-content {
+            display: none;
+        }
+
+        .sponsorship-content.active {
+            display: block;
+        }
+
+        .sponsorship-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .sponsorship-card {
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-light);
+            transition: all 0.3s ease;
+        }
+
+        .sponsorship-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        .sponsorship-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: var(--space-md);
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .sponsorship-features {
+            margin-bottom: var(--space-xl);
+        }
+
+        .sponsorship-feature {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+        }
+
+        .sponsorship-feature i {
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .sponsorship-feature span {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+        }
+
+        .sponsorship-price {
+            text-align: center;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .sponsorship-cta {
+            text-align: center;
+        }
+
+        /* Contact Section - Estilo mais parecido com a segunda página */
+        .contact-section {
+            padding: var(--space-xxl) 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-full);
+        }
+
+        .contact-section::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-full);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-xxl);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xl);
+        }
+
+        .info-item {
+            display: flex;
+            gap: var(--space-md);
+            align-items: flex-start;
+            transition: all 0.3s ease;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .info-item:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .info-item:hover .info-icon {
+            background-color: var(--white);
+            color: var(--primary);
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .info-text h3 {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-xs);
+            color: var(--white);
+        }
+
+        .info-text p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-size: 1.1rem;
+        }
+
+        .social-link:hover {
+            background-color: var(--white);
+            color: var(--primary);
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* Formulário - Estilo mais parecido com a segunda página */
+        .contact-form {
+            background-color: var(--white);
+            padding: var(--space-xl);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-md);
+            position: relative;
+        }
+
+        .form-message {
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--space-md);
+            text-align: center;
+            display: none;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .form-message.success {
+            background-color: #E8F5E9;
+            color: #2E7D32;
+            display: block;
+        }
+        
+        .form-message.error {
+            background-color: #FFEBEE;
+            color: #C62828;
+            display: block;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: var(--space-md);
+            border: 1px solid var(--gray-light);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            background-color: var(--gray-extra-light);
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-extra-light);
+            background-color: var(--white);
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer (MESMO ESTILO DA LIUP) */
+        .premium-footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: var(--space-xxl) 0 0;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xxl);
+        }
+
+        .footer-col h3 {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-lg);
+            position: relative;
+            padding-bottom: var(--space-sm);
+            color: var(--white);
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-logo {
+            height: 40px;
+            margin-bottom: var(--space-md);
+            transition: all 0.3s ease;
+        }
+
+        .footer-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .footer-col p {
+            color: var(--gray-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-col ul li {
+            margin-bottom: var(--space-sm);
+            transition: all 0.3s ease;
+        }
+
+        .footer-col ul li:hover {
+            transform: translateX(5px);
+        }
+
+        .footer-col ul a {
+            color: var(--gray-light);
+            transition: color 0.3s ease;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul a:hover {
+            color: var(--primary);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+
+        .footer-social a {
+            color: var(--gray-light);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-dark);
+            padding: var(--space-md) 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: var(--gray-light);
+            font-size: 0.8rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-sm);
+        }
+
+        .footer-links a {
+            color: var(--gray-light);
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Scroll Indicator (mesmo estilo da LiUP) */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background-color: var(--primary);
+            z-index: 1000;
+            transition: width 0.1s ease;
+            box-shadow: 0 2px 4px rgba(245, 99, 37, 0.3);
+        }
+
+        /* Back to Top Button (mesmo estilo da LiUP) */
+        .back-to-top {
+            position: fixed;
+            bottom: var(--space-lg);
+            right: var(--space-lg);
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 999;
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            background-color: var(--primary-dark);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Botão Voltar para Home */
+        .home-btn {
+            position: fixed;
+            bottom: var(--space-lg);
+            left: var(--space-lg);
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-full);
+            background-color: var(--secondary);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 999;
+        }
+
+        .home-btn:hover {
+            background-color: var(--secondary-dark);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Floating Navigation */
+        .floating-nav {
+            position: fixed;
+            bottom: var(--space-lg);
+            right: var(--space-lg);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            transition: all 0.3s ease;
+        }
+
+        .floating-nav.hidden {
+            transform: translateX(150%);
+        }
+
+        .nav-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-full);
+            background-color: var(--primary);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .nav-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .nav-btn:hover::after {
+            transform: translateX(100%);
+        }
+
+        .nav-tooltip {
+            position: absolute;
+            right: 70px;
+            background-color: var(--dark);
+            color: var(--white);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-btn:hover .nav-tooltip {
+            opacity: 1;
+            right: 65px;
+        }
+
+        /* Responsividade (mesmo estilo da LiUP) */
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .about-text {
+                order: initial;
+            }
+            
+            .about-image {
+                order: initial;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .sponsorship-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+            }
+            
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sponsorship-tabs {
+                flex-direction: column;
+            }
+
+            .floating-nav, .home-btn {
+                bottom: var(--space-md);
+                right: var(--space-md);
+                left: var(--space-md);
+            }
+
+            .floating-nav {
+                flex-direction: row;
+                justify-content: flex-end;
+            }
+
+            .home-btn {
+                right: auto;
+            }
+
+            .nav-btn, .home-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-header {
+                margin-bottom: var(--space-xl);
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator"></div>
+
+    <!-- Botão Voltar para Home -->
+    <a href="index.html" class="home-btn">
+        <i class="fas fa-home"></i>
+        <span class="nav-tooltip">Voltar para Home</span>
+    </a>
+
+    <!-- Floating Navigation -->
+    <div class="floating-nav">
+        <a href="#about" class="nav-btn" title="Sobre">
+            <i class="fas fa-info-circle"></i>
+            <span class="nav-tooltip">Sobre o Evento</span>
+        </a>
+        <a href="#schedule" class="nav-btn" title="Programação">
+            <i class="fas fa-calendar-alt"></i>
+            <span class="nav-tooltip">Programação</span>
+        </a>
+        <a href="#sponsorship" class="nav-btn" title="Patrocínio">
+            <i class="fas fa-handshake"></i>
+            <span class="nav-tooltip">Patrocínio</span>
+        </a>
+    </div>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Start<span>Lab</span> 2025</h1>
+                <p class="hero-subtitle" style="color:white">Uma experiência imersiva de Modelagem de Negócios, Inovação e Empreendedorismo na Unicamp Limeira</p>
+                <div class="hero-buttons">
+                    <a href="#about" class="btn btn-primary">
+                        <span>Saiba mais</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#sponsorship" class="btn btn-outline">Seja um Apoiador</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll Down</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Sobre o evento</span>
+                <h2 class="section-title">O que é a StartLab?</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>A StartLab será uma experiência imersiva de sobre Modelagem de Negócios, Inovação e Empreendedorismo que acontecerá na Faculdade de Tecnologia (FT) e na Faculdade de Ciências Aplicadas (FCA) da Unicamp Limeira nos dias 23, 24 e 25 de setembro.</p>
+                    <p>Durante o evento, a comunidade será capacitada por grandes nomes do mercado, com expectativa de participação de 300 estudantes.</p>
+                    <p>O objetivo é proporcionar aos participantes conhecimentos práticos sobre criação e desenvolvimento de startups, desde a concepção da ideia até a captação de investimentos.</p>
+                </div>
+                
+                <div class="about-image hover-scale">
+                    <img src="startlab.png" alt="Evento StartLab">
+                    <div class="image-badge">
+                        <span>23-25 Set 2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="schedule-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Programação</span>
+                <h2 class="section-title">Cronograma do Evento</h2>
+            </div>
+            
+            <div class="schedule-grid">
+                <!-- Dia 1 -->
+                <div class="schedule-card">
+                    <h3 class="schedule-date">23 de setembro</h3>
+                    <div class="schedule-sessions">
+                        <div class="session-item">
+                            <span class="session-time">12:00</span>
+                            <div class="session-content">
+                                <h4>Costumer Development</h4>
+                                <p>Entenda as necessidades do seu cliente e valide sua solução.</p>
+                                <span class="session-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    FCA
+                                </span>
+                            </div>
+                        </div>
+                        <div class="session-item">
+                            <span class="session-time">16:00</span>
+                            <div class="session-content">
+                                <h4>Costumer Development</h4>
+                                <p>Repetição da palestra para outro público.</p>
+                                <span class="session-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    FT
+                                </span>
+                            </div>
+                        </div>
+                        <div class="session-item">
+                            <span class="session-time">17:00</span>
+                            <div class="session-content">
+                                <h4>Pesquisa de Mercado e Concorrência</h4>
+                                <p>Aprenda a analisar seu mercado e identificar oportunidades.</p>
+                                <span class="session-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    FT
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dia 2 -->
+                <div class="schedule-card">
+                    <h3 class="schedule-date">24 de setembro</h3>
+                    <div class="schedule-sessions">
+                        <div class="session-item">
+                            <span class="session-time">12:00</span>
+                            <div class="session-content">
+                                <h4>Proposta de Valor e BMC</h4>
+                                <p>Defina sua proposta única de valor e modele seu negócio.</p>
+                                <span class="session-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    FCA
+                                </span>
+                            </div>
+                        </div>
+                        <div class="session-item">
+                            <span class="session-time">17:00</span>
+                            <div class="session-content">
+                                <h4>Produto Mínimo viável (MVP)</h4>
+                                <p>Desenvolva a versão mais simples do seu produto para validação.</p>
+                                <span class="session-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    FT
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dia 3 -->
+                <div class="schedule-card">
+                    <h3 class="schedule-date">25 de setembro</h3>
+                    <div class="schedule-sessions">
+                        <div class="session-item">
+                            <span class="session-time">12:00</span>
+                            <div class="session-content">
+                                <h4>Tração: Primeiras vendas</h4>
+                                <p>Estratégias para conquistar seus primeiros clientes.</p>
+                                <span class="session-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    FCA
+                                </span>
+                            </div>
+                        </div>
+                        <div class="session-item">
+                            <span class="session-time">17:00</span>
+                            <div class="session-content">
+                                <h4>Fundraising: Recebendo investimentos</h4>
+                                <p>Tudo sobre como captar recursos para sua startup.</p>
+                                <span class="session-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    FT
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsorship Section -->
+    <section id="sponsorship" class="sponsorship-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Patrocínio</span>
+                <h2 class="section-title">Participe como Apoiador ou Patrocinador</h2>
+            </div>
+            
+            <div class="sponsorship-tabs">
+                <div class="sponsorship-tab active" data-tab="supporter">Seja um Apoiador</div>
+                <div class="sponsorship-tab" data-tab="sponsor">Seja um Patrocinador</div>
+            </div>
+            
+            <div class="sponsorship-content active" id="supporter-content">
+                <div class="sponsorship-grid">
+                    <div class="sponsorship-card">
+                        <h3 class="sponsorship-title">GARAGE</h3>
+                        <div class="sponsorship-features">
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Logo no site, banner e camiseta do evento</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Pequena visibilidade no Instagram e LinkedIn</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Participação em Carrossel (Instagram + LinkedIn)</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Divulgação de vagas na Unicamp</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-times"></i>
+                                <span>Participação: Oficinas de Empreendedorismo</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-times"></i>
+                                <span>Acesso aos dados dos participantes do Evento</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-times"></i>
+                                <span>Direito a Palestra exclusiva na Unicamp pós evento</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-times"></i>
+                                <span>Stand no evento</span>
+                            </div>
+                        </div>
+                        <p class="sponsorship-price">Benefícios podem variar a depender do valor equivalente do apoio</p>
+                        <div class="sponsorship-cta">
+                            <a href="#contact" class="btn btn-primary">Quero Apoiar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-footer" style="margin-top: var(--space-xl); text-align: center;">
+                    <p>Formas de Apoio: Coffee Break, Brindes, Recursos Gráficos, etc.</p>
+                </div>
+            </div>
+            
+            <div class="sponsorship-content" id="sponsor-content">
+                <div class="sponsorship-grid">
+                    <div class="sponsorship-card">
+                        <h3 class="sponsorship-title">GARAGE</h3>
+                        <div class="sponsorship-features">
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Logo no site, banner e camiseta do evento</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Pequena visibilidade no Instagram e LinkedIn</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Carrossel geral</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Divulgação de vagas na Unicamp</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Ouvinte em Oficinas de Empreendedorismo</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-times"></i>
+                                <span>Acesso aos dados dos participantes</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Resumo filtrado pós-evento</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-times"></i>
+                                <span>Stand no evento</span>
+                            </div>
+                        </div>
+                        <p class="sponsorship-price">Valor da Cota: R$1000,00 (7 cotas disponíveis)</p>
+                        <div class="sponsorship-cta">
+                            <a href="#contact" class="btn btn-primary">Quero Patrocinar</a>
+                        </div>
+                    </div>
+                    
+                    <div class="sponsorship-card">
+                        <h3 class="sponsorship-title">ROCKET</h3>
+                        <div class="sponsorship-features">
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Logo no site, banner e camiseta do evento</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Média visibilidade no Instagram e LinkedIn</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Destaque exclusivo</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Divulgação de vagas na Unicamp</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Destaque digital em Oficinas</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Acesso a dados completos dos participantes</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-times"></i>
+                                <span>Direito a Palestra exclusiva</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Stand no evento</span>
+                            </div>
+                        </div>
+                        <p class="sponsorship-price">Valor da Cota: R$3000,00 (5 cotas disponíveis)</p>
+                        <div class="sponsorship-cta">
+                            <a href="#contact" class="btn btn-primary">Quero Patrocinar</a>
+                        </div>
+                    </div>
+                    
+                    <div class="sponsorship-card">
+                        <h3 class="sponsorship-title">SHARK</h3>
+                        <div class="sponsorship-features">
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Logo no site, banner e camiseta do evento</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Grande visibilidade no Instagram e LinkedIn</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Post único destacado</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Divulgação comunitária de vagas</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Destaque digital + QR físico</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Banca de dados completos</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Direito a Palestra exclusiva</span>
+                            </div>
+                            <div class="sponsorship-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Stand premium no evento</span>
+                            </div>
+                        </div>
+                        <p class="sponsorship-price">Valor da Cota: R$5000,00 (3 cotas disponíveis)</p>
+                        <div class="sponsorship-cta">
+                            <a href="#contact" class="btn btn-primary">Quero Patrocinar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle" style="color:black">Contato</span>
+                <h2 class="section-title">Vamos transformar o empreendedorismo universitário?</h2>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Email</h3>
+                            <p>liup@unicamp.br</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-hashtag"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Redes Sociais</h3>
+                            <p>@liup.unicamp</p>
+                            <p>@ligadestartups</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/liup.unicamp/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/liup/posts/?feedView=all" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm" action="https://formsubmit.co/liup@unicamp.br" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="Contato StartLab">
+                        <input type="hidden" name="_template" value="table">
+                        
+                        <div id="formMessage" class="form-message"></div>
+                        
+                        <div class="form-group">
+                            <input type="text" name="Nome" placeholder="Seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="Email" placeholder="Seu email" required>
+                        </div>
+                        <div class="form-group">
+                            <select name="Interesse" required>
+                                <option value="" disabled selected>Selecione seu interesse</option>
+                                <option value="participant">Quero participar do evento</option>
+                                <option value="supporter">Quero ser apoiador</option>
+                                <option value="sponsor">Quero ser patrocinador</option>
+                                <option value="speaker">Quero ser palestrante</option>
+                                <option value="other">Outro assunto</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="Mensagem" placeholder="Sua mensagem" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (IGUAL AO DA LIUP) -->
+    <footer class="premium-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <img src="logoliup.png" alt="LiUP Logo" class="footer-logo hover-scale">
+                    <p>Liga de Startups da Unicamp. Conectando talentos, impulsionando inovações e transformando ideias em negócios de sucesso desde 2025.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">Nossa História</a></li>
+                        <li><a href="events.html">Eventos</a></li>
+                        <li><a href="#areas">Áreas</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Eventos</h3>
+                    <ul>
+                        <li><a href="#">StartLab 2025</a></li>
+                        <li><a href="#">Workshops</a></li>
+                        <li><a href="#">Palestras</a></li>
+                        <li><a href="#">Competições</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Redes Sociais</h3>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/liup.unicamp/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/liup/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <p>Siga-nos para ficar por dentro das novidades e oportunidades.</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LiUP - Liga de Startups da Unicamp. Todos os direitos reservados.</p>
+                <div class="footer-links">
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scroll Indicator
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            
+            // Back to Top Button
+            const backToTopBtn = document.querySelector('.back-to-top');
+            
+            // Floating Navigation
+            const floatingNav = document.querySelector('.floating-nav');
+            let lastScrollPosition = 0;
+            
+            // Update scroll indicator and back to top button
+            function updateScroll() {
+                const scrollTop = document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight;
+                const clientHeight = document.documentElement.clientHeight;
+                const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+                scrollIndicator.style.width = scrollPercentage + '%';
+                
+                if (scrollTop > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+                
+                // Hide floating nav on scroll down, show on scroll up
+                const currentScrollPosition = window.pageYOffset;
+                
+                if (currentScrollPosition > lastScrollPosition && currentScrollPosition > 100) {
+                    // Scrolling down
+                    floatingNav.classList.add('hidden');
+                } else {
+                    // Scrolling up
+                    floatingNav.classList.remove('hidden');
+                }
+                
+                lastScrollPosition = currentScrollPosition;
+            }
+            
+            window.addEventListener('scroll', updateScroll);
+            
+            // Smooth Scroll for Anchor Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Sponsorship Tabs
+            const sponsorshipTabs = document.querySelectorAll('.sponsorship-tab');
+            const sponsorshipContents = document.querySelectorAll('.sponsorship-content');
+            
+            sponsorshipTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Update tabs
+                    sponsorshipTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update contents
+                    sponsorshipContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === `${tabId}-content`) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const formMessage = document.getElementById('formMessage');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                    submitBtn.disabled = true;
+                    
+                    // Enviar formulário via FormSubmit
+                    fetch(this.action, {
+                        method: 'POST',
+                        body: new FormData(this),
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Mostrar mensagem de sucesso
+                            formMessage.className = 'form-message success';
+                            formMessage.innerHTML = '<i class="fas fa-check-circle"></i> Mensagem enviada com sucesso! Entraremos em contato em breve.';
+                            
+                            // Resetar formulário
+                            this.reset();
+                        } else {
+                            throw new Error('Erro ao enviar formulário');
+                        }
+                    })
+                    .catch(error => {
+                        // Mostrar mensagem de erro
+                        formMessage.className = 'form-message error';
+                        formMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.';
+                    })
+                    .finally(() => {
+                        // Restaurar botão
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        
+                        // Rolagem suave para o topo do formulário
+                        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    });
+                });
+            }
+            
+            // Initialize scroll position
+            updateScroll();
+            
+            // Animações ao scroll
+            function initScrollAnimations() {
+                const animateElements = document.querySelectorAll('.schedule-card, .sponsorship-card, .info-item');
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate');
+                        }
+                    });
+                }, {
+                    threshold: 0.1
+                });
+                
+                animateElements.forEach(el => {
+                    observer.observe(el);
+                });
+            }
+            
+            initScrollAnimations();
+        });
+    </script>
+</body>
+</html>

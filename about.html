@@ -244,7 +244,7 @@
             min-height: 700px;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%), url('https://images.unsplash.com/photo-1522071901873-411886a10004?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%), url('images/businessimag.png') no-repeat center center;
             background-size: cover;
             color: var(--white);
             overflow: hidden;
@@ -1596,7 +1596,7 @@
                         <div class="processo-form">
                             <h3>Formulário de Inscrição</h3>
                             <div id="formMessage" class="form-message"></div>
-                            <form id="inscricaoForm" action="https://formsubmit.co/nagatofx7@gmail.com" method="POST">
+                            <form id="inscricaoForm" action="https://formsubmit.co/liup@unicamp.br" method="POST">
                                 <input type="hidden" name="_captcha" value="false">
                                 <input type="hidden" name="_subject" value="Nova inscrição no Processo Seletivo LiUP">
                                 <input type="hidden" name="_template" value="table">
@@ -1657,7 +1657,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Configuração do Processo Seletivo
             const processoConfig = {
-                aberto: false, // Mude para true para abrir o processo
+                aberto: true, // Mude para true para abrir o processo
                 dataLimite: "30/11/2025", // Data limite quando aberto
                 mensagemFechado: "Nosso processo seletivo está atualmente fechado para novas inscrições.",
                 mensagemAberto: `Nosso processo seletivo está aberto até <strong>${this.dataLimite}</strong>`
