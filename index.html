@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LiUP - Liga de Startups</title>
+    <link rel="icon" type="image/x-icon" href="logoliup.png">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -1610,6 +1612,10 @@
 
     <!-- Floating Navigation -->
     <div class="floating-nav">
+        <a href="startlab.html" class="nav-btn" title="Startlab">
+            <i class="fa-solid fa-fire"></i>
+            <span class="nav-tooltip">StartLab</span>
+        </a>
         <a href="#about" class="nav-btn" title="Sobre">
             <i class="fas fa-info-circle"></i>
             <span class="nav-tooltip">Sobre nós</span>
@@ -1747,63 +1753,26 @@
             
             <div class="events-slider">
                 <!-- Evento 1 -->
+                 <!-- Caso alguem queira colocar algum evento, basta dar cntl C e cntl V nesse evento antes do section-->
                 <div class="event-card hover-lift" data-event="palestra-cultura">
-                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                    <div class="event-image" style="background-image: url('startlab.png')"></div>
                     <div class="event-content">
-                        <span class="event-date">15/05/2025</span>
-                        <h3>Palestra sobre dar vida a sua StartUp</h3>
+                        <span class="event-date">23/09/25 - 25/09/25</span>
+                        <h3>StartLab</h3>
                         <div class="event-meta">
                             <i class="far fa-clock"></i>
-                            <span>14:00 - 17:00</span>
+                            <span>12:00 - 17:00</span>
                         </div>
                         <div class="event-meta">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Unicamp - Sala PA01</span>
+                            <span>Unicamp - Faculdade de Tecnologia</span>
                         </div>
-                        <p>Aprenda como criar uma cultura organizacional forte para tornar seu ambiente mais acolhedor e aumentar a satisfação dos colaboradores.</p>
+                        <p>A StartLab será um evento imersivo sobre Modelagem de Negócios, Inovação e Empreendedorismo, realizado na FT e FCA da Unicamp em Limeira nos dias 23 a 25 de setembro, com palestras de grandes nomes do mercado e expectativa de 300 participantes.</p>
                         <button class="btn btn-primary btn-event-details">Mais Informações</button>
                     </div>
                 </div>
                 
-                <!-- Evento 2 -->
-                <div class="event-card hover-lift" data-event="simulacao-empreendedorismo">
-                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
-                    <div class="event-content">
-                        <span class="event-date">09/06/2025</span>
-                        <h3>Simulação de empreendedorismo</h3>
-                        <div class="event-meta">
-                            <i class="far fa-clock"></i>
-                            <span>19:00 - 21:30</span>
-                        </div>
-                        <div class="event-meta">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Online</span>
-                        </div>
-                        <p>Conversa com empreendedores de sucesso que compartilharão suas experiências, seguida de uma dinâmica prática de simulação de startup.</p>
-                        <button class="btn btn-primary btn-event-details">Mais Informações</button>
-                    </div>
-                </div>
-                
-                <!-- Evento 3 -->
-                <div class="event-card hover-lift" data-event="empresas-startup">
-                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
-                    <div class="event-content">
-                        <span class="event-date">05/12/2025</span>
-                        <h3>Evento com empresas que iniciaram como startup</h3>
-                        <div class="event-meta">
-                            <i class="far fa-clock"></i>
-                            <span>09:00 - 12:00</span>
-                        </div>
-                        <div class="event-meta">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Pátio da FCA</span>
-                        </div>
-                        <p>Converse com funcionários pioneiros e fundadores de empresas que começaram como startups e hoje são referência em seus mercados.</p>
-                        <button class="btn btn-primary btn-event-details">Mais Informações</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+   
     </section>
 
     <!-- Join Section -->
@@ -1962,10 +1931,7 @@
                     <h3>Programação</h3>
                     <ul id="modalEventSchedule"></ul>
                     
-                    <h3>Palestrantes</h3>
-                    <div class="speakers-grid" id="modalEventSpeakers"></div>
                     
-                    <div class="event-cta">
                         <a href="#" class="btn btn-primary" id="modalEventRegister">Inscreva-se</a>
                     </div>
                 </div>
@@ -2257,14 +2223,20 @@
                     date: "15/05/2025",
                     time: "14:00 - 17:00",
                     location: "Unicamp - Sala PA01",
-                    image: "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                    description: "Nesta palestra exclusiva, especialistas em cultura organizacional irão compartilhar insights valiosos sobre como criar um ambiente de trabalho que inspire inovação, colaboração e crescimento. Você aprenderá estratégias práticas para desenvolver uma cultura forte que atraia e retenha talentos, promova a satisfação dos colaboradores e impulsione o sucesso da sua startup.",
+                    image: "startlab.png",
+                    description: "A StartLab será um evento imersivo voltado para Modelagem de Negócios, Inovação e Empreendedorismo, que ocorrerá na Faculdade de Tecnologia e na Faculdade de Ciências Aplicadas da Unicamp, em Limeira, nos dias 23, 24 e 25 de setembro. Durante esses dias, especialistas renomados do mercado irão compartilhar conhecimentos para capacitar os participantes, e a organização espera receber cerca de 300 estudantes.",
                     schedule: [
-                        "14:00 - 14:30: Credenciamento e café de boas-vindas",
-                        "14:30 - 15:15: Palestra 'Cultura como Diferencial Competitivo' com especialista em RH",
-                        "15:15 - 16:00: Painel com fundadores de startups de sucesso",
-                        "16:00 - 16:45: Workshop prático de construção de cultura",
-                        "16:45 - 17:00: Networking e encerramento"
+                        "23/09/2025 - 12:00: Costumer Development",
+                        "23/09/2025 - 16:00: Costumer Development",
+                        "23/09/2025 - 17:00: Pesquisa de Mercado e Concorrência",
+                        "24/09/2025 - 12:00: Proposta de Valor e BMC",
+                        "24/09/2025 - 17:00: Produto Mínimo viável (MVP)",
+                        "25/09/2025 - 12:00: Tração primeiras vendas",
+                        "25/09/2025 - 17:00: Fundraising: Recebendo investimentos",
+
+
+
+
                     ],
                     speakers: [
                         {
@@ -2288,77 +2260,6 @@
                     ],
                     registrationLink: "#"
                 },
-                "simulacao-empreendedorismo": {
-                    title: "Simulação de empreendedorismo",
-                    date: "09/06/2025",
-                    time: "19:00 - 21:30",
-                    location: "Online",
-                    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                    description: "Um evento interativo onde você poderá vivenciar os desafios e oportunidades de empreender. Através de uma simulação realista, você irá tomar decisões estratégicas, enfrentar crises e aproveitar oportunidades - tudo em um ambiente seguro e com mentoria de especialistas. Ideal para quem quer testar suas habilidades empreendedoras antes de começar seu próprio negócio.",
-                    schedule: [
-                        "19:00 - 19:30: Introdução ao jogo de simulação",
-                        "19:30 - 20:30: Rodadas de simulação (4 períodos trimestrais)",
-                        "20:30 - 21:00: Análise dos resultados e lições aprendidas",
-                        "21:00 - 21:30: Networking virtual e encerramento"
-                    ],
-                    speakers: [
-                        {
-                            name: "Rodrigo Fernandes",
-                            role: "Facilitador da Simulação",
-                            photo: "https://randomuser.me/api/portraits/men/75.jpg",
-                            bio: "Especialista em jogos de negócios com 15 anos de experiência"
-                        },
-                        {
-                            name: "Patrícia Oliveira",
-                            role: "Mentora de Startups",
-                            photo: "https://randomuser.me/api/portraits/women/63.jpg",
-                            bio: "Já ajudou mais de 50 startups a validarem seus modelos de negócio"
-                        }
-                    ],
-                    registrationLink: "#"
-                },
-                "empresas-startup": {
-                    title: "Evento com empresas que iniciaram como startup",
-                    date: "05/12/2025",
-                    time: "09:00 - 12:00",
-                    location: "Pátio da FCA",
-                    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-                    description: "Um encontro inspirador com fundadores e funcionários pioneiros de empresas que começaram como pequenas startups e hoje são referência em seus mercados. Eles compartilharão histórias reais dos desafios superados, erros cometidos e lições aprendidas na jornada do empreendedorismo. Uma oportunidade única para entender como grandes empresas começaram pequenas e quais estratégias foram decisivas para seu crescimento.",
-                    schedule: [
-                        "09:00 - 09:30: Credenciamento e café da manhã",
-                        "09:30 - 10:15: Painel 'Da Garage ao Sucesso' com fundadores",
-                        "10:15 - 11:00: Rodada de cases reais",
-                        "11:00 - 11:45: Networking com os palestrantes",
-                        "11:45 - 12:00: Encerramento e sorteio de brindes"
-                    ],
-                    speakers: [
-                        {
-                            name: "Fernando Costa",
-                            role: "CEO da LogTech",
-                            photo: "https://randomuser.me/api/portraits/men/22.jpg",
-                            bio: "Transformou sua startup de logística em empresa com 500 funcionários"
-                        },
-                        {
-                            name: "Juliana Martins",
-                            role: "Co-fundadora da EduDigital",
-                            photo: "https://randomuser.me/api/portraits/women/33.jpg",
-                            bio: "Sua startup de edtech foi adquirida por um grande grupo educacional"
-                        },
-                        {
-                            name: "Lucas Ribeiro",
-                            role: "Primeiro funcionário da FinTechNow",
-                            photo: "https://randomuser.me/api/portraits/men/45.jpg",
-                            bio: "Viveu toda a jornada de crescimento da startup que hoje vale US$1bi"
-                        },
-                        {
-                            name: "Camila Souza",
-                            role: "Fundadora da HealthInnov",
-                            photo: "https://randomuser.me/api/portraits/women/51.jpg",
-                            bio: "Transformou sua tese de doutorado em startup de saúde premiada"
-                        }
-                    ],
-                    registrationLink: "#"
-                }
             };
 
             // Modal de Áreas
@@ -2451,24 +2352,9 @@
                     modalEventSchedule.appendChild(li);
                 });
                 
-                // Limpar palestrantes anteriores
-                modalEventSpeakers.innerHTML = '';
+
                 
-                // Adicionar novos palestrantes
-                eventData.speakers.forEach(speaker => {
-                    const speakerCard = document.createElement('div');
-                    speakerCard.className = 'speaker-card';
-                    speakerCard.innerHTML = `
-                        <img src="${speaker.photo}" alt="${speaker.name}" class="speaker-photo">
-                        <div class="speaker-info">
-                            <h4>${speaker.name}</h4>
-                            <p>${speaker.role}</p>
-                            <p><small>${speaker.bio}</small></p>
-                        </div>
-                    `;
-                    modalEventSpeakers.appendChild(speakerCard);
-                });
-                
+
                 // Mostrar o modal
                 eventModal.classList.add('show');
                 document.body.style.overflow = 'hidden';

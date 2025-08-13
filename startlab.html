@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StartLab - Evento de Empreendedorismo</title>
+    <link rel="icon" type="image/x-icon" href="logoliup.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -997,35 +998,35 @@
         }
 
         /* Back to Top Button (mesmo estilo da LiUP) */
-        .back-to-top {
-            position: fixed;
-            bottom: var(--space-lg);
-            right: var(--space-lg);
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary);
-            color: var(--white);
-            border-radius: var(--radius-full);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            z-index: 999;
-            box-shadow: var(--shadow-md);
-        }
+.back-to-top {
+    position: fixed;
+    bottom: var(--space-lg);
+    right: var(--space-lg);
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary);
+    color: var(--white);
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 999;
+    box-shadow: var(--shadow-md);
+}
 
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
 
-        .back-to-top:hover {
-            transform: translateY(-5px) scale(1.1);
-            background-color: var(--primary-dark);
-            box-shadow: var(--shadow-lg);
-        }
+.back-to-top:hover {
+    transform: translateY(-5px) scale(1.1);
+    background-color: var(--primary-dark);
+    box-shadow: var(--shadow-lg);
+}
 
         /* Botão Voltar para Home */
         .home-btn {
@@ -1251,10 +1252,7 @@
         </a>
     </div>
 
-    <!-- Back to Top Button -->
-    <a href="#" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
+
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -1733,7 +1731,7 @@
             const scrollIndicator = document.querySelector('.scroll-indicator');
             
             // Back to Top Button
-            const backToTopBtn = document.querySelector('.back-to-top');
+const backToTopBtn = document.querySelector('.back-to-top');
             
             // Floating Navigation
             const floatingNav = document.querySelector('.floating-nav');
@@ -1747,11 +1745,7 @@
                 const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
                 scrollIndicator.style.width = scrollPercentage + '%';
                 
-                if (scrollTop > 300) {
-                    backToTopBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
-                }
+
                 
                 // Hide floating nav on scroll down, show on scroll up
                 const currentScrollPosition = window.pageYOffset;

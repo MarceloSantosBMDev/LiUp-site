@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "ligadestartups-unicamp",
+    ".": "ligadestartups-unicamp"
+  },
+  "targets": {},
+  "etags": {}
+}
