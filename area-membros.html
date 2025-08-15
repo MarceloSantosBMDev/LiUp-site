@@ -524,75 +524,77 @@
     </nav>
 
     <!-- Conteúdo Principal -->
-    <div class="container">
-        <section class="welcome-section">
-            <h1 class="welcome-title">Bem-vindo de volta, <span id="welcomeName">Membro</span>!</h1>
-            <p class="welcome-subtitle">Confira suas atividades recentes e o que está acontecendo na LiUP</p>
-        </section>
-        
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-calendar-check"></i>
-                </div>
-                <h3 class="stat-title">Eventos Participados</h3>
-                <p class="stat-value" id="eventsCount">0</p>
-            </div>
+    <div id="main-content" style="display: none;">
+        <div class="container">
+            <section class="welcome-section">
+                <h1 class="welcome-title">Bem-vindo de volta, <span id="welcomeName">Membro</span>!</h1>
+                <p class="welcome-subtitle">Confira suas atividades recentes e o que está acontecendo na LiUP</p>
+            </section>
             
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-tasks"></i>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3 class="stat-title">Eventos Participados</h3>
+                    <p class="stat-value" id="eventsCount">0</p>
                 </div>
-                <h3 class="stat-title">Tarefas Concluídas</h3>
-                <p class="stat-value" id="tasksCount">0</p>
-            </div>
-            
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-users"></i>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3 class="stat-title">Tarefas Concluídas</h3>
+                    <p class="stat-value" id="tasksCount">0</p>
                 </div>
-                <h3 class="stat-title">Conexões</h3>
-                <p class="stat-value" id="connectionsCount">0</p>
-            </div>
-            
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-star"></i>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="stat-title">Conexões</h3>
+                    <p class="stat-value" id="connectionsCount">0</p>
                 </div>
-                <h3 class="stat-title">Pontos</h3>
-                <p class="stat-value" id="pointsCount">0</p>
-            </div>
-        </div>
-        
-        <h2 style="margin-bottom: 20px; color: var(--primary);">Ações Rápidas</h2>
-        <div class="quick-actions">
-            <div class="action-card" id="scheduleMeetingBtn">
-                <div class="action-icon">
-                    <i class="fas fa-calendar-plus"></i>
-                </div>
-                <div class="action-content">
-                    <h3>Agendar Reunião</h3>
-                    <p>Marque uma reunião com sua equipe</p>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="stat-title">Pontos</h3>
+                    <p class="stat-value" id="pointsCount">0</p>
                 </div>
             </div>
             
-            <div class="action-card" id="reportsBtn">
-                <div class="action-icon">
-                    <i class="fas fa-file-alt"></i>
+            <h2 style="margin-bottom: 20px; color: var(--primary);">Ações Rápidas</h2>
+            <div class="quick-actions">
+                <div class="action-card" id="scheduleMeetingBtn">
+                    <div class="action-icon">
+                        <i class="fas fa-calendar-plus"></i>
+                    </div>
+                    <div class="action-content">
+                        <h3>Agendar Reunião</h3>
+                        <p>Marque uma reunião com sua equipe</p>
+                    </div>
                 </div>
-                <div class="action-content">
-                    <h3>Relatórios</h3>
-                    <p>Acesse seus relatórios de atividades</p>
+                
+                <div class="action-card" id="reportsBtn">
+                    <div class="action-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="action-content">
+                        <h3>Relatórios</h3>
+                        <p>Acesse seus relatórios de atividades</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="action-card" id="projectsBtn">
-                <div class="action-icon">
-                    <i class="fas fa-project-diagram"></i>
-                </div>
-                <div class="action-content">
-                    <h3>Projetos</h3>
-                    <p>Gerencie seus projetos atuais</p>
+                
+                <div class="action-card" id="projectsBtn">
+                    <div class="action-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="action-content">
+                        <h3>Projetos</h3>
+                        <p>Gerencie seus projetos atuais</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -644,7 +646,7 @@
     </div>
 
     <!-- Loading -->
-    <div class="loading" id="loading" style="display: none;">
+    <div class="loading" id="loading">
         <i class="fas fa-spinner fa-spin"></i> Carregando...
     </div>
 
@@ -690,6 +692,7 @@
         const editPhone = document.getElementById('editPhone');
         const editAvatar = document.getElementById('editAvatar');
         const loading = document.getElementById('loading');
+        const mainContent = document.getElementById('main-content');
 
         // Elementos de estatísticas
         const eventsCount = document.getElementById('eventsCount');
@@ -698,37 +701,38 @@
         const pointsCount = document.getElementById('pointsCount');
 
         // Verificar autenticação
-auth.onAuthStateChanged((user) => {
-    if (user) {
-        // Usuário autenticado
-        loading.style.display = 'none';
-        content.style.display = 'block';
-        
-        loadUserData(user);
-        loadUserStats(user.uid);
-    } else {
-        // Usuário não autenticado
-        window.location.replace('login.html');
-    }
-});
 
 
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // Usuário logado → mostra conteúdo
+                mainContent.style.display = 'block';
+                loading.style.display = 'none';
+                carregarPerfil(user.uid);
+            } else {
+                // Não logado → redireciona
+                window.location.href = "login.html";
+            }
+        });
         // Carregar dados do usuário do Firestore
         function loadUserData(user) {
+            // Mostrar loading e esconder conteúdo
             loading.style.display = 'flex';
+            mainContent.style.display = 'none';
             
+            // Ajuste para a estrutura do Firestore conforme a imagem
             db.collection("usuarios").doc(user.uid).get().then((doc) => {
                 if (doc.exists) {
                     const userData = doc.data();
                     
                     // Atualizar navbar
-                    welcomeName.textContent = userData.nome.split(' ')[0];
-                    userName.textContent = userData.nome;
+                    welcomeName.textContent = userData.nome ? userData.nome.split(' ')[0] : 'Membro';
+                    userName.textContent = userData.nome || 'Usuário';
                     userAvatar.src = userData.avatar || 'https://randomuser.me/api/portraits/men/32.jpg';
                     
                     // Preencher modal de perfil
-                    profileName.textContent = userData.nome;
-                    profileEmail.textContent = user.email;
+                    profileName.textContent = userData.nome || 'Usuário';
+                    profileEmail.textContent = user.email || '';
                     profileRole.textContent = userData.cargo || 'Membro';
                     profileArea.textContent = userData.area || 'Não informado';
                     profilePhone.textContent = userData.telefone || 'Não informado';
@@ -749,9 +753,11 @@ auth.onAuthStateChanged((user) => {
                     editPhone.value = userData.telefone || '';
                     editAvatar.value = userData.avatar || '';
                     
+                    // Esconder loading e mostrar conteúdo
                     loading.style.display = 'none';
+                    mainContent.style.display = 'block';
                 } else {
-                    // Se não existir documento, criar um básico
+                    // Se não existir documento, criar um básico conforme estrutura da imagem
                     const defaultData = {
                         nome: user.displayName || 'Novo Membro',
                         email: user.email,
@@ -763,7 +769,8 @@ auth.onAuthStateChanged((user) => {
                         eventos: 0,
                         tarefas: 0,
                         conexoes: 0,
-                        pontos: 0
+                        pontos: 0,
+                        status: "ativo" // Adicionado conforme estrutura da imagem
                     };
                     
                     db.collection("usuarios").doc(user.uid).set(defaultData)
@@ -773,11 +780,13 @@ auth.onAuthStateChanged((user) => {
                         .catch((error) => {
                             console.error("Erro ao criar perfil:", error);
                             loading.style.display = 'none';
+                            alert("Erro ao carregar dados do usuário");
                         });
                 }
             }).catch((error) => {
                 console.error("Erro ao carregar dados:", error);
                 loading.style.display = 'none';
+                alert("Erro ao carregar dados do usuário");
             });
         }
 
@@ -791,6 +800,8 @@ auth.onAuthStateChanged((user) => {
                     connectionsCount.textContent = data.conexoes || 0;
                     pointsCount.textContent = data.pontos || 0;
                 }
+            }).catch((error) => {
+                console.error("Erro ao carregar estatísticas:", error);
             });
         }
 
@@ -829,11 +840,13 @@ auth.onAuthStateChanged((user) => {
         // Logout
         logoutBtn.addEventListener('click', function() {
             loading.style.display = 'flex';
+            mainContent.style.display = 'none';
             auth.signOut().then(() => {
                 window.location.href = 'login.html';
             }).catch((error) => {
                 console.error('Erro ao fazer logout:', error);
                 loading.style.display = 'none';
+                mainContent.style.display = 'block';
             });
         });
 
@@ -884,6 +897,7 @@ auth.onAuthStateChanged((user) => {
             if (!user) return;
             
             loading.style.display = 'flex';
+            mainContent.style.display = 'none';
             
             const updates = {
                 nome: editName.value,
@@ -907,10 +921,12 @@ auth.onAuthStateChanged((user) => {
                     
                     exitEditMode();
                     loading.style.display = 'none';
+                    mainContent.style.display = 'block';
                 })
                 .catch((error) => {
                     console.error("Erro ao atualizar perfil:", error);
                     loading.style.display = 'none';
+                    mainContent.style.display = 'block';
                     alert("Ocorreu um erro ao salvar as alterações.");
                 });
         });
@@ -923,6 +939,47 @@ auth.onAuthStateChanged((user) => {
                 exitEditMode();
             }
         });
+
+
+            saveBtn.addEventListener('click', function() {
+    const user = auth.currentUser;
+    if (!user) return;
+    
+    loading.style.display = 'flex';
+    mainContent.style.display = 'none';
+    
+    const updates = {
+        nome: editName.value.trim(),
+        cargo: editRole.value.trim(),
+        area: editArea.value.trim(),
+        telefone: editPhone.value.trim(),
+        avatar: editAvatar.value.trim()
+    };
+
+    db.collection("usuarios").doc(user.uid).update(updates)
+        .then(() => {
+            // Atualiza visualmente o perfil sem recarregar a página
+            profileName.textContent = updates.nome;
+            userName.textContent = updates.nome;
+            welcomeName.textContent = updates.nome.split(' ')[0];
+            profileRole.textContent = updates.cargo;
+            profileArea.textContent = updates.area;
+            profilePhone.textContent = updates.telefone;
+            profileAvatar.src = updates.avatar;
+            userAvatar.src = updates.avatar;
+
+            exitEditMode();
+            profileModal.classList.remove('show');
+        })
+        .catch((error) => {
+            console.error("Erro ao atualizar perfil:", error);
+            alert("Não foi possível salvar as alterações.");
+        })
+        .finally(() => {
+            loading.style.display = 'none';
+            mainContent.style.display = 'block';
+        });
+});
 
         // Ações rápidas
         document.getElementById('scheduleMeetingBtn').addEventListener('click', function() {
