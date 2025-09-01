@@ -1,6 +1,39 @@
-# LiUp-site
-O site da LiUp até o momento é ultilizado para meio de contato com a mesma e para parte visual da liga de startups.
+# 🌟 LiUp - Liga de Startups da Unicamp
 
-# Funcionalidades
-    - O usúario do site pode se increver no PS (processo seletivo) da LiUP, caso o mesmo esteja aberto, caso esteja fechado, será avisado para o usúario por meio do mesmo modal
-    - O usúario (interesse em apoiador e patrocinador) também pode entrar em contato com o interesse pelo site, os emails de contato com a LiUP chegam em liup@unicamp.br, com o título "FormSubmit"
+![LiUp Logo](logoliup.png)
+
+**LiUp** é a plataforma oficial da **Liga de Startups da Unicamp**, criada para apresentar startups, membros da equipe, eventos e iniciativas inovadoras da universidade. Este site tem como objetivo centralizar informações e valorizar o ecossistema empreendedor da Unicamp.
+
+---
+
+## 🔹 Tecnologias Utilizadas
+
+O site foi desenvolvido com um stack moderno, garantindo desempenho, responsividade e interatividade:
+
+- **Front-end:** HTML, CSS, JavaScript  
+- **Back-end / Firebase:** Node.js, Firebase Realtime Database  
+- **Hospedagem:** Firebase Hosting  
+
+---
+
+## 🏗️ Funcionalidades
+
+- Página inicial com destaques das startups e membros da liga  
+- Seção de **eventos e workshops**  
+- Perfis detalhados dos membros, cada um com sua própria descrição  
+- Design responsivo, compatível com dispositivos móveis e desktops  
+- Integração com Firebase para gerenciamento dinâmico de conteúdos  
+
+---
+## 🧡 Link do site
+https://ligadestartups-unicamp.web.app/
+---
+## 🎨 Licença e Créditos
+
+### Licença
+O conteúdo, design e funcionamento do site **LiUp** são de propriedade da **Liga de Startups da Unicamp**. Todos os direitos estão totalmente atribuídos à liga.  
+Reprodução ou uso comercial sem autorização explícita não é permitido.
+
+Agradecimentos especiais a todos os membros da **Liga de Startups da Unicamp** pelo suporte e contribuições.
+
+---
