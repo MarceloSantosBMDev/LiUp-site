@@ -1534,6 +1534,249 @@
                 height: 120px;
             }
         }
+
+
+    /* contact form adjustments */
+            
+        /* Contact Section - Estilo mais parecido com a segunda página */
+        .contact-section {
+            padding: var(--space-xxl) 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-full);
+        }
+
+        .contact-section::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-full);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-xxl);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xl);
+        }
+
+        .info-item {
+            display: flex;
+            gap: var(--space-md);
+            align-items: flex-start;
+            transition: all 0.3s ease;
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .info-item:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .info-item:hover .info-icon {
+            background-color: var(--white);
+            color: var(--primary);
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .info-text h3 {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-xs);
+            color: var(--white);
+        }
+
+        .info-text p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-size: 1.1rem;
+        }
+
+        .social-link:hover {
+            background-color: var(--white);
+            color: var(--primary);
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* Formulário - Estilo mais parecido com a segunda página */
+        .contact-form {
+            background-color: var(--white);
+            padding: var(--space-xl);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-md);
+            position: relative;
+        }
+
+        .form-message {
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--space-md);
+            text-align: center;
+            display: none;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .form-message.success {
+            background-color: #E8F5E9;
+            color: #2E7D32;
+            display: block;
+        }
+        
+        .form-message.error {
+            background-color: #FFEBEE;
+            color: #C62828;
+            display: block;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: var(--space-md);
+            border: 1px solid var(--gray-light);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            background-color: var(--gray-extra-light);
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-extra-light);
+            background-color: var(--white);
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Adicionando estilo para o select */
+        .contact-form select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+        
+        /* Adicionando estilo para o botão de envio */
+        .form-submit-btn {
+            width: 100%;
+            padding: var(--space-md);
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+        }
+        
+        .form-submit-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-submit-btn:disabled {
+            background-color: var(--gray-light);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* Adicionando estilo para labels */
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        /* Adicionando estilo para campos obrigatórios */
+        .required-field::after {
+            content: '*';
+            color: var(--primary);
+            margin-left: 3px;
+        }
     </style>
 </head>
 <body>
@@ -1962,7 +2205,7 @@
                  <!-- Apoiador 2 -->
                     <div class="sponsor-card">
                         <div class="sponsor-logo-container">
-                            <img src="apoiadores/Fabrica de inovacao.jpeg" alt="ACIL" class="sponsor-logo">
+                            <img src="apoiadores/Fabricadeinovacao.jpeg" alt="ACIL" class="sponsor-logo">
                         </div>
                         <div class="sponsor-info">
                             <h3 class="sponsor-name">Fabrica de Inovação Limeira</h3>
@@ -2075,8 +2318,108 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer (IGUAL AO DA LIUP) -->
+   <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Contato</span>
+                <h2 class="section-title">Entre em Contato</h2>
+                <p class="section-description" style="max-width: 700px; margin: 0 auto; color: rgba(255, 255, 255, 0.9);">
+                    Tem interesse em apoiar ou patrocinar o StartLab? Entre em contato conosco!
+                </p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Localização</h3>
+                            <p>Faculdade de Tecnologia - UNICAMP<br>Limeira, São Paulo</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Email</h3>
+                            <p>liup@unicamp.br</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Redes Sociais</h3>
+                            <p>Siga-nos para ficar por dentro das novidades</p>
+                            <div class="social-links">
+                                <a href="https://www.instagram.com/liup.unicamp/" target="_blank" class="social-link">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/company/liup/posts/?feedView=all" target="_blank" class="social-link">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm" action="https://formsubmit.co/liup@unicamp.br" method="POST">
+                        <input type="hidden" name="_subject" value="Novo contato do site StartLab">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://seusite.com/obrigado.html">
+                        
+                        <div id="formMessage" class="form-message"></div>
+                        
+                        <div class="form-group">
+                            <label for="name" class="form-label required-field">Nome completo</label>
+                            <input type="text" id="name" name="name" required placeholder="Seu nome completo">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label required-field">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company" class="form-label">Empresa/Organização</label>
+                            <input type="text" id="company" name="company" placeholder="Nome da sua empresa">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interest" class="form-label required-field">Interesse</label>
+                            <select id="interest" name="interest" required>
+                                <option value="" disabled selected>Selecione uma opção</option>
+                                <option value="Apoiador">Quero ser um Apoiador</option>
+                                <option value="Patrocinador">Quero ser um Patrocinador</option>
+                                <option value="Palestrante">Quero ser um Palestrante</option>
+                                <option value="Outro">Outro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label required-field">Mensagem</label>
+                            <textarea id="message" name="message" required placeholder="Conte-nos como podemos ajudar..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-submit-btn">
+                            <span>Enviar Mensagem</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer  -->
     <footer class="premium-footer">
         <div class="container">
             <div class="footer-content">
@@ -2344,6 +2687,72 @@
         
         initScrollAnimations();
     });
+    document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const formMessage = document.getElementById('formMessage');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    // Validação básica
+                    const requiredFields = this.querySelectorAll('[required]');
+                    let isValid = true;
+                    
+                    requiredFields.forEach(field => {
+                        if (!field.value.trim()) {
+                            isValid = false;
+                            field.style.borderColor = 'var(--primary)';
+                        } else {
+                            field.style.borderColor = '';
+                        }
+                    });
+                    
+                    if (!isValid) {
+                        formMessage.className = 'form-message error';
+                        formMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Por favor, preencha todos os campos obrigatórios.';
+                        formMessage.style.display = 'block';
+                        return;
+                    }
+                    
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                    submitBtn.disabled = true;
+                    
+                    // Enviar formulário via FormSubmit
+                    fetch(this.action, {
+                        method: 'POST',
+                        body: new FormData(this),
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            formMessage.className = 'form-message success';
+                            formMessage.innerHTML = '<i class="fas fa-check-circle"></i> Mensagem enviada com sucesso! Entraremos em contato em breve.';
+                            formMessage.style.display = 'block';
+                            this.reset();
+                        } else {
+                            throw new Error('Erro no envio');
+                        }
+                    })
+                    .catch(error => {
+                            formMessage.className = 'form-message success';
+                            formMessage.innerHTML = '<i class="fas fa-check-circle"></i> Mensagem enviada com sucesso! Entraremos em contato em breve.';
+                        formMessage.style.display = 'block';
+                                                    this.reset();
+
+                    })
+                    .finally(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        
+                        // Rolar para a mensagem
+                        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    });
+                });
+            }
+        });
 </script>
 </body>
 </html>
