@@ -1,6 +1,8 @@
 # 🌟 LiUp - Liga de Startups da Unicamp
 
-![LiUp Logo](logoliup.png)
+<div align="center">
+  <img src="logoliup.png" alt="LiUp Logo" width="200">
+</div>
 
 **LiUp** é a plataforma oficial da **Liga de Startups da Unicamp**, criada para apresentar startups, membros da equipe, eventos e iniciativas inovadoras da universidade. Este site tem como objetivo centralizar informações e valorizar o ecossistema empreendedor da Unicamp.
 
