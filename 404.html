@@ -1,33 +1,258 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Page Not Found</title>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Não Encontrada - LiUP</title>
+    <link rel="icon" type="image/x-icon" href="logoliup.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px 16px; border-radius: 3px; }
-      #message h3 { color: #888; font-weight: normal; font-size: 16px; margin: 16px 0 12px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #ECEFF1;
+            color: rgba(0,0,0,0.87);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Elementos decorativos inspirados na LiUP */
+        .circle-decoration {
+            position: absolute;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 161, 0, 0.1);
+            top: -100px;
+            left: -100px;
+        }
+
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            background: rgba(3, 155, 229, 0.1);
+            bottom: -50px;
+            right: -50px;
+        }
+
+        /* Container principal */
+        .error-container {
+            background: white;
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin: 20px;
+        }
+
+        .error-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ffa100, #039be5);
+        }
+
+        /* Logo */
+        .logo {
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        /* Código de erro */
+        .error-code {
+            font-size: 120px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffa100 0%, #039be5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 10px 0;
+            line-height: 1;
+        }
+
+        /* Títulos e textos */
+        .error-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .error-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Botões */
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ffa100 0%, #039be5 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 161, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 161, 0, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #039be5;
+            border: 2px solid #039be5;
+        }
+
+        .btn-outline:hover {
+            background: rgba(3, 155, 229, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .btn i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Ilustração */
+        .illustration {
+            max-width: 300px;
+            margin: 0 auto 20px;
+        }
+
+        .illustration img {
+            width: 100%;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #039be5;
+            text-decoration: none;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            .error-code {
+                font-size: 80px;
+            }
+            
+            .error-title {
+                font-size: 24px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Animação */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .illustration {
+            animation: float 5s ease-in-out infinite;
+        }
     </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>404</h2>
-      <h1>Page Not Found</h1>
-      <p>The specified file was not found on this website. Please check the URL for mistakes and try again.</p>
-      <h3>Why am I seeing this?</h3>
-      <p>This page was generated by the Firebase Command-Line Interface. To modify it, edit the <code>404.html</code> file in your project's configured <code>public</code> directory.</p>
+</head>
+<body>
+    <!-- Elementos decorativos -->
+    <div class="circle-decoration circle-1"></div>
+    <div class="circle-decoration circle-2"></div>
+
+    <div class="error-container">
+        <a href="index.html" class="logo">
+            <!-- Substitua pelo caminho correto do logo da LiUP -->
+            <img src="logoliup.png" alt="LiUP Logo">
+        </a>
+        
+        <div class="illustration">
+            <!-- Ilustração de erro 404 - pode ser substituída por uma imagem personalizada -->
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiNGRjlFQzAiIGQ9Ik03NC44NTcgMTQ2Ljc4NmMyMC43MDYgMCAzNy40ODUtMTYuNzc5IDM3LjQ4NS0zNy40ODUgMC0yMC43MDUtMTYuNzc5LTM3LjQ4NC0zNy40ODUtMzcuNDg0LTIwLjcwNiAwLTM3LjQ4NSAxNi43NzktMzcuNDg1IDM3LjQ4NCAwIDIwLjcwNiAxNi43NzkgMzcuNDg1IDM3LjQ4NSAzNy40ODV6Ii8+PHBhdGggZmlsbD0iIzAzOUJFNSIgZD0iTTEyNS4xNDMgMTQ2Ljc4NmMyMC43MDYgMCAzNy40ODUtMTYuNzc5IDM3LjQ4NS0zNy40ODUgMC0yMC43MDUtMTYuNzc5LTM3LjQ4NC0zNy40ODUtMzcuNDg0LTIwLjcwNiAwLTM3LjQ4NSAxNi43NzktMzcuNDg1IDM3LjQ4NCAwIDIwLjcwNiAxNi43NzkgMzcuNDg1IDM3LjQ4NSAzNy40ODV6Ii8+PHBhdGggZD0iTTgxLjg1NyA4NC4yODZjMTEuNDY0IDAgMjAuNzUtOS4yODUgMjAuNzUtMjAuNzUgMC0xMS40NjQtOS4yODYtMjAuNzUtMjAuNzUtMjAuNzUtMTEuNDY0IDAtMjAuNzUgOS4yODYtMjAuNzUgMjAuNzUgMCAxMS40NjUgOS4yODYgMjAuNzUgMjAuNzUgMjAuNzV6TTExOC4xNDMgODQuMjg2YzExLjQ2NCAwIDIwLjc1LTkuMjg1IDIwLjc1LTIwLjc1IDAtMTEuNDY0LTkuMjg2LTIwLjc1LTIwLjc1LTIwLjc1LTExLjQ2NCAwLTIwLjc1IDkuMjg2LTIwLjc1IDIwLjc1IDAgMTEuNDY1IDkuMjg2IDIwLjc1IDIwLjc1IDIwLjc1eiIgZmlsbD0iIzMzMyIvPjxwYXRoIGQ9Ik03MC4zNTcgMTE4Ljc4NmM1LjUyMyAwIDEwLTQuNDc3IDEwLTEwIDAtNS41MjMtNC40NzctMTAtMTAtMTAtNS41MjMgMC0xMCA0LjQ3Ny0xMCAxMCAwIDUuNTIzIDQuNDc3IDEwIDEwIDEwek0xMjkuNjQzIDExOC43ODZjNS41MjMgMCAxMC00LjQ3NyAxMC0xMCAwLTUuNTIzLTQuNDc3LTEwLTEwLTEwLTUuNTIzIDAtMTAgNC40NzctMTAgMTAgMCA1LjUyMyA0LjQ3NyAxMCAxMCAxMHoiIGZpbGw9IiMzMzMiLz48cGF0aCBkPSJNODAgMTAwbTQuNjQ3LTQuNjQ3bDIwLTIwTTEwMCA4MHYyME04MCAxMDBsNDYuNjQ3LTQ2LjY0N00xMDAgODBoMjBNMTIwIDEwMGwtNDYuNjQ3LTQ2LjY0N00xMDAgODB2LTIwTTgwIDEwMGwtMjAtMjBtMjAgMjB2LTIwIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9nPjwvc3ZnPg==" alt="Erro 404">
+        </div>
+        
+        <h1 class="error-code">404</h1>
+        <h2 class="error-title">Página Não Encontrada</h2>
+        <p class="error-description">A página que você está procurando não existe ou foi movida. Verifique o URL digitado ou retorne à página inicial.</p>
+        
+        <div class="button-group">
+            <a href="index.html" class="btn btn-primary">
+                <span>Voltar ao Início</span>
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="mailto:liup@unicamp.br" class="btn btn-outline">
+                <span>Reportar Problema</span>
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
     </div>
-  </body>
+    
+    <div class="footer">
+        <p>&copy; 2025 LiUP - Liga de Startups da Unicamp. Todos os direitos reservados.</p>
+        <p>Em caso de problemas, entre em contato: <a href="mailto:liup@unicamp.br">liup@unicamp.br</a></p>
+    </div>
+</body>
 </html>

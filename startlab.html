@@ -264,13 +264,8 @@
             z-index: 1;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: var(--space-xl) 0;
-            animation: fadeInUp 1s ease;
+       .hero-content {
+            margin-bottom: 0;
         }
 
         @keyframes fadeInUp {
@@ -329,19 +324,8 @@
             justify-content: center;
         }
 
-        .hero-scroll {
-            position: absolute;
-            bottom: var(--space-xl);
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: var(--white);
-            opacity: 0.7;
-            transition: all 0.3s ease;
-            z-index: 2;
-            cursor: pointer;
+  .hero-scroll {
+            display: none; /* Remover completamente a seta de scroll */
         }
 
         .hero-scroll:hover {
@@ -466,9 +450,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNDUsIDk5LCAzNywgMC4wNSkiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiLz48L3N2Zz4=');
-            opacity: 0.5;
-            z-index: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNDUsIDk5LCAzNywgMC4wNSkiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw=')'
         }
 
         .schedule-grid {
@@ -584,7 +566,7 @@
             color: var(--primary);
         }
 
-        /* Sponsorship Section - Estilo mais parecido com a segunda página */
+        /* Sponsorship Section - Estilo melhorado */
         .sponsorship-section {
             padding: var(--space-xxl) 0;
             background-color: var(--white);
@@ -606,16 +588,38 @@
             border-radius: var(--radius-md);
             cursor: pointer;
             transition: all 0.3s ease;
-            font-weight: 500;
+            font-weight: 600;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sponsorship-tab::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
         }
 
         .sponsorship-tab.active {
-            background-color: var(--primary);
-            color: var(--white);
+            background-color: var(--primary-extra-light);
+            color: var(--primary);
+            border-color: var(--primary-light);
+        }
+
+        .sponsorship-tab.active::before {
+            transform: scaleX(1);
         }
 
         .sponsorship-content {
             display: none;
+            animation: fadeIn 0.5s ease;
         }
 
         .sponsorship-content.active {
@@ -624,7 +628,7 @@
 
         .sponsorship-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: var(--space-lg);
         }
 
@@ -635,6 +639,18 @@
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--gray-light);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sponsorship-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
         }
 
         .sponsorship-card:hover {
@@ -644,11 +660,24 @@
         }
 
         .sponsorship-title {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             color: var(--primary);
             margin-bottom: var(--space-md);
             text-align: center;
             font-weight: 700;
+            position: relative;
+            padding-bottom: var(--space-sm);
+        }
+
+        .sponsorship-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-light);
         }
 
         .sponsorship-features {
@@ -657,19 +686,34 @@
 
         .sponsorship-feature {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: var(--space-sm);
             margin-bottom: var(--space-md);
+            position: relative;
+            padding-left: var(--space-md);
+        }
+
+        .sponsorship-feature::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary);
+            border-radius: 50%;
         }
 
         .sponsorship-feature i {
             color: var(--primary);
             flex-shrink: 0;
+            margin-top: 2px;
         }
 
         .sponsorship-feature span {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--gray-dark);
+            line-height: 1.5;
         }
 
         .sponsorship-price {
@@ -677,10 +721,264 @@
             font-weight: 700;
             color: var(--primary);
             margin-bottom: var(--space-md);
+            font-size: 1.5rem;
+        }
+
+        .sponsorship-price small {
+            font-size: 0.8rem;
+            color: var(--gray);
+            display: block;
+            margin-top: var(--space-xs);
         }
 
         .sponsorship-cta {
             text-align: center;
+        }
+
+        /* Current Sponsors Section - Estilo melhorado */
+        .current-sponsors-section {
+            padding: var(--space-xxl) 0;
+            background-color: var(--gray-extra-light);
+            position: relative;
+        }
+
+        .current-sponsors-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRo=')
+        }
+
+        .sponsors-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .sponsors-tabs {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+        }
+
+        .sponsors-tab {
+            padding: var(--space-sm) var(--space-lg);
+            background-color: var(--gray-extra-light);
+            color: var(--gray-dark);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .sponsors-tab::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .sponsors-tab.active {
+            background-color: var(--primary-extra-light);
+            color: var(--primary);
+            border-color: var(--primary-light);
+        }
+
+        .sponsors-tab.active::before {
+            transform: scaleX(1);
+        }
+
+        .sponsors-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .sponsors-content.active {
+            display: block;
+        }
+
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-xl);
+            align-items: flex-start;
+        }
+
+        .sponsor-card {
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-light);
+            position: relative;
+        }
+
+        .sponsor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+        }
+
+        .sponsor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        .sponsor-logo-container {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-xl);
+            background-color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sponsor-logo {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: all 0.3s ease;
+            filter: grayscale(100%) opacity(80%);
+        }
+
+        .sponsor-card:hover .sponsor-logo {
+            filter: grayscale(0%) opacity(100%);
+            transform: scale(1.05);
+        }
+
+        .sponsor-info {
+            padding: var(--space-xl);
+            border-top: 1px solid var(--gray-extra-light);
+        }
+
+        .sponsor-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: var(--space-sm);
+            text-align: center;
+        }
+
+        .sponsor-tier {
+            display: inline-block;
+            padding: var(--space-xs) var(--space-md);
+            background-color: var(--primary-extra-light);
+            color: var(--primary);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .sponsor-description {
+            font-size: 0.95rem;
+            color: var(--gray-dark);
+            margin-bottom: var(--space-md);
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .sponsor-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-xs);
+            color: var(--primary);
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            padding: var(--space-sm);
+            border-radius: var(--radius-sm);
+            margin-top: var(--space-md);
+        }
+
+        .sponsor-link:hover {
+            color: var(--primary-dark);
+            background-color: var(--primary-extra-light);
+        }
+
+        .sponsor-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .sponsor-link:hover i {
+            transform: translateX(3px);
+        }
+
+        .no-sponsors {
+            text-align: center;
+            padding: var(--space-xl);
+            grid-column: 1 / -1;
+        }
+
+        .no-sponsors i {
+            font-size: 3rem;
+            color: var(--gray-light);
+            margin-bottom: var(--space-md);
+        }
+
+        .no-sponsors p {
+            color: var(--gray);
+            margin-bottom: var(--space-md);
+        }
+
+        .sponsors-cta {
+            text-align: center;
+            margin-top: var(--space-xl);
+            grid-column: 1 / -1;
+        }
+
+        /* Tier-specific styles */
+        .tier-gold {
+            background-color: #FFF9E6 !important;
+            color: #D4AF37 !important;
+        }
+
+        .tier-silver {
+            background-color: #F5F5F5 !important;
+            color: #A6A6A6 !important;
+        }
+
+        .tier-bronze {
+            background-color: #F8F1E8 !important;
+            color: #CD7F32 !important;
+        }
+
+        .tier-gold-border::before {
+            background: linear-gradient(90deg, #D4AF37, #F9D423) !important;
+        }
+
+        .tier-silver-border::before {
+            background: linear-gradient(90deg, #C0C0C0, #E0E0E0) !important;
+        }
+
+        .tier-bronze-border::before {
+            background: linear-gradient(90deg, #CD7F32, #E6B17E) !important;
         }
 
         /* Contact Section - Estilo mais parecido com a segunda página */
@@ -998,35 +1296,35 @@
         }
 
         /* Back to Top Button (mesmo estilo da LiUP) */
-.back-to-top {
-    position: fixed;
-    bottom: var(--space-lg);
-    right: var(--space-lg);
-    width: 50px;
-    height: 50px;
-    background-color: var(--primary);
-    color: var(--white);
-    border-radius: var(--radius-full);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    z-index: 999;
-    box-shadow: var(--shadow-md);
-}
+        .back-to-top {
+            position: fixed;
+            bottom: var(--space-lg);
+            right: var(--space-lg);
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 999;
+            box-shadow: var(--shadow-md);
+        }
 
-.back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-}
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
 
-.back-to-top:hover {
-    transform: translateY(-5px) scale(1.1);
-    background-color: var(--primary-dark);
-    box-shadow: var(--shadow-lg);
-}
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            background-color: var(--primary-dark);
+            box-shadow: var(--shadow-lg);
+        }
 
         /* Botão Voltar para Home */
         .home-btn {
@@ -1161,6 +1459,10 @@
             .sponsorship-grid {
                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
+            
+            .sponsors-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
         }
 
         @media (max-width: 767px) {
@@ -1182,6 +1484,10 @@
             }
             
             .sponsorship-tabs {
+                flex-direction: column;
+            }
+            
+            .sponsors-tabs {
                 flex-direction: column;
             }
 
@@ -1223,6 +1529,10 @@
             .hero-subtitle {
                 font-size: 1rem;
             }
+            
+            .sponsor-logo-container {
+                height: 120px;
+            }
         }
     </style>
 </head>
@@ -1252,28 +1562,23 @@
         </a>
     </div>
 
-
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Start<span>Lab</span> 2025</h1>
-                <p class="hero-subtitle" style="color:white">Uma experiência imersiva de Modelagem de Negócios, Inovação e Empreendedorismo na Unicamp Limeira</p>
-                <div class="hero-buttons">
-                    <a href="#about" class="btn btn-primary">
-                        <span>Saiba mais</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="#sponsorship" class="btn btn-outline">Seja um Apoiador</a>
-                </div>
+  <!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">Start<span>Lab</span> 2025</h1>
+            <p class="hero-subtitle" style="color:white">Uma experiência imersiva de Modelagem de Negócios, Inovação e Empreendedorismo na Unicamp Limeira</p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-primary">
+                    <span>Saiba mais</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#sponsorship" class="btn btn-outline">Seja um Apoiador</a>
             </div>
         </div>
-        <div class="hero-scroll">
-            <span>Scroll Down</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
+    </div>
+    <!-- REMOVIDO: div.hero-scroll -->
+</section>
 
     <!-- About Section -->
     <section id="about" class="about-section">
@@ -1285,7 +1590,7 @@
             
             <div class="about-content">
                 <div class="about-text">
-                    <p>A StartLab será uma experiência imersiva de sobre Modelagem de Negócios, Inovação e Empreendedorismo que acontecerá na Faculdade de Tecnologia (FT) e na Faculdade de Ciências Aplicadas (FCA) da Unicamp Limeira nos dias 23, 24 e 25 de setembro.</p>
+                    <p>A StartLab será uma experiência imersiva de sobre Modelagem de Negócios, Inovação e Empreendedorismo que acontecerá na Faculdade de Tecnologia (FT) da Unicamp Limeira nos dias 23, 24 e 25 de setembro.</p>
                     <p>Durante o evento, a comunidade será capacitada por grandes nomes do mercado, com expectativa de participação de 300 estudantes.</p>
                     <p>O objetivo é proporcionar aos participantes conhecimentos práticos sobre criação e desenvolvimento de startups, desde a concepção da ideia até a captação de investimentos.</p>
                 </div>
@@ -1410,12 +1715,13 @@
         </div>
     </section>
 
-    <!-- Sponsorship Section -->
+    <!-- Sponsorship Section - Melhorada -->
     <section id="sponsorship" class="sponsorship-section">
         <div class="container">
             <div class="section-header">
                 <span class="section-subtitle">Patrocínio</span>
                 <h2 class="section-title">Participe como Apoiador ou Patrocinador</h2>
+                <p class="section-description" style="max-width: 700px; margin: 0 auto;">Junte-se a nós para fomentar o ecossistema de inovação e ter sua marca associada a um dos principais eventos de empreendedorismo universitário</p>
             </div>
             
             <div class="sponsorship-tabs">
@@ -1426,91 +1732,111 @@
             <div class="sponsorship-content active" id="supporter-content">
                 <div class="sponsorship-grid">
                     <div class="sponsorship-card">
-                        <h3 class="sponsorship-title">GARAGE</h3>
+                        <h3 class="sponsorship-title">Apoiador</h3>
                         <div class="sponsorship-features">
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Logo no site, banner e camiseta do evento</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Pequena visibilidade no Instagram e LinkedIn</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Participação em Carrossel (Instagram + LinkedIn)</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Divulgação de vagas na Unicamp</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-times"></i>
+                                <i class="fas fa-times-circle"></i>
                                 <span>Participação: Oficinas de Empreendedorismo</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-times"></i>
+                                <i class="fas fa-times-circle"></i>
                                 <span>Acesso aos dados dos participantes do Evento</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-times"></i>
+                                <i class="fas fa-times-circle"></i>
                                 <span>Direito a Palestra exclusiva na Unicamp pós evento</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-times"></i>
+                                <i class="fas fa-times-circle"></i>
                                 <span>Stand no evento</span>
                             </div>
                         </div>
-                        <p class="sponsorship-price">Benefícios podem variar a depender do valor equivalente do apoio</p>
+                        <p class="sponsorship-price">Benefícios personalizados<br><small>De acordo com o valor do apoio</small></p>
                         <div class="sponsorship-cta">
                             <a href="#contact" class="btn btn-primary">Quero Apoiar</a>
                         </div>
                     </div>
                 </div>
                 <div class="section-footer" style="margin-top: var(--space-xl); text-align: center;">
-                    <p>Formas de Apoio: Coffee Break, Brindes, Recursos Gráficos, etc.</p>
+                    <div class="support-types">
+                        <h4>Formas de Apoio:</h4>
+                        <div class="support-types-grid">
+                            <div class="support-type">
+                                <i class="fas fa-coffee"></i>
+                                <span>Coffee Break</span>
+                            </div>
+                            <div class="support-type">
+                                <i class="fas fa-gift"></i>
+                                <span>Brindes</span>
+                            </div>
+                            <div class="support-type">
+                                <i class="fas fa-palette"></i>
+                                <span>Recursos Gráficos</span>
+                            </div>
+                            <div class="support-type">
+                                <i class="fas fa-utensils"></i>
+                                <span>Alimentação</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
             <div class="sponsorship-content" id="sponsor-content">
                 <div class="sponsorship-grid">
                     <div class="sponsorship-card">
-                        <h3 class="sponsorship-title">GARAGE</h3>
+                        <h3 class="sponsorship-title">Apoiador</h3>
                         <div class="sponsorship-features">
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Logo no site, banner e camiseta do evento</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Pequena visibilidade no Instagram e LinkedIn</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Carrossel geral</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Divulgação de vagas na Unicamp</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Ouvinte em Oficinas de Empreendedorismo</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-times"></i>
+                                <i class="fas fa-times-circle"></i>
                                 <span>Acesso aos dados dos participantes</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Resumo filtrado pós-evento</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-times"></i>
+                                <i class="fas fa-times-circle"></i>
                                 <span>Stand no evento</span>
                             </div>
                         </div>
-                        <p class="sponsorship-price">Valor da Cota: R$1000,00 (7 cotas disponíveis)</p>
+                        <p class="sponsorship-price">R$1.000,00<br></p>
                         <div class="sponsorship-cta">
                             <a href="#contact" class="btn btn-primary">Quero Patrocinar</a>
                         </div>
@@ -1520,39 +1846,39 @@
                         <h3 class="sponsorship-title">ROCKET</h3>
                         <div class="sponsorship-features">
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Logo no site, banner e camiseta do evento</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Média visibilidade no Instagram e LinkedIn</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Destaque exclusivo</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Divulgação de vagas na Unicamp</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Destaque digital em Oficinas</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Acesso a dados completos dos participantes</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-times"></i>
+                                <i class="fas fa-times-circle"></i>
                                 <span>Direito a Palestra exclusiva</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Stand no evento</span>
                             </div>
                         </div>
-                        <p class="sponsorship-price">Valor da Cota: R$3000,00 (5 cotas disponíveis)</p>
+                        <p class="sponsorship-price">R$3.000,00<br></p>
                         <div class="sponsorship-cta">
                             <a href="#contact" class="btn btn-primary">Quero Patrocinar</a>
                         </div>
@@ -1562,39 +1888,39 @@
                         <h3 class="sponsorship-title">SHARK</h3>
                         <div class="sponsorship-features">
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Logo no site, banner e camiseta do evento</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Grande visibilidade no Instagram e LinkedIn</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Post único destacado</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Divulgação comunitária de vagas</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Destaque digital + QR físico</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Banca de dados completos</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Direito a Palestra exclusiva</span>
                             </div>
                             <div class="sponsorship-feature">
-                                <i class="fas fa-check"></i>
+                                <i class="fas fa-check-circle"></i>
                                 <span>Stand premium no evento</span>
                             </div>
                         </div>
-                        <p class="sponsorship-price">Valor da Cota: R$5000,00 (3 cotas disponíveis)</p>
+                        <p class="sponsorship-price">R$5.000,00<br></p>
                         <div class="sponsorship-cta">
                             <a href="#contact" class="btn btn-primary">Quero Patrocinar</a>
                         </div>
@@ -1604,72 +1930,147 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
+    <!-- Current Sponsors Section -->
+  <section id="current-sponsors" class="current-sponsors-section">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle" style="color:black">Contato</span>
-                <h2 class="section-title">Vamos transformar o empreendedorismo universitário?</h2>
+                <span class="section-subtitle">Nossos Parceiros</span>
+                <h2 class="section-title">Apoiadores e Patrocinadores</h2>
+                <p class="section-description" style="max-width: 700px; margin: 0 auto;">Conheça as empresas e organizações que estão ajudando a tornar o StartLab 2025 possível</p>
             </div>
             
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <i class="fas fa-envelope"></i>
+            <div class="sponsors-tabs">
+                <div class="sponsors-tab active" data-tab="current-supporters">Apoiadores</div>
+                <div class="sponsors-tab" data-tab="current-sponsors">Patrocinadores</div>
+            </div>
+            
+            <div class="sponsors-content active" id="current-supporters-content">
+                <div class="sponsors-grid">
+                    <!-- Apoiador 1 -->
+                    <div class="sponsor-card">
+                        <div class="sponsor-logo-container">
+                            <img src="apoiadores/Acil.jpeg" alt="ACIL" class="sponsor-logo">
                         </div>
-                        <div class="info-text">
-                            <h3>Email</h3>
-                            <p>liup@unicamp.br</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <i class="fas fa-hashtag"></i>
-                        </div>
-                        <div class="info-text">
-                            <h3>Redes Sociais</h3>
-                            <p>@liup.unicamp</p>
-                            <p>@ligadestartups</p>
+                        <div class="sponsor-info">
+                            <h3 class="sponsor-name">ACIL</h3>
+                            <span class="sponsor-tier">Apoiador Institucional</span>
+                            <p class="sponsor-description">Associação Comercial e Industrial de Limeira, entidade que representa e fortalece o empresariado local, promovendo desenvolvimento econômico e oportunidades de negócios.</p>
+                            <a href="https://acil.com.br" class="sponsor-link">Visitar site <i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                     
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/liup.unicamp/" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/company/liup/posts/?feedView=all" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                 <!-- Apoiador 2 -->
+                    <div class="sponsor-card">
+                        <div class="sponsor-logo-container">
+                            <img src="apoiadores/Fabrica de inovacao.jpeg" alt="ACIL" class="sponsor-logo">
+                        </div>
+                        <div class="sponsor-info">
+                            <h3 class="sponsor-name">Fabrica de Inovação Limeira</h3>
+                            <span class="sponsor-tier">Parceiro de Ecossistema</span>
+                            <p class="sponsor-description"><'Apoiadora da LiUp, Hub de inovação que conecta startups, empresas e universidades, oferecendo programas de aceleração, mentoria e espaço para coworking.><br><br></p>
+                            <a href="https://fabricadeinovacao.org.br/" class="sponsor-link">Visitar site <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Apoiador 3 -->
+                    <div class="sponsor-card">
+                        <div class="sponsor-logo-container">
+                            <img src="apoiadores/InovAction.jpeg" alt="InovAction" class="sponsor-logo">
+                        </div>
+                        <div class="sponsor-info">
+                            <h3 class="sponsor-name">InovAction</h3>
+                            <span class="sponsor-tier">Parceiro de Inovação</span>
+                            <p class="sponsor-description">Consultoria especializada em gestão da inovação e transformação digital, ajudando empresas a implementarem práticas inovadoras em seus negócios.<br><br><br></p>
+                            <a href="https://inovaction.com.br" class="sponsor-link">Visitar site <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Apoiador 4 -->
+                    <div class="sponsor-card">
+                        <div class="sponsor-logo-container">
+                            <img src="apoiadores/Mahle.jpeg" alt="MAHLE" class="sponsor-logo">
+                        </div>
+                        <div class="sponsor-info">
+                            <h3 class="sponsor-name">MAHLE</h3>
+                            <span class="sponsor-tier">Apoiador Tecnológico</span>
+                            <p class="sponsor-description">Líder global em desenvolvimento de componentes e sistemas para motores de combustão e mobilidade elétrica, com forte atuação em P&D e inovação automotiva.</p>
+                            <a href="https://mahle.com" class="sponsor-link">Visitar site <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Apoiador 5 -->
+                    <div class="sponsor-card">
+                        <div class="sponsor-logo-container">
+                            <img src="apoiadores/Prefeitura.jpeg" alt="Prefeitura de Limeira" class="sponsor-logo">
+                        </div>
+                        <div class="sponsor-info">
+                            <h3 class="sponsor-name">Prefeitura de Limeira</h3>
+                            <span class="sponsor-tier">Apoiador Institucional</span>
+                            <p class="sponsor-description">Administração municipal que apoia o ecossistema de inovação local através de políticas públicas, incentivos e infraestrutura para empreendedorismo.</p>
+                            <a href="https://limeira.sp.gov.br" class="sponsor-link">Visitar site <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Apoiador 6 -->
+                    <div class="sponsor-card">
+                        <div class="sponsor-logo-container">
+                            <img src="apoiadores/Suco Prats.jpeg" alt="Suco Prats" class="sponsor-logo">
+                        </div>
+                        <div class="sponsor-info">
+                            <h3 class="sponsor-name">Suco Prats</h3>
+                            <span class="sponsor-tier">Apoiador Alimentício</span>
+                            <p class="sponsor-description">Empresa tradicional de Limeira especializada na produção de sucos naturais e alimentos saudáveis, apoiando eventos locais e promovendo alimentação balanceada.</p>
+                            <a href="#" class="sponsor-link">Visitar site <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sponsors-content" id="current-sponsors-content">
+                <div class="sponsors-grid">
+                    <!-- Patrocinador 1 -->
+                    <div class="sponsor-card tier-gold-border">
+                        <div class="sponsor-logo-container">
+                            <img src="patrocinadores/Megacast.jpg" alt="Megacast" class="sponsor-logo" style="filter: grayscale(0%) opacity(100%);">
+                        </div>
+                        <div class="sponsor-info">
+                            <h3 class="sponsor-name">Megacast</h3>
+                            <p class="sponsor-description">Empresa especializada em fundição de alumínio e usinagem de precisão, fornecendo componentes automotivos de alta qualidade para o mercado nacional e internacional.</p>
+                            <a href="https://megacast.com.br" class="sponsor-link">Visitar site <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Patrocinador 2 -->
+                    <div class="sponsor-card tier-silver-border">
+                        <div class="sponsor-logo-container">
+                            <img src="patrocinadores/Núclea.jpeg" alt="Núclea" class="sponsor-logo" style="filter: grayscale(0%) opacity(100%);">
+                        </div>
+                        <div class="sponsor-info">
+                            <h3 class="sponsor-name">Núclea</h3>
+                            <p class="sponsor-description">Consultoria estratégica especializada em inovação corporativa e transformação digital, ajudando empresas a se adaptarem às novas realidades do mercado.</p>
+                            <a href="https://nuclea.ag" class="sponsor-link">Visitar site <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Patrocinador 3 -->
+                    <div class="sponsor-card tier-silver-border">
+                        <div class="sponsor-logo-container">
+                            <img src="patrocinadores/Rocket.jpeg" alt="Rocket" class="sponsor-logo" style="filter: grayscale(0%) opacity(100%);">
+                        </div>
+                        <div class="sponsor-info">
+                            <h3 class="sponsor-name">Rocket</h3>
+                            <p class="sponsor-description">Empresa de tecnologia que desenvolve soluções inovadoras em software e consultoria digital, focada em impulsionar a transformação digital de negócios.</p>
+                            <a href="#" class="sponsor-link">Visitar site <i class="fas fa-external-link-alt"></i></a>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="contact-form">
-                    <form id="contactForm" action="https://formsubmit.co/liup@unicamp.br" method="POST">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_subject" value="Contato StartLab">
-                        <input type="hidden" name="_template" value="table">
-                        
-                        <div id="formMessage" class="form-message"></div>
-                        
-                        <div class="form-group">
-                            <input type="text" name="Nome" placeholder="Seu nome" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="Email" placeholder="Seu email" required>
-                        </div>
-                        <div class="form-group">
-                            <select name="Interesse" required>
-                                <option value="" disabled selected>Selecione seu interesse</option>
-                                <option value="participant">Quero participar do evento</option>
-                                <option value="supporter">Quero ser apoiador</option>
-                                <option value="sponsor">Quero ser patrocinador</option>
-                                <option value="speaker">Quero ser palestrante</option>
-                                <option value="other">Outro assunto</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="Mensagem" placeholder="Sua mensagem" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Enviar mensagem</button>
-                    </form>
+                <div class="sponsors-cta">
+                    <p>Quer fazer parte deste time de apoiadores e ter sua marca exposta para centenas de empreendedores?</p>
+                    <a href="#sponsorship" class="btn btn-primary" style="margin-top: var(--space-md);">
+                        <span>Seja um Patrocinador</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1717,165 +2118,232 @@
             
             <div class="footer-bottom">
                 <p>&copy; 2025 LiUP - Liga de Startups da Unicamp. Todos os direitos reservados.</p>
-                <div class="footer-links">
-                    <a href="#">Termos de Uso</a>
-                    <a href="#">Política de Privacidade</a>
-                </div>
+
             </div>
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Scroll Indicator
-            const scrollIndicator = document.querySelector('.scroll-indicator');
-            
-            // Back to Top Button
-const backToTopBtn = document.querySelector('.back-to-top');
-            
-            // Floating Navigation
-            const floatingNav = document.querySelector('.floating-nav');
-            let lastScrollPosition = 0;
-            
-            // Update scroll indicator and back to top button
-            function updateScroll() {
-                const scrollTop = document.documentElement.scrollTop;
-                const scrollHeight = document.documentElement.scrollHeight;
-                const clientHeight = document.documentElement.clientHeight;
-                const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
-                scrollIndicator.style.width = scrollPercentage + '%';
-                
 
+    <script>
+            document.addEventListener('DOMContentLoaded', function() {
+        // Sponsorship Tabs
+        const sponsorshipTabs = document.querySelectorAll('.sponsorship-tabs .sponsorship-tab');
+        const sponsorshipContents = document.querySelectorAll('.sponsorship-content');
+        
+        sponsorshipTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
                 
-                // Hide floating nav on scroll down, show on scroll up
-                const currentScrollPosition = window.pageYOffset;
+                // Update tabs
+                sponsorshipTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
                 
-                if (currentScrollPosition > lastScrollPosition && currentScrollPosition > 100) {
-                    // Scrolling down
-                    floatingNav.classList.add('hidden');
-                } else {
-                    // Scrolling up
-                    floatingNav.classList.remove('hidden');
-                }
-                
-                lastScrollPosition = currentScrollPosition;
-            }
-            
-            window.addEventListener('scroll', updateScroll);
-            
-            // Smooth Scroll for Anchor Links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop,
-                            behavior: 'smooth'
-                        });
+                // Update contents
+                sponsorshipContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === `${tabId}-content`) {
+                        content.classList.add('active');
                     }
                 });
             });
-            
-            // Sponsorship Tabs
-            const sponsorshipTabs = document.querySelectorAll('.sponsorship-tab');
-            const sponsorshipContents = document.querySelectorAll('.sponsorship-content');
-            
-            sponsorshipTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const tabId = this.getAttribute('data-tab');
-                    
-                    // Update tabs
-                    sponsorshipTabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Update contents
-                    sponsorshipContents.forEach(content => {
-                        content.classList.remove('active');
-                        if (content.id === `${tabId}-content`) {
-                            content.classList.add('active');
-                        }
-                    });
+        });
+        
+        // Current Sponsors Tabs
+        const sponsorsTabs = document.querySelectorAll('.sponsors-tabs .sponsors-tab');
+        const sponsorsContents = document.querySelectorAll('.sponsors-content');
+        
+        sponsorsTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Update tabs
+                sponsorsTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update contents
+                sponsorsContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === `${tabId}-content`) {
+                        content.classList.add('active');
+                    }
                 });
             });
-            
-            // Form submission
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const submitBtn = this.querySelector('button[type="submit"]');
-                    const formMessage = document.getElementById('formMessage');
-                    const originalText = submitBtn.innerHTML;
-                    
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-                    submitBtn.disabled = true;
-                    
-                    // Enviar formulário via FormSubmit
-                    fetch(this.action, {
-                        method: 'POST',
-                        body: new FormData(this),
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            // Mostrar mensagem de sucesso
-                            formMessage.className = 'form-message success';
-                            formMessage.innerHTML = '<i class="fas fa-check-circle"></i> Mensagem enviada com sucesso! Entraremos em contato em breve.';
-                            
-                            // Resetar formulário
-                            this.reset();
-                        } else {
-                            throw new Error('Erro ao enviar formulário');
-                        }
-                    })
-                    .catch(error => {
-                        // Mostrar mensagem de erro
-                        formMessage.className = 'form-message error';
-                        formMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.';
-                    })
-                    .finally(() => {
-                        // Restaurar botão
-                        submitBtn.innerHTML = originalText;
-                        submitBtn.disabled = false;
-                        
-                        // Rolagem suave para o topo do formulário
-                        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    });
-                });
-            }
-            
-            // Initialize scroll position
-            updateScroll();
-            
-            // Animações ao scroll
-            function initScrollAnimations() {
-                const animateElements = document.querySelectorAll('.schedule-card, .sponsorship-card, .info-item');
-                
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('animate');
-                        }
-                    });
-                }, {
-                    threshold: 0.1
-                });
-                
-                animateElements.forEach(el => {
-                    observer.observe(el);
-                });
-            }
-            
-            initScrollAnimations();
         });
-    </script>
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        // Floating Navigation
+        const floatingNav = document.querySelector('.floating-nav');
+        let lastScrollPosition = 0;
+        
+        // Scroll Indicator
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        
+
+        
+        // Hide floating nav on scroll down, show on scroll up
+        function handleScroll() {
+            const currentScrollPosition = window.pageYOffset;
+            
+            if (currentScrollPosition > lastScrollPosition && currentScrollPosition > 100) {
+                // Scrolling down
+                floatingNav.classList.add('hidden');
+            } else {
+                // Scrolling up
+                floatingNav.classList.remove('hidden');
+            }
+            
+            lastScrollPosition = currentScrollPosition;
+            
+            // Update scroll indicator
+            updateScrollIndicator();
+        }
+        
+        // Update scroll indicator
+        function updateScrollIndicator() {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight;
+            const clientHeight = document.documentElement.clientHeight;
+            const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+            scrollIndicator.style.width = scrollPercentage + '%';
+            
+            // Show/hide back to top button
+            if (scrollTop > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        }
+        
+        window.addEventListener('scroll', handleScroll);
+        
+        // Back to top functionality
+        backToTopBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Sponsorship Tabs
+        const sponsorshipTabs = document.querySelectorAll('.sponsorship-tabs .sponsorship-tab');
+        const sponsorshipContents = document.querySelectorAll('.sponsorship-content');
+        
+        sponsorshipTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Update tabs
+                sponsorshipTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update contents
+                sponsorshipContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === `${tabId}-content`) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+        
+        // Current Sponsors Tabs
+        const sponsorsTabs = document.querySelectorAll('.sponsors-tabs .sponsors-tab');
+        const sponsorsContents = document.querySelectorAll('.sponsors-content');
+        
+        sponsorsTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                
+                // Update tabs
+                sponsorsTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update contents
+                sponsorsContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === `${tabId}-content`) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const formMessage = document.getElementById('formMessage');
+                const originalText = submitBtn.innerHTML;
+                
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                submitBtn.disabled = true;
+                
+                // Simulate form submission (replace with actual form submission code)
+                setTimeout(() => {
+                    formMessage.className = 'form-message success';
+                    formMessage.innerHTML = '<i class="fas fa-check-circle"></i> Mensagem enviada com sucesso! Entraremos em contato em breve.';
+                    formMessage.style.display = 'block';
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Restore button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }, 1500);
+            });
+        }
+        
+        // Initialize scroll position
+        updateScrollIndicator();
+        
+        // Animações ao scroll
+        function initScrollAnimations() {
+            const animateElements = document.querySelectorAll('.schedule-card, .sponsorship-card, .info-item, .sponsor-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animateElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
+            });
+        }
+        
+        initScrollAnimations();
+    });
+</script>
 </body>
 </html>
