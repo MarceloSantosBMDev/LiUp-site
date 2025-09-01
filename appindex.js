@@ -73,7 +73,7 @@
                             name: "Yoon Song Jang",
                             role: "Membro",
                             photo: "captaçãoparceria/Yoon.jpg",
-                            bio: "Velit ut culpa id officia. Tempor velit amet amet ut laboris ullamco cupidatat eu aliquip sit commodo. Dolor ad ea tempor ipsum commodo ipsum anim culpa duis ex aliqua irure veniam cillum.",
+                            bio: "",
                             contacts: {
                                 instagram: "YoonSong",
                                 linkedin: "YoonSang",
@@ -84,7 +84,7 @@
                             name: "Sofia (Dory)",
                             role: "Membro",
                             photo: "captaçãoparceria/Sofia.jpg",
-                            bio: "Consequat sint eu duis ut esse. Nisi Lorem sint mollit quis. Culpa esse ipsum commodo elit elit amet sint nulla incididunt culpa velit aute consectetur.",
+                            bio: "",
                             contacts: {
                                 instagram: "sofiadory",
                                 linkedin: "sofiadory",
@@ -92,13 +92,46 @@
                             }
                         },
                         {
+                            name: "Mariana Midori",
+                            role: "Membro",
+                            photo: "captaçãoparceria/midori.png",
+                            bio: "",
+                            contacts: {
+                                instagram: "midorii.gunji",
+                                linkedin: "",
+                                email: ""
+                            }
+                        },
+                        {
                             name: "Eduardo Paziani",
                             role: "Membro",
                             photo: "captaçãoparceria/eduardo.jpg",
-                            bio: "Amet culpa ad qui nulla occaecat nulla ex. Elit mollit tempor id labore sunt proident ipsum non nisi labore. Pariatur qui ex minim anim veniam consectetur nulla.",
+                            bio: "",
                             contacts: {
                                 instagram: "paziani",
                                 linkedin: "pazianeslasla",
+                                email: ""
+                            }
+                        },
+                        {
+                            name: "Marcos Mazon",
+                            role: "Membro",
+                            photo: "captaçãoparceria/marcosmazon.png",
+                            bio: "Discente em Administração empresarial, sou um entusiasta da tecnologia, empreendendorismo e inovação. Com o sonho de me tornar um profissional renomado da área, foco em me especializar fortemente na área de vendas e gestão de projetos.",
+                            contacts: {
+                                instagram: "_marcosmazon",
+                                linkedin: "marcosmazon",
+                                email: ""
+                            }
+                        },
+                     {
+                            name: "Cauã",
+                            role: "Membro",
+                            photo: "captaçãoparceria/caua.png",
+                            bio: "",
+                            contacts: {
+                                instagram: "",
+                                linkedin: "",
                                 email: ""
                             }
                         }
@@ -112,10 +145,21 @@
                             name: "Arthur",
                             role: "Membro",
                             photo: "aceleracao/Arthur.jpg",
-                            bio: "Dolor amet magna deserunt anim excepteur minim non labore eu duis ad. Aliqua tempor excepteur consectetur ex esse irure mollit sint labore officia ea culpa. Pariatur mollit dolor est velit elit nulla cupidatat. Ex laboris voluptate irure pariatur.",
+                            bio: "",
                             contacts: {
                                 instagram: "arthur",
                                 linkedin: "arthur",
+                                email: ""
+                            }
+                        },
+                    {
+                            name: "Lara",
+                            role: "Membro",
+                            photo: "aceleracao/",
+                            bio: "",
+                            contacts: {
+                                instagram: "sss",
+                                linkedin: "ss",
                                 email: ""
                             }
                         },
@@ -129,7 +173,8 @@
                                 linkedin: "joão-guilherme-fernandes-frota-a14397356",
                                 email: ""
                             }
-                        }
+                        },
+                        
                     ]
                 },
                 modelos: {
@@ -140,7 +185,7 @@
                             name: "Marcelo Santos",
                             role: "Membro",
                             photo: "modelosinternos/Marcelo.jpg",
-                            bio: "Apaixonado por tecnólogia, ",
+                            bio: "Graduando em Análise e Desenvolvimento de Sistemas, entusiasta da tecnologia e profundamente dedicado à área de Experiência do Usuário (UX) e Interface do Usuário (UI). Possui um olhar criativo e focado em criar soluções que sejam não apenas funcionais, mas também intuitivas e visualmente atraentes. Está sempre explorando novas tendências de design e metodologias. Seu objetivo é aplicar seus conhecimentos para desenvolver sistemas e aplicações que ofereçam uma experiência de usuário excepcional.",
                             contacts: {
                                 linkedin: "marcelo-dos-santos-da-boa-morte-5985a3262/",
                                 instagram: "marcelo_grr",
@@ -151,7 +196,7 @@
                             name: "Enzo Bergamachi",
                             role: "Membro",
                             photo: "modelosinternos/enzo.jpg",
-                            bio: "Labore officia ut sunt commodo incididunt ex Lorem ipsum adipisicing aliquip tempor. Ex proident esse voluptate adipisicing labore consequat eiusmod sunt cupidatat nostrud Lorem do aliquip laborum. Velit eiusmod irure incididunt Lorem sit id enim velit excepteur sint.",
+                            bio: "",
                             contacts: {
                                 instagram: "enzo",
                                 linkedin: "addadadd",
@@ -162,7 +207,7 @@
                             name: "Lucas Gabriel",
                             role: "Membro",
                             photo: "modelosinternos/Lucas_Gabriel.jpg",
-                            bio: "Occaecat eiusmod fugiat pariatur elit. Elit velit incididunt ipsum sunt voluptate. Aliqua cupidatat id pariatur dolore id id cupidatat incididunt laborum consectetur. Excepteur est mollit ea aliquip. Laboris consequat dolor et cupidatat exercitation eu cillum aliquip. Voluptate enim dolore proident adipisicing occaecat enim quis.",
+                            bio: "",
                             contacts: {
                                 instagram: "LucasGabriel",
                                 linkedin: "Lucasslaoq",
@@ -177,6 +222,17 @@
                             contacts: {
                                 instagram: "leonardo.basset",
                                 linkedin: "leonardo-basset-figueiredo-pereira-521627297/",
+                                email: ""
+                            }
+                        },
+                        {
+                            name: "Maria Laura Cruvinel",
+                            role: "Membro",
+                            photo: "modelosinternos/laura.png",
+                            bio: "Graduanda em Engenharia de Telecomunicações na Unicamp, com atuação em Inteligência Artificial, Ciência de Dados e Telecomunicações. Possui experiência com Modelos de Linguagem (LLMs), aprendizado de máquina e análise de dados. Interessa-se pelo desenvolvimento de soluções que integrem IA a sistemas de comunicação e redes, explorando aplicações inovadoras que conectam tecnologia, dados e impacto social.",
+                            contacts: {
+                                instagram: "laura__cruvinel",
+                                linkedin: "maria-laura-cruvinel-64b8351b8",
                                 email: ""
                             }
                         }
