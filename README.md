@@ -30,12 +30,4 @@ O site foi desenvolvido com um stack moderno, garantindo desempenho, responsivid
 ## 🧡 Link do site
 https://ligadestartups-unicamp.web.app/
 ---
-## 🎨 Licença e Créditos
 
-### Licença
-O conteúdo, design e funcionamento do site **LiUp** são de propriedade da **Liga de Startups da Unicamp**. Todos os direitos estão totalmente atribuídos à liga.  
-Reprodução ou uso comercial sem autorização explícita não é permitido.
-
-Agradecimentos especiais a todos os membros da **Liga de Startups da Unicamp** pelo suporte e contribuições.
-
----
