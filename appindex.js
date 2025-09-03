@@ -106,10 +106,10 @@
                             name: "Eduardo Paziani",
                             role: "Membro",
                             photo: "captaçãoparceria/eduardo.jpg",
-                            bio: "",
+                            bio: "Graduando em Engenharia de Telecomunicações, com experiência em organização de eventos de tecnologia e empreendedorismo, liderança de equipes e pesquisa aplicada em radiofrequência e análise de dados. Eduardo é movido pela curiosidade, pela busca constante por excelência e pelo desejo em gerar impacto. Ao longo de sua jornada, atuou como diretor e conselheiro em outras organizações estudantis, sempre com uma postura proativa e colaborativa. Atualmente, é responsável por impulsionar parcerias na LiUP, visando escalar as oportunidades dos membros e da liga. No futuro, aspira construir o seu próprio negócio e se tornar investidor de iniciativas inovadoras, acreditando na força das conexões para transformar realidades.",
                             contacts: {
-                                instagram: "paziani",
-                                linkedin: "pazianeslasla",
+                                instagram: "@10_dudu",
+                                linkedin: "eduardo-paziani",
                                 email: ""
                             }
                         },
@@ -128,10 +128,10 @@
                             name: "Cauã",
                             role: "Membro",
                             photo: "captaçãoparceria/caua.png",
-                            bio: "",
+                            bio: "Estudante de administração de empresas, apaixonado por empreendedorismo e inovação. Busco constantemente aprender e me desenvolver, visando contribuir para o crescimento de projetos e organizações. Tenho interesse em estratégias de negócios, marketing e gestão, com o objetivo de aplicar meus conhecimentos em ambientes dinâmicos e desafiadores.",
                             contacts: {
-                                instagram: "",
-                                linkedin: "",
+                                instagram: "caua.menezes_",
+                                linkedin: "Cauã Menezes",
                                 email: ""
                             }
                         }
@@ -145,10 +145,10 @@
                             name: "Arthur",
                             role: "Membro",
                             photo: "aceleracao/Arthur.jpg",
-                            bio: "",
+                            bio: "Estudante de Sistemas de Informação na Unicamp e técnico em Desenvolvimento de Sistemas pelo SENAI, possui experiência prática em desenvolvimento web freelance e na criação de chatbots interativos. É um profissional proativo, com forte pensamento crítico e criatividade.",
                             contacts: {
-                                instagram: "arthur",
-                                linkedin: "arthur",
+                                instagram: "arthur_malveste",
+                                linkedin: "arthur-malveste-5008842aa",
                                 email: ""
                             }
                         },
@@ -196,10 +196,10 @@
                             name: "Enzo Bergamachi",
                             role: "Membro",
                             photo: "modelosinternos/enzo.jpg",
-                            bio: "",
+                            bio: "Nascido e criado no interior de São Paulo, trilhei um caminho de aprendizado e dedicação que hoje me conduz à graduação em Administração Empresarial na Faculdade de Ciências Aplicadas da Unicamp. Sou um entusiasta do comércio exterior e do mercado AgTech. Desde a infância, carrego uma vocação empreendedora, marcada pelo desejo de transformar ideias em realizações. Hoje, na Liga de Startups da Unicamp, esse espírito infantil, criativo e sonhador, renasce com maturidade e se concretiza em minha determinação de atuar como empresário e agente de transformação.",
                             contacts: {
-                                instagram: "enzo",
-                                linkedin: "addadadd",
+                                instagram: "",
+                                linkedin: "Enzo Bergamaschi ramon",
                                 email: ""
                             }
                         },

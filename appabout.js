@@ -1,7 +1,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Configuração do Processo Seletivo
             const processoConfig = {
-                aberto: true, // Mude para true para abrir o processo
+                aberto: false, // Mude para true para abrir o processo
                 dataLimite: "30/11/2025", // Data limite quando aberto
                 mensagemFechado: "Nosso processo seletivo está atualmente fechado para novas inscrições.",
                 mensagemAberto: `Nosso processo seletivo está aberto até <strong>${this.dataLimite}</strong>`
