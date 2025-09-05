@@ -35,12 +35,6 @@
                 const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
                 scrollIndicator.style.width = scrollPercentage + '%';
                 
-                // Show/hide back to top button
-                if (scrollTop > 300) {
-                    backToTopBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
-                }
             }
             
             window.addEventListener('scroll', handleScroll);
@@ -106,10 +100,10 @@
                             name: "Eduardo Paziani",
                             role: "Membro",
                             photo: "captaçãoparceria/eduardo.jpg",
-                            bio: "",
+                            bio: "Graduando em Engenharia de Telecomunicações, com experiência em organização de eventos de tecnologia e empreendedorismo, liderança de equipes e pesquisa aplicada em radiofrequência e análise de dados. Eduardo é movido pela curiosidade, pela busca constante por excelência e pelo desejo em gerar impacto. Ao longo de sua jornada, atuou como diretor e conselheiro em outras organizações estudantis, sempre com uma postura proativa e colaborativa. Atualmente, é responsável por impulsionar parcerias na LiUP, visando escalar as oportunidades dos membros e da liga. No futuro, aspira construir o seu próprio negócio e se tornar investidor de iniciativas inovadoras, acreditando na força das conexões para transformar realidades.",
                             contacts: {
-                                instagram: "paziani",
-                                linkedin: "pazianeslasla",
+                                instagram: "@10_dudu",
+                                linkedin: "eduardo-paziani",
                                 email: ""
                             }
                         },
@@ -124,14 +118,25 @@
                                 email: ""
                             }
                         },
+                        {
+                            name: "Lucas",
+                            role: "Membro",
+                            photo: "captaçãoparceria/lucas.jpg",
+                            bio: "Graduando em Administração na Faculdade de Ciências Aplicadas da Unicamp, iniciou sua trajetória como Jovem Aprendiz no Sebrae-SP, atuando no programa Sebrae Delas, voltado ao empreendedorismo feminino. A experiência despertou seu interesse pelo mercado corporativo e fortaleceu sua paixão pelo empreendedorismo, hoje ampliada pela graduação e pela participação na Liga de Startups. Curiosidade e entusiasmo o definem, sempre guiado pela reflexão: O que é impossível?",
+                            contacts: {
+                                instagram: "lucastevan_",
+                                linkedin: "lucas-stevan-oliveira-diniz-4740a3282/",
+                                email: ""
+                            }
+                        },
                      {
                             name: "Cauã",
                             role: "Membro",
                             photo: "captaçãoparceria/caua.png",
-                            bio: "",
+                            bio: "Estudante de administração de empresas, apaixonado por empreendedorismo e inovação. Busco constantemente aprender e me desenvolver, visando contribuir para o crescimento de projetos e organizações. Tenho interesse em estratégias de negócios, marketing e gestão, com o objetivo de aplicar meus conhecimentos em ambientes dinâmicos e desafiadores.",
                             contacts: {
-                                instagram: "",
-                                linkedin: "",
+                                instagram: "caua.menezes_",
+                                linkedin: "Cauã Menezes",
                                 email: ""
                             }
                         }
@@ -145,21 +150,21 @@
                             name: "Arthur",
                             role: "Membro",
                             photo: "aceleracao/Arthur.jpg",
-                            bio: "",
+                            bio: "Estudante de Sistemas de Informação na Unicamp e técnico em Desenvolvimento de Sistemas pelo SENAI, possui experiência prática em desenvolvimento web freelance e na criação de chatbots interativos. É um profissional proativo, com forte pensamento crítico e criatividade.",
                             contacts: {
-                                instagram: "arthur",
-                                linkedin: "arthur",
+                                instagram: "arthur_malveste",
+                                linkedin: "arthur-malveste-5008842aa",
                                 email: ""
                             }
                         },
                     {
                             name: "Lara",
                             role: "Membro",
-                            photo: "aceleracao/",
-                            bio: "",
+                            photo: "aceleracao/lara.jpg",
+                            bio: "Graduanda em Engenharia Física, Lara sempre foi apaixonada por educação e ciência. Encontrou na tecnologia uma forma de impactar e gerar mudança no mundo, tendo inclinação para áreas de desenvolvimento tecnológico como física óptica e medicina. Extremamente comunicativa e criativa, é entusiasta de conexões humanas e novas experiências.",
                             contacts: {
-                                instagram: "sss",
-                                linkedin: "ss",
+                                instagram: "@_laratmachado",
+                                linkedin: "laratoledom",
                                 email: ""
                             }
                         },
@@ -196,21 +201,10 @@
                             name: "Enzo Bergamachi",
                             role: "Membro",
                             photo: "modelosinternos/enzo.jpg",
-                            bio: "",
+                            bio: "Nascido e criado no interior de São Paulo, trilhei um caminho de aprendizado e dedicação que hoje me conduz à graduação em Administração Empresarial na Faculdade de Ciências Aplicadas da Unicamp. Sou um entusiasta do comércio exterior e do mercado AgTech. Desde a infância, carrego uma vocação empreendedora, marcada pelo desejo de transformar ideias em realizações. Hoje, na Liga de Startups da Unicamp, esse espírito infantil, criativo e sonhador, renasce com maturidade e se concretiza em minha determinação de atuar como empresário e agente de transformação.",
                             contacts: {
-                                instagram: "enzo",
-                                linkedin: "addadadd",
-                                email: ""
-                            }
-                        },
-                        {
-                            name: "Lucas Gabriel",
-                            role: "Membro",
-                            photo: "modelosinternos/Lucas_Gabriel.jpg",
-                            bio: "",
-                            contacts: {
-                                instagram: "LucasGabriel",
-                                linkedin: "Lucasslaoq",
+                                instagram: "",
+                                linkedin: "Enzo Bergamaschi ramon",
                                 email: ""
                             }
                         },
@@ -257,7 +251,7 @@
                             name: "Julia Fernandes",
                             role: "Vice-Presidente",
                             photo: "administracao/julia.jpg",
-                            bio: "Cursando Sistemas de Informação, possui grande paixão por empreendedorismo e tecnologia, sempre fascinado por inovação. Fluente em inglês, deseja conhecer vários lugares e pessoas diferentes para enriquecer seu conhecimento e sua visão de mundo. Por fim, ama lidar com pessoas, é extrovertido, e deseja levar isso para seu caminho profissional.",
+                            bio: "Graduanda em sistemas de informação pela Unicamp, sou apaixonada por boas conversas, músicas e comidas, acredito que com isso podemos gerar grandes conexões, e a partir delas as melhores ideias, como a LiUp. A Liga de Startups representa pra mim não só uma conquista para o ano de 2025 mas uma grande transformação em todas as áreas da minha vida!",
                             contacts: {
                                 instagram: "who.is_juuh",
                                 linkedin: "julia-fernandes-9b5453262",
@@ -507,5 +501,4 @@
             
             initScrollAnimations();
 
-            console.log('Site LiUP carregado com sucesso!');
         });

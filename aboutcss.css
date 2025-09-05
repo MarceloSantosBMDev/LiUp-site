@@ -228,8 +228,7 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
-        /* Hero Section */
-        .page-hero {
+              .hero-section {
             position: relative;
             height: 100vh;
             min-height: 700px;
@@ -242,7 +241,7 @@
             text-align: center;
         }
 
-        .page-hero::before {
+        .hero-section::before {
             content: '';
             position: absolute;
             bottom: 0;
@@ -253,13 +252,8 @@
             z-index: 1;
         }
 
-        .page-hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: var(--space-xl) 0;
-            animation: fadeInUp 1s ease;
+       .hero-content {
+            margin-bottom: 0;
         }
 
         @keyframes fadeInUp {
@@ -273,7 +267,7 @@
             }
         }
 
-        .page-hero-title {
+        .hero-title {
             font-size: 3rem;
             margin-bottom: var(--space-md);
             line-height: 1.2;
@@ -281,13 +275,13 @@
             font-weight: 800;
         }
 
-        .page-hero-title span {
+        .hero-title span {
             color: var(--primary);
             position: relative;
             display: inline-block;
         }
 
-        .page-hero-title span::after {
+        .hero-title span::after {
             content: '';
             position: absolute;
             bottom: 5px;
@@ -299,7 +293,7 @@
             border-radius: 4px;
         }
 
-        .page-hero-subtitle {
+        .hero-subtitle {
             font-size: 1.25rem;
             margin-bottom: var(--space-xl);
             font-weight: 300;
@@ -308,6 +302,46 @@
             margin-left: auto;
             margin-right: auto;
             line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+  .hero-scroll {
+            display: none; /* Remover completamente a seta de scroll */
+        }
+
+        .hero-scroll:hover {
+            opacity: 1;
+            transform: translateX(-50%) translateY(5px);
+        }
+
+        .hero-scroll span {
+            font-size: 0.8rem;
+            margin-bottom: var(--space-xs);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-scroll i {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
         }
 
         /* Floating Navigation */
@@ -383,37 +417,37 @@
         }
 
         /* Botão Voltar para Home */
-        .home-btn {
-            position: fixed;
-            bottom: var(--space-lg);
-            left: var(--space-lg);
-            width: 56px;
-            height: 56px;
-            border-radius: var(--radius-full);
-            background-color: var(--secondary);
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-md);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            z-index: 999;
-        }
+.home-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 1001; /* Alto z-index para ficar acima de outros elementos */
+}
 
-        .home-btn:hover {
-            background-color: var(--secondary-dark);
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: var(--shadow-lg);
-        }
+.home-btn:hover {
+    background-color: var(--secondary-dark);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: var(--shadow-lg);
+}
 
-        .home-btn .nav-tooltip {
-            left: 70px;
-            right: auto;
-        }
+.home-btn .nav-tooltip {
+    left: 70px;
+    right: auto;
+}
 
-        .home-btn:hover .nav-tooltip {
-            left: 65px;
-        }
+.home-btn:hover .nav-tooltip {
+    left: 65px;
+}
 
         /* Timeline */
         .timeline-section {
@@ -1274,24 +1308,50 @@
             }
         }
 
-        @media (max-width: 576px) {
-            .section-header {
-                margin-bottom: var(--space-xl);
+     @media (max-width: 767px) {
+            .hero-title {
+                font-size: 2.2rem;
             }
             
-            .section-title {
-                font-size: 1.8rem;
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
             }
             
-            .page-hero-title {
-                font-size: 1.8rem;
+            .hero-buttons .btn {
+                width: 100%;
             }
             
-            .page-hero-subtitle {
-                font-size: 1rem;
+            .schedule-grid {
+                grid-template-columns: 1fr;
             }
             
-            .modal-content {
-                width: 95%;
+            .sponsorship-tabs {
+                flex-direction: column;
+            }
+            
+            .sponsors-tabs {
+                flex-direction: column;
+            }
+
+            .floating-nav, .home-btn {
+                bottom: var(--space-md);
+                right: var(--space-md);
+                left: var(--space-md);
+            }
+
+            .floating-nav {
+                flex-direction: row;
+                justify-content: flex-end;
+            }
+
+            .home-btn {
+                right: auto;
+            }
+
+            .nav-btn, .home-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 0.9rem;
             }
         }

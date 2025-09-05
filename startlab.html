@@ -239,7 +239,7 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
-        /* Hero Section - Estilo mais parecido com a segunda página */
+        /* Hero Section -  */
         .hero-section {
             position: relative;
             height: 100vh;
@@ -1327,28 +1327,37 @@
         }
 
         /* Botão Voltar para Home */
-        .home-btn {
-            position: fixed;
-            bottom: var(--space-lg);
-            left: var(--space-lg);
-            width: 56px;
-            height: 56px;
-            border-radius: var(--radius-full);
-            background-color: var(--secondary);
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-md);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            z-index: 999;
-        }
+.home-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 1001; 
+}
 
-        .home-btn:hover {
-            background-color: var(--secondary-dark);
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: var(--shadow-lg);
-        }
+.home-btn:hover {
+    background-color: var(--secondary-dark);
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: var(--shadow-lg);
+}
+
+.home-btn .nav-tooltip {
+    left: 70px;
+    right: auto;
+}
+
+.home-btn:hover .nav-tooltip {
+    left: 65px;
+}
 
         /* Floating Navigation */
         .floating-nav {
@@ -2044,7 +2053,7 @@
             <div class="sponsorship-content" id="sponsor-content">
                 <div class="sponsorship-grid">
                     <div class="sponsorship-card">
-                        <h3 class="sponsorship-title">Apoiador</h3>
+                        <h3 class="sponsorship-title">GARAGE</h3>
                         <div class="sponsorship-features">
                             <div class="sponsorship-feature">
                                 <i class="fas fa-check-circle"></i>
@@ -2548,25 +2557,12 @@
             const clientHeight = document.documentElement.clientHeight;
             const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
             scrollIndicator.style.width = scrollPercentage + '%';
-            
-            // Show/hide back to top button
-            if (scrollTop > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
         }
         
         window.addEventListener('scroll', handleScroll);
         
         // Back to top functionality
-        backToTopBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+      
         
         // Smooth Scroll for Anchor Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
